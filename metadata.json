@@ -1,0 +1,6 @@
+{
+  "name": "acados",
+  "description": "The Academic Operating System for Modern Institutions. Unifies content library, TestMaker, student practice, CBTs, OMR evaluation, analytics, and CRM/ERP.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

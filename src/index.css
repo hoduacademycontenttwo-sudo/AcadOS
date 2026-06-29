@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, monospace;
+
+  /* Redesign Typography Scale - Global Upscaling to ensure text is never too small */
+  --text-xs: 0.8125rem;    /* 13px instead of 12px for clear annotations/tagging */
+  --text-sm: 0.9375rem;    /* 15px instead of 14px for body notes, bullets & list items */
+  --text-base: 1.0625rem;  /* 17px instead of 16px for luxurious primary body reading */
+  --text-lg: 1.25rem;      /* 20px instead of 18px for structural subheadings */
+  --text-xl: 1.4375rem;    /* 23px instead of 20px for cards & sections */
+  --text-2xl: 1.75rem;     /* 28px for titles & components */
+  --text-3xl: 2.25rem;     /* 36px for banner headers */
+  --text-4xl: 2.75rem;     /* 44px for medium-page headlines */
+  --text-5xl: 3.5rem;      /* 56px for prominent landing titles */
+  --text-6xl: 4.25rem;     /* 68px for main luxury display copy */
+  
+  /* Primary Maroon Brand System - Editorial Aesthetic (#800000) */
+  --color-maroon-50: #fff5f5;
+  --color-maroon-100: #ffebeb;
+  --color-maroon-105: #ffd9d9;
+  --color-maroon-200: #ffd6d6;
+  --color-maroon-250: #ffa2a2;
+  --color-maroon-600: #9e1b1b;
+  --color-maroon-700: #800000;
+  --color-maroon-750: #700000;
+  --color-maroon-800: #600000;
+  --color-maroon-805: #550000;
+  --color-maroon-850: #4a0000;
+  --color-maroon-900: #3b0000;
+  --color-maroon-950: #2a0000;
+  
+  /* Gold Accents for academic prestige */
+  --color-gold-400: #dfb271;
+  --color-gold-500: #c99a55;
+  --color-gold-600: #b0813f;
+  
+  /* Neutral scale */
+  --color-slate-50: #faf9f6; /* Warm academic book-page white */
+  --color-slate-100: #f4f1ea; /* Soft cream spacer */
+  --color-slate-105: #ece9e1;
+  --color-slate-150: #e5dfd4;
+  --color-slate-202: #e6e2d8;
+  --color-slate-205: #ded9cf;
+  --color-slate-250: #cfc9be;
+  --color-slate-350: #aeaeae;
+  --color-slate-405: #8a8a8a;
+  --color-slate-450: #7c7c7c;
+  --color-slate-600: #5c5c5c;
+  --color-slate-650: #4c4c4c;
+  --color-slate-655: #4e4e4e;
+  --color-slate-705: #3f3f3f;
+  --color-slate-800: #2d2d2d;
+  --color-slate-850: #262626;
+  --color-slate-900: #1e1e1e; /* Classic print charcoal black */
+  --color-slate-905: #151515;
+  
+  /* Custom non-standard colors used in buttons and widgets */
+  --color-red-650: #c51f1f;
+  --color-red-750: #a21b1b;
+  --color-red-850: #8c1c1c;
+  
+  --color-violet-650: #722de2;
+  --color-violet-750: #5f1cb8;
+  --color-violet-850: #4d1594;
+  
+  --color-blue-550: #2c6ee2;
+  --color-blue-650: #2155ce;
+  --color-blue-750: #1c44ba;
+  
+  /* Success states */
+  --color-success-green: #2e7d32;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-slate-50 text-slate-800 antialiased selection:bg-maroon-100 selection:text-maroon-800;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Custom pulse and glow utilities */
+@keyframes soft-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .8; transform: scale(1.02); }
+}
+
+.animate-soft-pulse {
+  animation: soft-pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Solutions customized premium gold scrollbar */
+.solutions-scrollbar::-webkit-scrollbar {
+  height: 6px;
+}
+.solutions-scrollbar::-webkit-scrollbar-track {
+  background: rgba(30, 41, 59, 0.6);
+  border-radius: 9999px;
+  margin: 0 12px;
+}
+.solutions-scrollbar::-webkit-scrollbar-thumb {
+  background: #dfb271;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+.solutions-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #c99a55;
+}
+
+/* ─── Marketing UI Enhancement Utilities ─── */
+
+/* Announcement bar shimmer animation */
+@keyframes announcement-slide {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.announcement-bg {
+  background: linear-gradient(270deg, #600000, #800000, #9e1b1b, #800000, #600000);
+  background-size: 400% 400%;
+  animation: announcement-slide 8s ease infinite;
+}
+
+/* Module card premium top accent line (appears on hover) */
+.module-card-accent {
+  position: relative;
+}
+.module-card-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #800000 0%, #dfb271 50%, #800000 100%);
+  border-radius: 16px 16px 0 0;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.module-card-accent:hover::before {
+  opacity: 1;
+}
+
+/* Premium card lift on hover */
+.card-lift {
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 56px rgba(128, 0, 0, 0.10), 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Glass stat card (for dark bg stats strip) */
+.stat-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+/* Section gradient divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e5dfd4, transparent);
+}
+
+/* Hero mesh gradient overlay */
+@keyframes hero-mesh-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(20px, -15px) scale(1.02); }
+  66% { transform: translate(-10px, 10px) scale(0.99); }
+}
+.hero-mesh {
+  animation: hero-mesh-drift 12s ease-in-out infinite;
+}
+
+/* Floating badge micro-animation */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+.float-badge {
+  animation: float-y 4s ease-in-out infinite;
+}
+
+/* CTA button shine effect */
+@keyframes btn-shine {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.btn-shine {
+  background: linear-gradient(90deg, #800000, #9e1b1b, #c99a55, #9e1b1b, #800000);
+  background-size: 200% auto;
+  animation: btn-shine 3s linear infinite;
+}
+
+/* ─── Why AcadOS Page ─── */
+@keyframes wa-blob-drift {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33%       { transform: translate(40px,-30px) scale(1.08); }
+  66%       { transform: translate(-30px,20px) scale(0.95); }
+}
+@keyframes wa-float-bob {
+  0%, 100% { transform: translateY(0)    rotateX(8deg) rotateY(-10deg); }
+  50%       { transform: translateY(-14px) rotateX(6deg) rotateY(-8deg);  }
+}
+.wa-blob  { animation: wa-blob-drift 18s ease-in-out infinite; }
+.wa-float { animation: wa-float-bob  6s  ease-in-out infinite; }
+
+.wa-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.wa-shimmer::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(240,199,94,0.55) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.65s ease;
+}
+.wa-shimmer:hover::after { transform: translateX(100%); }
+
+/* ─── Sci-fi bg shared animations ─── */
+@keyframes grid-scroll {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(60px); }
+}
+@keyframes scan-line {
+  0%   { top: -4px; }
+  100% { top: 100%; }
+}
+@keyframes orb-pulse {
+  0%, 100% { opacity: 0.18; transform: scale(1); }
+  50%       { opacity: 0.32; transform: scale(1.12); }
+}
