@@ -14,8 +14,7 @@ export type PageId =
   | 'about'
   | 'contact'
   | 'omr-evaluation'
-  | 'why-acados'
-  | 'testimonials';
+  | 'why-acados';
 
 export interface DemoBooking {
   id: string;

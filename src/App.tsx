@@ -31,7 +31,7 @@ import htLogo from './assets/HT.jpg';
 import Loader from './components/Loader';
 import ModulePreviewPage from './components/ModulePreviewPage';
 import AcadBot from './components/AcadBot';
-import Testimonials from './components/Testimonials';
+import ClientsSection from './components/ClientsSection';
 
 /* ── Hero Module Carousel ─────────────────────────────── */
 const HERO_SLIDES = [
@@ -442,7 +442,6 @@ export default function App() {
       else if (hash === '#/about') setPage('about');
       else if (hash === '#/contact') setPage('contact');
       else if (hash === '#/why-acados') setPage('why-acados');
-      else if (hash === '#/testimonials') setPage('testimonials');
       else setPage('home');
       setMenuOpen(false);
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -467,7 +466,6 @@ export default function App() {
     else if (pageId === 'contact') window.location.hash = '#/contact';
     else if (pageId === 'omr-evaluation') window.location.hash = '#/modules/omr-evaluation';
     else if (pageId === 'why-acados') window.location.hash = '#/why-acados';
-    else if (pageId === 'testimonials') window.location.hash = '#/testimonials';
   };
 
   const handleLeadSaved = (lead: DemoBooking) => {
@@ -590,10 +588,6 @@ export default function App() {
               className={`p-2 hover:text-maroon-700 transition-colors uppercase ${page === 'why-acados' ? 'text-maroon-700 font-extrabold' : 'text-slate-705'}`}
             >
               Why AcadOS
-            </button>
-
-            <button onClick={() => navigateTo('testimonials')} className={`p-2 hover:text-maroon-700 transition-colors uppercase ${page === 'testimonials' ? 'text-maroon-700 font-extrabold' : 'text-slate-700'}`}>
-              Testimonials
             </button>
 
             <button onClick={() => navigateTo('contact')} className={`p-2 hover:text-maroon-700 transition-colors uppercase ${page === 'contact' ? 'text-maroon-700 font-extrabold' : 'text-slate-700'}`}>
@@ -760,15 +754,6 @@ export default function App() {
                 </button>
 
                 <button
-                  onClick={() => { navigateTo('testimonials'); setMenuOpen(false); }}
-                  className={`text-left py-2.5 border-b border-slate-50 hover:text-maroon-750 uppercase font-extrabold ${
-                    page === 'testimonials' ? 'text-maroon-700' : 'text-slate-800'
-                  }`}
-                >
-                  Testimonials
-                </button>
-                
-                <button 
                   onClick={() => { navigateTo('contact'); setMenuOpen(false); }} 
                   className={`text-left py-2.5 border-b border-slate-50 hover:text-maroon-750 uppercase font-extrabold ${
                     page === 'contact' ? 'text-maroon-700' : 'text-slate-800'
@@ -1040,90 +1025,8 @@ export default function App() {
                 <BeforeAfterSlider />
               </motion.section>
 
-              {/* LEADERSHIP SECTION */}
-              <motion.section
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.7, ease: 'easeOut' }}
-                className="relative overflow-hidden"
-                id="about-us-block"
-              >
-                {/* Dark editorial bg */}
-                <div className="absolute inset-0 bg-slate-900" />
-                <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage:'linear-gradient(rgba(255,255,255,0.8) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.8) 1px,transparent 1px)',backgroundSize:'48px 48px'}} />
-                <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(ellipse_at_top_right,rgba(128,0,0,0.15),transparent_70%)] pointer-events-none" />
-
-                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
-
-                  {/* Header row */}
-                  <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-                    <div className="space-y-2 max-w-lg">
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-gold-400 bg-gold-400/10 border border-gold-400/20 px-3 py-1 rounded-full inline-block">
-                        Leadership
-                      </span>
-                      <h3 className="text-2xl sm:text-3xl font-serif font-extrabold text-white tracking-tight leading-tight" style={{textWrap:'balance'}}>
-                        Built by educators who've been in the classroom.
-                      </h3>
-                      <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
-                        25+ years of teaching experience combined with enterprise-grade software engineering.
-                      </p>
-                    </div>
-                    <button onClick={() => navigateTo('about')} className="shrink-0 inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-gold-400/30 text-gold-400 hover:text-gold-300 font-bold text-xs px-4 py-2 rounded-xl transition-all">
-                      Meet the team <ChevronRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-
-                  {/* Cards — horizontal scroll on mobile, 3-col on desktop */}
-                  {/* Mobile: vertical stack | Desktop: horizontal 3-col row */}
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    {[
-                      { name: 'V. P. Singh', title: 'Senior Physics Educator', detail: '10,000+ students mentored for JEE & NEET', tag: 'Physics · IIT-JEE', pic: vpSinghPic, pos: 'center 20%' },
-                      { name: 'Rohit Jain', title: 'Curriculum Architect', detail: 'CBSE, IGCSE & IB specialist, 6,000+ students', tag: 'Curriculum · IB', pic: rohitjainPic, pos: 'center 20%' },
-                      { name: 'Abhishek Agarwal', title: 'Tech Lead & Architect', detail: 'IIIT Hyderabad · Ex-Palantir, Qualcomm', tag: 'Engineering', pic: abhishekagarwalPic, pos: 'center 20%' },
-                    ].map((lead, idx) => (
-                      <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, y: 12 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.45, delay: idx * 0.08 }}
-                        className="group flex-1 rounded-xl overflow-hidden border border-white/10 hover:border-gold-400/30 transition-all duration-300 cursor-pointer bg-white/5 hover:bg-white/8"
-                      >
-                        {/* Mobile: row layout (photo left, text right) */}
-                        {/* Desktop: column layout (photo top, text bottom) */}
-                        <div className="flex sm:flex-col items-center sm:items-stretch gap-0">
-                          {/* Photo */}
-                          <div className="w-20 h-20 sm:w-full sm:h-52 shrink-0 overflow-hidden">
-                            <img
-                              src={lead.pic}
-                              alt={lead.name}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                              style={{ objectPosition: lead.pos }}
-                            />
-                          </div>
-
-                          {/* Text */}
-                          <div className="flex-1 px-4 py-3 sm:py-4 space-y-0.5 min-w-0">
-                            <span className="text-[8px] font-mono font-bold uppercase tracking-widest text-gold-400 bg-gold-400/10 border border-gold-400/20 px-2 py-0.5 rounded-full inline-block mb-1">
-                              {lead.tag}
-                            </span>
-                            <h4 className="font-serif font-bold text-white text-sm sm:text-base leading-tight">{lead.name}</h4>
-                            <p className="text-gold-400 text-[10px] font-bold font-mono uppercase tracking-wide">{lead.title}</p>
-                            <p className="text-slate-400 text-xs leading-relaxed mt-1 hidden sm:block">{lead.detail}</p>
-                          </div>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                </div>
-              </motion.section>
-
-              {/* SUCCESS STORIES SECTION */}
-              <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <SuccessStories />
-              </section>
+              {/* CLIENTS SECTION */}
+              <ClientsSection />
 
               {/* HE-12: DEMO SCHEDULER FORM SEC */}
               <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id="demo-booking-section">
@@ -1737,18 +1640,6 @@ export default function App() {
           )}
 
           {/* ==================================== */}
-          {/* TESTIMONIALS PAGE                    */}
-          {/* ==================================== */}
-          {page === 'testimonials' && (
-            <motion.div
-              key="testimonials"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <Testimonials onBookDemo={() => setIsDemoModalOpen(true)} />
-            </motion.div>
-          )}
 
           {/* ==================================== */}
           {/* CONTACT & DEMO PAGE                  */}
