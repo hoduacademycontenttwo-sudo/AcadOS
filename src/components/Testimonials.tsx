@@ -143,10 +143,7 @@ export default function Testimonials({ onBookDemo }: { onBookDemo: () => void })
         <div className="absolute inset-0 opacity-[0.06]" style={{backgroundImage:'linear-gradient(rgba(255,255,255,0.8) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.8) 1px,transparent 1px)',backgroundSize:'48px 48px'}} />
         <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.06),transparent_70%)]" />
         <div className="max-w-4xl mx-auto text-center space-y-5 relative z-10">
-          <span className="inline-block text-[10px] font-mono font-bold uppercase tracking-widest text-white/60 bg-white/10 border border-white/15 px-3 py-1 rounded-full">
-            Client Stories
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-serif font-extrabold text-white leading-tight tracking-tight">
+<h1 className="text-3xl sm:text-5xl font-serif font-extrabold text-white leading-tight tracking-tight">
             Schools & institutes<br className="hidden sm:block" /> that made the switch.
           </h1>
           <p className="text-white/65 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
