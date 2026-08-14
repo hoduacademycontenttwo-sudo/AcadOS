@@ -31,6 +31,304 @@ import htLogo from './assets/HT.jpg';
 import Loader from './components/Loader';
 import ModulePreviewPage from './components/ModulePreviewPage';
 import AcadBot from './components/AcadBot';
+import Testimonials from './components/Testimonials';
+
+/* ── Hero Module Carousel ─────────────────────────────── */
+const HERO_SLIDES = [
+  {
+    label: 'TestMaker',
+    tag: 'AI Paper Generator',
+    url: 'portal.acados.app — Apex Academy',
+    content: (
+      <div className="p-5 space-y-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-xs text-slate-500">Paper Generation</p>
+            <h3 className="text-white font-bold text-sm">Grade XII · Physics (JEE)</h3>
+          </div>
+          <span className="text-[10px] text-emerald-400 font-bold bg-emerald-400/10 border border-emerald-400/20 px-2.5 py-1 rounded-full">Generated ✓</span>
+        </div>
+        <div className="bg-slate-800/60 rounded-xl p-4 space-y-2 border border-slate-700/50">
+          <div className="flex justify-between text-xs text-slate-400">
+            <span>Difficulty Mix</span><span className="text-white font-semibold">35 Questions</span>
+          </div>
+          <div className="h-2 bg-slate-700 rounded-full overflow-hidden flex gap-0.5">
+            <div className="h-full bg-emerald-500 rounded-l-full" style={{width:'40%'}} />
+            <div className="h-full bg-gold-500" style={{width:'35%'}} />
+            <div className="h-full bg-red-500 rounded-r-full" style={{width:'25%'}} />
+          </div>
+          <div className="flex justify-between text-[10px] text-slate-500">
+            <span>Easy 40%</span><span>Medium 35%</span><span>Hard 25%</span>
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-2">
+          {[['Time','3 hrs','exam'],['Marks','100','total'],['Sections','3','parts']].map(([l,v,s])=>(
+            <div key={l} className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3 text-center">
+              <p className="text-[9px] text-slate-500">{l}</p>
+              <p className="text-lg font-black text-white">{v}</p>
+              <p className="text-[9px] text-slate-600">{s}</p>
+            </div>
+          ))}
+        </div>
+        <div className="flex items-center justify-between pt-1 border-t border-slate-800">
+          <span className="text-xs text-emerald-400 font-bold">✓ Answer key included</span>
+          <span className="text-[10px] text-slate-500">PDF ready to print</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    label: 'CBT Platform',
+    tag: 'JEE / NEET Mock Exam',
+    url: 'portal.acados.app — Vision IAS Prep',
+    content: (
+      <div className="p-5 space-y-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-xs text-slate-500">Live Mock Exam</p>
+            <h3 className="text-white font-bold text-sm">JEE Main · Full Syllabus Test #14</h3>
+          </div>
+          <span className="text-[10px] text-red-400 font-bold bg-red-400/10 border border-red-400/20 px-2.5 py-1 rounded-full flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />LIVE
+          </span>
+        </div>
+        <div className="grid grid-cols-3 gap-2 text-center">
+          {[['Timer','01:42:15','remaining'],['Attempted','62/90','questions'],['Score','187','marks']].map(([l,v,s])=>(
+            <div key={l} className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3">
+              <p className="text-[9px] text-slate-500">{l}</p>
+              <p className="text-sm font-black text-white font-mono">{v}</p>
+              <p className="text-[9px] text-slate-600">{s}</p>
+            </div>
+          ))}
+        </div>
+        <div className="bg-slate-800/60 rounded-xl p-3 border border-slate-700/50 space-y-1.5">
+          <p className="text-[10px] text-slate-400 font-medium">Section Progress</p>
+          {[['Physics','22/30',73],['Chemistry','20/30',67],['Math','20/30',67]].map(([s,v,pct])=>(
+            <div key={s} className="flex items-center gap-2">
+              <span className="text-[9px] text-slate-500 w-14">{s}</span>
+              <div className="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                <div className="h-full bg-maroon-500 rounded-full" style={{width:`${pct}%`}} />
+              </div>
+              <span className="text-[9px] text-slate-400 font-mono">{v}</span>
+            </div>
+          ))}
+        </div>
+        <div className="flex items-center justify-between pt-1 border-t border-slate-800">
+          <span className="text-xs text-slate-400">347 students online</span>
+          <span className="text-[10px] text-maroon-400">Full-screen lockdown ✓</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    label: 'OMR Scanning',
+    tag: 'Smartphone Grading',
+    url: 'portal.acados.app — Sri Ram Coaching',
+    content: (
+      <div className="p-5 space-y-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-xs text-slate-500">OMR Batch Scan</p>
+            <h3 className="text-white font-bold text-sm">Class XI · Weekly Test #8</h3>
+          </div>
+          <span className="text-[10px] text-emerald-400 font-bold bg-emerald-400/10 border border-emerald-400/20 px-2.5 py-1 rounded-full">Graded ✓</span>
+        </div>
+        <div className="grid grid-cols-3 gap-2">
+          {[['Scanned','127','sheets'],['Accuracy','98.4%','avg'],['Time','4 min','total']].map(([l,v,s])=>(
+            <div key={l} className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3 text-center">
+              <p className="text-[9px] text-slate-500">{l}</p>
+              <p className="text-lg font-black text-white">{v}</p>
+              <p className="text-[9px] text-slate-600">{s}</p>
+            </div>
+          ))}
+        </div>
+        <div className="bg-slate-800/60 rounded-xl p-3 border border-slate-700/50 space-y-1.5">
+          <div className="flex justify-between text-xs">
+            <span className="text-slate-400">Class Average</span>
+            <span className="text-gold-400 font-bold">76.3%</span>
+          </div>
+          <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
+            <div className="h-full bg-gold-500 rounded-full" style={{width:'76%'}} />
+          </div>
+          <div className="flex justify-between text-[10px] text-slate-500">
+            <span>↑ from 68.1% last week</span><span>Top: Riya Sharma 96%</span>
+          </div>
+        </div>
+        <div className="flex items-center justify-between pt-1 border-t border-slate-800">
+          <span className="text-xs text-slate-400">Reports sent to 127 parents</span>
+          <span className="text-[10px] text-emerald-400">WhatsApp ✓</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    label: 'ERP + CRM',
+    tag: 'Institute Management',
+    url: 'portal.acados.app — DPS Noida',
+    content: (
+      <div className="p-5 space-y-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-xs text-slate-500">Dashboard · Aug 2025</p>
+            <h3 className="text-white font-bold text-sm">Institute Overview</h3>
+          </div>
+          <span className="text-[10px] text-emerald-400 font-bold bg-emerald-400/10 border border-emerald-400/20 px-2.5 py-1 rounded-full">Live ✓</span>
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          {[['Students','1,247','enrolled'],['Fee Collected','₹8.4L','this month'],['Attendance','91.2%','today'],['New Leads','23','this week']].map(([l,v,s])=>(
+            <div key={l} className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3">
+              <p className="text-[9px] text-slate-500">{l}</p>
+              <p className="text-base font-black text-white">{v}</p>
+              <p className="text-[9px] text-emerald-400">{s}</p>
+            </div>
+          ))}
+        </div>
+        <div className="bg-slate-800/60 rounded-xl p-3 border border-slate-700/50">
+          <p className="text-[10px] text-slate-400 mb-2">Lead Pipeline</p>
+          <div className="flex gap-1">
+            {[['New','8','bg-blue-500'],['Demo','6','bg-gold-500'],['Enrolled','9','bg-emerald-500']].map(([l,v,c])=>(
+              <div key={l} className="flex-1 text-center">
+                <div className={`${c} h-1.5 rounded-full mb-1`} />
+                <p className="text-white font-black text-sm">{v}</p>
+                <p className="text-[9px] text-slate-500">{l}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="flex items-center justify-between pt-1 border-t border-slate-800">
+          <span className="text-xs text-slate-400">Auto fee reminders: ON</span>
+          <span className="text-[10px] text-gold-400">3 follow-ups due</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    label: 'Learners Hub',
+    tag: 'Digital Content Library',
+    url: 'portal.acados.app — Sunrise School',
+    content: (
+      <div className="p-5 space-y-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-xs text-slate-500">Content Library</p>
+            <h3 className="text-white font-bold text-sm">Class X · Science Chapter 6</h3>
+          </div>
+          <span className="text-[10px] text-blue-400 font-bold bg-blue-400/10 border border-blue-400/20 px-2.5 py-1 rounded-full">CBSE ✓</span>
+        </div>
+        <div className="bg-slate-800/60 rounded-xl p-4 space-y-2 border border-slate-700/50">
+          <p className="text-[10px] text-slate-400 font-medium">Available Resources</p>
+          {[['📄 Chapter Notes PDF','Ready'],['📝 Practice Worksheet','24 Qs'],['🎯 Chapter Test','30 Qs'],['✅ Answer Key','Included']].map(([item,val])=>(
+            <div key={item} className="flex items-center justify-between py-1 border-b border-slate-700/40 last:border-0">
+              <span className="text-xs text-slate-300">{item}</span>
+              <span className="text-[10px] text-emerald-400 font-mono">{val}</span>
+            </div>
+          ))}
+        </div>
+        <div className="grid grid-cols-3 gap-2 text-center">
+          {[['Boards','15+','mapped'],['Questions','6L+','total'],['Classes','1-12','covered']].map(([l,v,s])=>(
+            <div key={l} className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-2">
+              <p className="text-sm font-black text-white">{v}</p>
+              <p className="text-[9px] text-slate-500">{s}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    ),
+  },
+];
+
+function HeroModuleCarousel() {
+  const [idx, setIdx] = React.useState(0);
+  const [paused, setPaused] = React.useState(false);
+  const slide = HERO_SLIDES[idx];
+
+  React.useEffect(() => {
+    if (paused) return;
+    const t = setInterval(() => setIdx(i => (i + 1) % HERO_SLIDES.length), 3500);
+    return () => clearInterval(t);
+  }, [paused]);
+
+  return (
+    <div className="hidden sm:block lg:col-span-6 relative" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+      <div className="absolute -inset-4 bg-maroon-800/20 rounded-3xl blur-2xl" />
+      <div className="relative bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-2xl">
+        {/* Browser chrome */}
+        <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-800 bg-slate-950">
+          <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+          <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
+          <div className="ml-3 flex-1 bg-slate-800 rounded-md px-3 py-1 text-[10px] text-slate-500 font-mono truncate">
+            {slide.url}
+          </div>
+          <div className="flex items-center gap-1.5 text-[9px] text-emerald-400 font-bold shrink-0">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />LIVE
+          </div>
+        </div>
+
+        {/* Module label bar */}
+        <div className="flex items-center justify-between px-5 pt-4 pb-0">
+          <div>
+            <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-maroon-400">{slide.tag}</p>
+            <p className="text-white font-extrabold text-sm">{slide.label}</p>
+          </div>
+          {/* Dot indicators */}
+          <div className="flex gap-1.5">
+            {HERO_SLIDES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => { setIdx(i); setPaused(true); }}
+                className={`rounded-full transition-all duration-300 ${i === idx ? 'w-4 h-1.5 bg-maroon-400' : 'w-1.5 h-1.5 bg-slate-700 hover:bg-slate-500'}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Slide content */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, x: 12 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -12 }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
+          >
+            {slide.content}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Progress bar */}
+        {!paused && (
+          <div className="h-0.5 bg-slate-800">
+            <motion.div
+              key={idx}
+              className="h-full bg-maroon-600"
+              initial={{ width: '0%' }}
+              animate={{ width: '100%' }}
+              transition={{ duration: 3.5, ease: 'linear' }}
+            />
+          </div>
+        )}
+      </div>
+
+      {/* Module nav pills below */}
+      <div className="flex gap-2 mt-3 flex-wrap">
+        {HERO_SLIDES.map((s, i) => (
+          <button
+            key={i}
+            onClick={() => { setIdx(i); setPaused(true); }}
+            className={`text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full transition-all ${
+              i === idx
+                ? 'bg-white text-maroon-800 shadow-sm'
+                : 'bg-white/10 text-white/60 hover:bg-white/20'
+            }`}
+          >
+            {s.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function App() {
   const [page, setPage] = useState<PageId>('home');
@@ -144,6 +442,7 @@ export default function App() {
       else if (hash === '#/about') setPage('about');
       else if (hash === '#/contact') setPage('contact');
       else if (hash === '#/why-acados') setPage('why-acados');
+      else if (hash === '#/testimonials') setPage('testimonials');
       else setPage('home');
       setMenuOpen(false);
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -168,6 +467,7 @@ export default function App() {
     else if (pageId === 'contact') window.location.hash = '#/contact';
     else if (pageId === 'omr-evaluation') window.location.hash = '#/modules/omr-evaluation';
     else if (pageId === 'why-acados') window.location.hash = '#/why-acados';
+    else if (pageId === 'testimonials') window.location.hash = '#/testimonials';
   };
 
   const handleLeadSaved = (lead: DemoBooking) => {
@@ -292,8 +592,8 @@ export default function App() {
               Why AcadOS
             </button>
 
-            <button onClick={() => navigateTo('about')} className={`p-2 hover:text-maroon-700 transition-colors uppercase ${page === 'about' ? 'text-maroon-700 font-extrabold' : 'text-slate-700'}`}>
-              About Leaders
+            <button onClick={() => navigateTo('testimonials')} className={`p-2 hover:text-maroon-700 transition-colors uppercase ${page === 'testimonials' ? 'text-maroon-700 font-extrabold' : 'text-slate-700'}`}>
+              Testimonials
             </button>
 
             <button onClick={() => navigateTo('contact')} className={`p-2 hover:text-maroon-700 transition-colors uppercase ${page === 'contact' ? 'text-maroon-700 font-extrabold' : 'text-slate-700'}`}>
@@ -459,13 +759,13 @@ export default function App() {
                   Why AcadOS
                 </button>
 
-                <button 
-                  onClick={() => { navigateTo('about'); setMenuOpen(false); }} 
+                <button
+                  onClick={() => { navigateTo('testimonials'); setMenuOpen(false); }}
                   className={`text-left py-2.5 border-b border-slate-50 hover:text-maroon-750 uppercase font-extrabold ${
-                    page === 'about' ? 'text-maroon-700' : 'text-slate-800'
+                    page === 'testimonials' ? 'text-maroon-700' : 'text-slate-800'
                   }`}
                 >
-                  About Leaders
+                  Testimonials
                 </button>
                 
                 <button 
@@ -570,83 +870,8 @@ export default function App() {
                       </div>
                     </div>
 
-                    {/* RIGHT: Dashboard Mockup — hidden on mobile, shown sm+ */}
-                    <div className="hidden sm:block lg:col-span-6 relative">
-                      {/* Glow behind card */}
-                      <div className="absolute -inset-4 bg-maroon-800/20 rounded-3xl blur-2xl" />
-                      <div className="relative bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-2xl">
-                        {/* Browser chrome */}
-                        <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-800 bg-slate-950">
-                          <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-                          <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
-                          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
-                          <div className="ml-3 flex-1 bg-slate-800 rounded-md px-3 py-1 text-[10px] text-slate-500 font-mono">
-                            portal.acados.app — St. Xaviers High School
-                          </div>
-                          <div className="flex items-center gap-1.5 text-[9px] text-emerald-400 font-bold">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                            LIVE
-                          </div>
-                        </div>
-
-                        <div className="p-5 space-y-4">
-                          {/* Header row */}
-                          <div className="flex items-center justify-between">
-                            <div>
-                              <p className="text-xs text-slate-500 font-medium">Assessment</p>
-                              <h3 className="text-white font-bold text-sm">Grade X-A · Mathematics</h3>
-                            </div>
-                            <span className="text-[10px] text-emerald-400 font-bold bg-emerald-400/10 border border-emerald-400/20 px-2.5 py-1 rounded-full">Auto-Generated ✓</span>
-                          </div>
-
-                          {/* Question distribution */}
-                          <div className="bg-slate-800/60 rounded-xl p-4 space-y-3 border border-slate-700/50">
-                            <div className="flex justify-between text-xs text-slate-400">
-                              <span>Question Distribution</span>
-                              <span className="text-white font-semibold">48 Questions</span>
-                            </div>
-                            <div className="h-2 bg-slate-700 rounded-full overflow-hidden flex gap-0.5">
-                              <div className="h-full bg-maroon-500 rounded-l-full" style={{width:'40%'}} />
-                              <div className="h-full bg-gold-500" style={{width:'25%'}} />
-                              <div className="h-full bg-emerald-500 rounded-r-full" style={{width:'35%'}} />
-                            </div>
-                            <div className="flex justify-between text-[10px] text-slate-500">
-                              <span>Physics 40%</span><span>Chemistry 25%</span><span>Math 35%</span>
-                            </div>
-                          </div>
-
-                          {/* Stat cards */}
-                          <div className="grid grid-cols-3 gap-3">
-                            <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3">
-                              <p className="text-[10px] text-slate-500 mb-1">OMR Scanned</p>
-                              <p className="text-xl font-black text-white">127</p>
-                              <p className="text-[10px] text-emerald-400 mt-0.5">98.4% accuracy</p>
-                            </div>
-                            <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3">
-                              <p className="text-[10px] text-slate-500 mb-1">Class Avg</p>
-                              <p className="text-xl font-black text-gold-400">76.3%</p>
-                              <p className="text-[10px] text-emerald-400 mt-0.5">↑ from 68.1%</p>
-                            </div>
-                            <div className="bg-maroon-800/40 border border-maroon-700/40 rounded-xl p-3">
-                              <p className="text-[10px] text-maroon-300 mb-1">Top Score</p>
-                              <p className="text-xl font-black text-white">96%</p>
-                              <p className="text-[10px] text-slate-400 mt-0.5">Riya Sharma</p>
-                            </div>
-                          </div>
-
-                          {/* Footer */}
-                          <div className="flex items-center justify-between pt-1 border-t border-slate-800">
-                            <div className="flex items-center gap-2">
-                              <div className="w-6 h-6 rounded-full bg-maroon-700 flex items-center justify-center">
-                                <GraduationCap className="w-3.5 h-3.5 text-white" />
-                              </div>
-                              <span className="text-xs text-slate-400">Your Brand · Powered by AcadOS</span>
-                            </div>
-                            <span className="text-[10px] text-slate-600">Reports auto-sent to parents</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    {/* RIGHT: Module Interface Carousel */}
+                    <HeroModuleCarousel />
 
                   </div>
                 </div>
@@ -1508,6 +1733,20 @@ export default function App() {
                   ← Back to Homepage Panel
                 </button>
               </div>
+            </motion.div>
+          )}
+
+          {/* ==================================== */}
+          {/* TESTIMONIALS PAGE                    */}
+          {/* ==================================== */}
+          {page === 'testimonials' && (
+            <motion.div
+              key="testimonials"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <Testimonials onBookDemo={() => setIsDemoModalOpen(true)} />
             </motion.div>
           )}
 
