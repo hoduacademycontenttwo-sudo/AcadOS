@@ -25,6 +25,8 @@ import { SchoolsSolutionHub, CoachingSolutionHub } from './components/SolutionHu
 import HTLogo from './components/HTLogo';
 import WhyAcadOS from './components/WhyAcadOS';
 import vpSinghPic from './assets/vp-singh.jpg';
+import rohitjainPic from './assets/rohit-jain.png';
+import abhishekagarwalPic from './assets/abhishek-agarwal.png';
 import htLogo from './assets/HT.jpg';
 import Loader from './components/Loader';
 import ModulePreviewPage from './components/ModulePreviewPage';
@@ -190,18 +192,27 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           
           {/* Logo brand */}
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigateTo('home')}>
-            <img src={htLogo} alt="HT Logo" className="w-10 h-10 rounded-full object-cover shrink-0" />
-            <div className="flex items-center gap-1.5">
-              <span className="text-lg font-black tracking-tight text-maroon-700 font-sans uppercase">
-                AcadOS
-              </span>
-              <span className="bg-gold-500/10 text-gold-600 font-bold font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded border border-gold-400/20">
-                v2.0
-              </span>
-            </div>
-          </div>
+       <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigateTo('home')}>
 
+            <img src={htLogo} alt="HT Logo" className="w-10 h-10 rounded-full object-cover shrink-0" />
+
+            <div className="flex items-center gap-1.5">
+
+              <span className="text-lg font-black tracking-tight text-maroon-700 font-sans uppercase">
+
+                AcadOS
+
+              </span>
+
+              <span className="bg-gold-500/10 text-gold-600 font-bold font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded border border-gold-400/20">
+
+                v2.0
+
+              </span>
+
+            </div>
+
+          </div>
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6 text-xs font-bold uppercase tracking-wider text-slate-800">
             {/* Solutions Dropdown Menu */}
@@ -515,18 +526,14 @@ export default function App() {
 
                     {/* LEFT: Copy */}
                     <div className="lg:col-span-6 space-y-5 sm:space-y-8">
-                      {/* Trust badge */}
-                      <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-3 py-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                        <span className="text-[11px] text-slate-300 font-medium">Trusted by schools & coaching institutes across India</span>
-                      </div>
+                     
 
                       <h1 className="text-4xl sm:text-6xl lg:text-[4.5rem] font-serif font-extrabold text-white tracking-tight leading-[1.08]">
                         The Academic OS <span className="text-maroon-400">built for India.</span>
                       </h1>
 
                       <p className="text-white/75 text-sm sm:text-lg max-w-lg leading-relaxed">
-                        White-label your institution's exams, OMR grading, CBT mocks, content library and ERP — one platform, your brand.
+                       A connected learning infrastructure combining rich resources, intelligent test creation, adaptive practice, computer-based test and seamless operations — one platform, your brand
                       </p>
 
                       {/* CTA row — horizontal on all sizes */}
@@ -551,9 +558,9 @@ export default function App() {
                       {/* Proof strip */}
                       <div className="flex items-center gap-5 sm:gap-8 pt-4 sm:pt-6 border-t border-white/10">
                         {[
-                          { num: '5 Lakh+', label: 'Questions' },
+                          { num: '6 Lakh+', label: 'Questions' },
                           { num: '15+', label: 'Exams Mapped' },
-                          { num: '100%', label: 'White-Labeled' },
+                          { num: '100%', label: 'Your Brand' },
                         ].map((stat, i) => (
                           <div key={i} className={i > 0 ? 'pl-5 sm:pl-8 border-l border-white/10' : ''}>
                             <span className="block text-xl sm:text-2xl font-black text-white leading-none">{stat.num}</span>
@@ -680,54 +687,122 @@ export default function App() {
                   </span>
                 </div>
 
-                {/* Module cards — horizontal scroll on mobile, 4-col grid on desktop */}
-                <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-visible sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
-                  {[
-                    { id: 'practice-cbt' as const,    icon: Trophy,     label: 'CBT Mock Tests',   desc: 'NTA-style exam portal for JEE, NEET & boards. Live timers, instant analytics.', stat: 'Score ↑23%',        color: '#800000', img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=280&fit=crop&q=80' },
-                    { id: 'omr-evaluation' as const,  icon: Smartphone, label: 'OMR Scanning',     desc: 'Grade bubble answer sheets with any smartphone camera in seconds.',             stat: '99.8% Accuracy',    color: '#b0813f', img: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=280&fit=crop&q=80' },
-                    { id: 'erp-crm' as const,         icon: Database,   label: 'Institute ERP',    desc: 'Fee ledger, attendance, staff registers and academic schedule in one place.',    stat: 'Saves 40% Ops',     color: '#9e1b1b', img: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=280&fit=crop&q=80' },
-                    { id: 'content-library' as const, icon: Globe,      label: 'Content Library',  desc: 'CBSE, IGCSE & IB aligned pre-loaded curriculum worksheets and notes.',          stat: '5 Lakh+ Resources', color: '#150000', img: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=280&fit=crop&q=80' },
-                  ].map((mod) => {
-                    const Icon = mod.icon;
-                    return (
-                      <button
-                        key={mod.id}
-                        onClick={() => navigateTo(mod.id)}
-                        className="flex-none w-[78vw] snap-start sm:w-auto group bg-white border border-slate-150 rounded-2xl overflow-hidden flex flex-col text-left hover:border-maroon-200 hover:shadow-lg transition-all duration-300"
-                      >
-                        {/* Card image */}
-                        <div className="relative h-36 overflow-hidden">
-                          <img
-                            src={mod.img}
-                            alt={mod.label}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                          <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, ${mod.color}22 0%, ${mod.color}55 100%)` }} />
-                          {/* Stat badge over image */}
-                          <span className="absolute top-3 right-3 text-[9px] font-mono font-bold px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-sm" style={{ color: mod.color }}>
-                            {mod.stat}
-                          </span>
-                          {/* Icon over image */}
-                          <div className="absolute bottom-3 left-3 w-9 h-9 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur-sm shadow-sm">
-                            <Icon style={{ color: mod.color, width: 16, height: 16 }} />
-                          </div>
-                        </div>
+              {/* Module cards — horizontal scroll on mobile, 5-col grid on desktop */}
+<div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 sm:grid sm:grid-cols-2 lg:grid-cols-5 sm:overflow-visible sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
+  {[
+    {
+      id: 'testmaker' as const,
+      icon: BookOpenCheck,
+      label: 'TestMaker',
+      desc: 'Generate balanced exam papers from 6 Lakh+ syllabus-aligned questions in minutes.',
+      stat: '6 Lakh+ Qs',
+      color: '#800000',
+      img: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&h=280&fit=crop&q=80'
+    },
+    {
+      id: 'practice-cbt' as const,
+      icon: Trophy,
+      label: 'CBT Mock Tests',
+      desc: 'NTA-style exam portal for JEE, NEET & boards. Live timers, instant analytics.',
+      stat: 'Score ↑23%',
+      color: '#800000',
+      img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=280&fit=crop&q=80'
+    },
+    {
+      id: 'omr-evaluation' as const,
+      icon: Smartphone,
+      label: 'OMR Scanning',
+      desc: 'Grade bubble answer sheets with any smartphone camera in seconds.',
+      stat: '99.8% Accuracy',
+      color: '#b0813f',
+      img: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=280&fit=crop&q=80'
+    },
+    {
+      id: 'erp-crm' as const,
+      icon: Database,
+      label: 'Institute ERP',
+      desc: 'Fee ledger, attendance, staff registers and academic schedule in one place.',
+      stat: 'Saves 40% Ops',
+      color: '#9e1b1b',
+      img: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=280&fit=crop&q=80'
+    },
+    {
+      id: 'content-library' as const,
+      icon: Globe,
+      label: 'Content Library',
+      desc: 'CBSE, IGCSE & IB aligned pre-loaded curriculum worksheets and notes.',
+      stat: '6 lakh+ Resources',
+      color: '#150000',
+      img: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=280&fit=crop&q=80'
+    }
+  ].map((mod) => {
+    const Icon = mod.icon;
 
-                        {/* Card body */}
-                        <div className="p-4 flex flex-col gap-3 flex-1">
-                          <div className="space-y-1 flex-1">
-                            <h5 className="font-serif font-extrabold text-slate-900 text-base leading-snug">{mod.label}</h5>
-                            <p className="text-slate-500 text-xs leading-relaxed">{mod.desc}</p>
-                          </div>
-                          <div className="flex items-center gap-1 text-[11px] font-bold" style={{ color: mod.color }}>
-                            Explore <ChevronRight className="w-3 h-3" />
-                          </div>
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
-              </motion.section>
+    return (
+      <button
+        key={mod.id}
+        onClick={() => navigateTo(mod.id)}
+        className="flex-none w-[78vw] snap-start sm:w-auto group bg-white border border-slate-150 rounded-2xl overflow-hidden flex flex-col text-left hover:border-maroon-200 hover:shadow-lg transition-all duration-300"
+      >
+        {/* Card image */}
+        <div className="relative h-36 overflow-hidden">
+          <img
+            src={mod.img}
+            alt={mod.label}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(to bottom, ${mod.color}22 0%, ${mod.color}55 100%)`
+            }}
+          />
+
+          {/* Stat badge over image */}
+          <span
+            className="absolute top-3 right-3 text-[9px] font-mono font-bold px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-sm"
+            style={{ color: mod.color }}
+          >
+            {mod.stat}
+          </span>
+
+          {/* Icon over image */}
+          <div className="absolute bottom-3 left-3 w-9 h-9 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur-sm shadow-sm">
+            <Icon
+              style={{
+                color: mod.color,
+                width: 16,
+                height: 16
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Card body */}
+        <div className="p-4 flex flex-col gap-3 flex-1">
+          <div className="space-y-1 flex-1">
+            <h5 className="font-serif font-extrabold text-slate-900 text-base leading-snug">
+              {mod.label}
+            </h5>
+
+            <p className="text-slate-500 text-xs leading-relaxed">
+              {mod.desc}
+            </p>
+          </div>
+
+          <div
+            className="flex items-center gap-1 text-[11px] font-bold"
+            style={{ color: mod.color }}
+          >
+            Explore <ChevronRight className="w-3 h-3" />
+          </div>
+        </div>
+      </button>
+    );
+  })}
+</div>
+</motion.section>
 
               {/* HE-9: BEFORE / AFTER REVOLUTION */}
               <motion.section
@@ -779,8 +854,8 @@ export default function App() {
                   <div className="flex flex-col sm:flex-row gap-3">
                     {[
                       { name: 'V. P. Singh', title: 'Senior Physics Educator', detail: '10,000+ students mentored for JEE & NEET', tag: 'Physics · IIT-JEE', pic: vpSinghPic, pos: 'center 20%' },
-                      { name: 'Rohit Jain', title: 'Curriculum Architect', detail: 'CBSE, IGCSE & IB specialist, 6,000+ students', tag: 'Curriculum · IB', pic: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=700&fit=crop&q=80', pos: 'center 15%' },
-                      { name: 'Abhishek Agarwal', title: 'Tech Lead & Architect', detail: 'IIIT Hyderabad · Ex-Palantir, Qualcomm', tag: 'Engineering', pic: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=700&fit=crop&q=80', pos: 'center 10%' },
+                      { name: 'Rohit Jain', title: 'Curriculum Architect', detail: 'CBSE, IGCSE & IB specialist, 6,000+ students', tag: 'Curriculum · IB', pic: rohitjainPic, pos: 'center 20%' },
+                      { name: 'Abhishek Agarwal', title: 'Tech Lead & Architect', detail: 'IIIT Hyderabad · Ex-Palantir, Qualcomm', tag: 'Engineering', pic: abhishekagarwalPic, pos: 'center 20%' },
                     ].map((lead, idx) => (
                       <motion.div
                         key={idx}
@@ -1204,7 +1279,7 @@ export default function App() {
                   Instantly Generate <span className="italic text-maroon-700">Aligned Exam Papers</span>
                 </h1>
                 <p className="text-xs sm:text-sm text-slate-550 max-w-2xl mx-auto leading-relaxed font-sans">
-                  5 Lakh+ syllabus questions with custom branding, section difficulty guidelines, and downloadable PDFs.
+                  6 Lakh+ syllabus questions with custom branding, section difficulty guidelines, and downloadable PDFs.
                 </p>
               </div>
 
@@ -1468,7 +1543,7 @@ export default function App() {
                     <h3 className="text-lg font-extrabold text-slate-900 uppercase font-sans tracking-wide">
                       Hoducation Technologies Pvt Ltd
                     </h3>
-                    <p className="text-xs text-slate-500 font-sans mt-1">Joint technology initiative with Edunotion Learning Pvt. Ltd.</p>
+                    <p className="text-xs text-slate-500 font-sans mt-1"> technology initiative with Hoducation Technologies Pvt. Ltd.</p>
                   </div>
 
                   <div className="space-y-4 text-xs font-sans text-slate-650">
@@ -1610,15 +1685,25 @@ export default function App() {
               Direct Contact Support
             </span>
             <div className="space-y-1.5 text-slate-500 font-sans">
-              <p className="flex items-center gap-2">
-                <span>📞 Hotline:</span> <strong>+91 9660034117</strong>
-              </p>
-              <p className="flex items-center gap-2 text-slate-500">
-                <span>📧 E-mail:</span> <strong className="break-all">hoduacademycontenttwo@gmail.com</strong>
-              </p>
-              <p className="flex items-center gap-2 text-slate-550">
-                <span>🌐 Portals:</span> <strong>www.acados.app / www.acados.co</strong>
-              </p>
+             <p className="flex items-center gap-2">
+  <span>📞 Hotline:</span> 
+  <a 
+    href="tel:+919660034117" 
+    className="font-bold hover:underline"
+  >
+    +91 9660034117
+  </a>
+</p>
+           <p className="flex items-center gap-2 text-slate-500">
+  <span>📧 E-mail:</span> 
+  <a 
+    href="mailto:hoduacademycontenttwo@gmail.com?subject=Inquiry%20from%20Website&body=Hi%20Hodu%20Academy%20Team%2C%0A%0AI%20would%20like%20to%20know%20more%20about..." 
+    className="font-bold break-all hover:underline hover:text-slate-700"
+  >
+    hoduacademycontenttwo@gmail.com
+  </a>
+</p>
+              
             </div>
           </div>
 
@@ -1630,7 +1715,7 @@ export default function App() {
           <div className="flex gap-4">
             <button onClick={() => navigateTo('omr-evaluation')} className="hover:text-slate-400">OMR Scanning Demo</button>
             <span>•</span>
-            <span className="normal-case font-medium">Developed by Edunotion & Hoducation Technologies</span>
+            <span className="normal-case font-medium">Developed by Hoducation Technologies</span>
           </div>
         </div>
       </footer>
