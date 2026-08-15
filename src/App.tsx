@@ -41,82 +41,88 @@ const HERO_SLIDES = [
     tag: 'AI Paper Generator',
     url: 'portal.acados.app — Apex Academy',
     content: (
-      <div className="p-5 space-y-4">
-        <div className="flex items-center justify-between">
+      <div className="bg-[#f5f3f0] rounded-b-xl overflow-hidden">
+        {/* Step bar */}
+        <div className="flex items-center gap-3 px-4 py-2 bg-white border-b border-slate-200 text-[9px] font-bold text-slate-400">
+          <span className="flex items-center gap-1"><span className="w-4 h-4 rounded-full bg-[#800000] text-white flex items-center justify-center text-[8px]">1</span> Setup</span>
+          <span className="text-slate-300">›</span>
+          <span className="flex items-center gap-1"><span className="w-4 h-4 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center text-[8px]">2</span> Select Questions</span>
+          <span className="text-slate-300">›</span>
+          <span className="flex items-center gap-1"><span className="w-4 h-4 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center text-[8px]">3</span> Review & Create</span>
+        </div>
+        <div className="p-4 space-y-3">
           <div>
-            <p className="text-xs text-slate-500">Paper Generation</p>
-            <h3 className="text-white font-bold text-sm">Grade XII · Physics (JEE)</h3>
-          </div>
-          <span className="text-[10px] text-emerald-400 font-bold bg-emerald-400/10 border border-emerald-400/20 px-2.5 py-1 rounded-full">Generated ✓</span>
-        </div>
-        <div className="bg-slate-800/60 rounded-xl p-4 space-y-2 border border-slate-700/50">
-          <div className="flex justify-between text-xs text-slate-400">
-            <span>Difficulty Mix</span><span className="text-white font-semibold">35 Questions</span>
-          </div>
-          <div className="h-2 bg-slate-700 rounded-full overflow-hidden flex gap-0.5">
-            <div className="h-full bg-emerald-500 rounded-l-full" style={{width:'40%'}} />
-            <div className="h-full bg-gold-500" style={{width:'35%'}} />
-            <div className="h-full bg-red-500 rounded-r-full" style={{width:'25%'}} />
-          </div>
-          <div className="flex justify-between text-[10px] text-slate-500">
-            <span>Easy 40%</span><span>Medium 35%</span><span>Hard 25%</span>
-          </div>
-        </div>
-        <div className="grid grid-cols-3 gap-2">
-          {[['Time','3 hrs','exam'],['Marks','100','total'],['Sections','3','parts']].map(([l,v,s])=>(
-            <div key={l} className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3 text-center">
-              <p className="text-[9px] text-slate-500">{l}</p>
-              <p className="text-lg font-black text-white">{v}</p>
-              <p className="text-[9px] text-slate-600">{s}</p>
+            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Choose Creation Mode</p>
+            <div className="grid grid-cols-4 gap-1.5">
+              {['Swift','Architect','Picker','Pattern'].map((m,i)=>(
+                <div key={m} className={`rounded-lg p-2 text-center border text-[9px] font-bold ${i===0?'border-[#800000] bg-red-50 text-[#800000]':'border-slate-200 bg-white text-slate-400'}`}>{m}</div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className="flex items-center justify-between pt-1 border-t border-slate-800">
-          <span className="text-xs text-emerald-400 font-bold">✓ Answer key included</span>
-          <span className="text-[10px] text-slate-500">PDF ready to print</span>
+          </div>
+          <div className="bg-white border border-slate-200 rounded-lg p-3 space-y-2">
+            <p className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">Test Paper Setup</p>
+            <div className="space-y-1.5">
+              <div className="border border-slate-200 rounded px-2 py-1.5 text-[10px] text-slate-600">Term Exam Practice Paper</div>
+              <div className="grid grid-cols-2 gap-1.5">
+                <div className="border border-slate-200 rounded px-2 py-1.5 text-[10px] text-slate-600">40</div>
+                <div className="border border-slate-200 rounded px-2 py-1.5 text-[10px] text-slate-600">60</div>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-end">
+            <div className="bg-[#800000] text-white text-[9px] font-bold px-3 py-1.5 rounded-lg">NEXT: SELECT QUESTIONS ›</div>
+          </div>
         </div>
       </div>
     ),
   },
   {
     label: 'CBT Platform',
-    tag: 'JEE / NEET Mock Exam',
+    tag: 'NTA-Style Mock Exam',
     url: 'portal.acados.app — Vision IAS Prep',
     content: (
-      <div className="p-5 space-y-4">
-        <div className="flex items-center justify-between">
+      <div className="bg-[#f5f3f0] rounded-b-xl overflow-hidden">
+        {/* dark header */}
+        <div className="bg-[#5a0000] px-4 py-2.5 flex items-center justify-between">
           <div>
-            <p className="text-xs text-slate-500">Live Mock Exam</p>
-            <h3 className="text-white font-bold text-sm">JEE Main · Full Syllabus Test #14</h3>
+            <p className="text-white font-bold text-[11px]">CURRENT ELECTRICITY MOCK TEST</p>
+            <p className="text-white/60 text-[9px]">Question 1 of 20</p>
           </div>
-          <span className="text-[10px] text-red-400 font-bold bg-red-400/10 border border-red-400/20 px-2.5 py-1 rounded-full flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />LIVE
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-white font-mono text-[10px]">00:59:56</span>
+            <span className="bg-red-600 text-white text-[8px] font-bold px-2 py-0.5 rounded">EXIT</span>
+          </div>
         </div>
-        <div className="grid grid-cols-3 gap-2 text-center">
-          {[['Timer','01:42:15','remaining'],['Attempted','62/90','questions'],['Score','187','marks']].map(([l,v,s])=>(
-            <div key={l} className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3">
-              <p className="text-[9px] text-slate-500">{l}</p>
-              <p className="text-sm font-black text-white font-mono">{v}</p>
-              <p className="text-[9px] text-slate-600">{s}</p>
+        <div className="flex gap-0">
+          {/* Question area */}
+          <div className="flex-1 p-3 space-y-2">
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-bold text-slate-700">Question 1:</span>
+              <span className="text-[8px] border border-slate-300 rounded px-1.5 py-0.5 text-slate-500">Single Choice</span>
+              <span className="ml-auto text-[9px] font-bold text-slate-600">4 Marks</span>
             </div>
-          ))}
-        </div>
-        <div className="bg-slate-800/60 rounded-xl p-3 border border-slate-700/50 space-y-1.5">
-          <p className="text-[10px] text-slate-400 font-medium">Section Progress</p>
-          {[['Physics','22/30',73],['Chemistry','20/30',67],['Math','20/30',67]].map(([s,v,pct])=>(
-            <div key={s} className="flex items-center gap-2">
-              <span className="text-[9px] text-slate-500 w-14">{s}</span>
-              <div className="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden">
-                <div className="h-full bg-maroon-500 rounded-full" style={{width:`${pct}%`}} />
+            <p className="text-[9px] text-slate-700 leading-relaxed">A wire is stretched slowly by ten per cent. Its new resistance and specific resistance become:</p>
+            {['1.2 times, 1.3 times','1.21 times, same','both remain the same','1.1 times, 1.1 times'].map((opt,i)=>(
+              <div key={i} className="flex items-center gap-2 border border-slate-200 bg-white rounded px-2 py-1">
+                <span className="text-[9px] font-bold text-slate-400 w-3">{String.fromCharCode(65+i)}</span>
+                <span className="text-[9px] text-slate-600">{opt}</span>
               </div>
-              <span className="text-[9px] text-slate-400 font-mono">{v}</span>
+            ))}
+            <div className="flex gap-1 pt-1">
+              <span className="bg-emerald-600 text-white text-[7px] font-bold px-2 py-1 rounded">SAVE & NEXT</span>
+              <span className="border border-slate-300 text-slate-500 text-[7px] font-bold px-2 py-1 rounded">CLEAR</span>
+              <span className="bg-purple-600 text-white text-[7px] font-bold px-2 py-1 rounded">MARK FOR REVIEW</span>
             </div>
-          ))}
-        </div>
-        <div className="flex items-center justify-between pt-1 border-t border-slate-800">
-          <span className="text-xs text-slate-400">347 students online</span>
-          <span className="text-[10px] text-maroon-400">Full-screen lockdown ✓</span>
+          </div>
+          {/* Palette */}
+          <div className="w-20 bg-white border-l border-slate-200 p-2 shrink-0">
+            <p className="text-[7px] font-bold text-slate-500 uppercase mb-1.5">Question Palette</p>
+            <div className="grid grid-cols-4 gap-0.5">
+              {Array.from({length:20},(_,i)=>(
+                <div key={i} className={`w-4 h-4 rounded text-[7px] flex items-center justify-center font-bold ${i===0?'bg-red-500 text-white':i<3?'bg-emerald-500 text-white':'border border-slate-300 text-slate-400'}`}>{i+1}</div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     ),
@@ -126,38 +132,47 @@ const HERO_SLIDES = [
     tag: 'Smartphone Grading',
     url: 'portal.acados.app — Sri Ram Coaching',
     content: (
-      <div className="p-5 space-y-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-xs text-slate-500">OMR Batch Scan</p>
-            <h3 className="text-white font-bold text-sm">Class XI · Weekly Test #8</h3>
-          </div>
-          <span className="text-[10px] text-emerald-400 font-bold bg-emerald-400/10 border border-emerald-400/20 px-2.5 py-1 rounded-full">Graded ✓</span>
-        </div>
-        <div className="grid grid-cols-3 gap-2">
-          {[['Scanned','127','sheets'],['Accuracy','98.4%','avg'],['Time','4 min','total']].map(([l,v,s])=>(
-            <div key={l} className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3 text-center">
-              <p className="text-[9px] text-slate-500">{l}</p>
-              <p className="text-lg font-black text-white">{v}</p>
-              <p className="text-[9px] text-slate-600">{s}</p>
-            </div>
+      <div className="bg-[#f5f3f0] rounded-b-xl overflow-hidden">
+        {/* Step tabs */}
+        <div className="flex border-b border-slate-200 bg-white">
+          {['Step 1: Configure','Step 2: Camera Scan','Step 3: Analytics'].map((s,i)=>(
+            <div key={s} className={`flex-1 text-center text-[8px] font-bold py-1.5 ${i===0?'bg-[#800000] text-white':'text-slate-400'}`}>{s}</div>
           ))}
         </div>
-        <div className="bg-slate-800/60 rounded-xl p-3 border border-slate-700/50 space-y-1.5">
-          <div className="flex justify-between text-xs">
-            <span className="text-slate-400">Class Average</span>
-            <span className="text-gold-400 font-bold">76.3%</span>
+        <div className="grid grid-cols-2 gap-3 p-3">
+          {/* Left config */}
+          <div className="space-y-2">
+            <p className="text-[9px] font-bold text-[#800000] uppercase tracking-wider">Academic Set-Up</p>
+            <p className="text-[10px] font-bold text-slate-700">Select Grid Length</p>
+            <div className="space-y-1.5">
+              <p className="text-[8px] text-slate-500 font-bold uppercase">Number of Questions:</p>
+              <div className="grid grid-cols-3 gap-1">
+                {['10 MCQs','20 MCQs','30 MCQs'].map((o,i)=>(
+                  <div key={o} className={`text-[8px] font-bold text-center py-1 rounded border ${i===1?'border-[#800000] text-[#800000] bg-red-50':'border-slate-200 text-slate-400 bg-white'}`}>{o}</div>
+                ))}
+              </div>
+              <div className="grid grid-cols-2 gap-1">
+                <div className="border border-slate-200 bg-white rounded px-1.5 py-1 text-[8px] text-slate-500">+1 Mark</div>
+                <div className="border border-slate-200 bg-white rounded px-1.5 py-1 text-[8px] text-slate-500">0 (No Penalty)</div>
+              </div>
+            </div>
+            <div className="bg-slate-900 text-white text-[8px] font-bold text-center py-1.5 rounded-lg">ASSEMBLE OMR SHEET & SCAN →</div>
           </div>
-          <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
-            <div className="h-full bg-gold-500 rounded-full" style={{width:'76%'}} />
+          {/* Right preview */}
+          <div className="bg-white border border-slate-200 rounded-lg p-2">
+            <p className="text-[7px] text-slate-400 font-bold uppercase mb-1">Template Preview</p>
+            <p className="text-[8px] font-bold text-slate-700 mb-2">Mock Mid-Term · Science Grid</p>
+            {['Q01','Q02','Q03','Q04','Q05'].map(q=>(
+              <div key={q} className="flex items-center justify-between py-0.5 border-b border-slate-100">
+                <span className="text-[8px] text-slate-500">{q}</span>
+                <div className="flex gap-1">
+                  {['A','B','C','D'].map(o=>(
+                    <div key={o} className="w-3 h-3 rounded-full border border-slate-300 flex items-center justify-center text-[6px] text-slate-400">{o}</div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="flex justify-between text-[10px] text-slate-500">
-            <span>↑ from 68.1% last week</span><span>Top: Riya Sharma 96%</span>
-          </div>
-        </div>
-        <div className="flex items-center justify-between pt-1 border-t border-slate-800">
-          <span className="text-xs text-slate-400">Reports sent to 127 parents</span>
-          <span className="text-[10px] text-emerald-400">WhatsApp ✓</span>
         </div>
       </div>
     ),
@@ -165,40 +180,42 @@ const HERO_SLIDES = [
   {
     label: 'ERP + CRM',
     tag: 'Institute Management',
-    url: 'portal.acados.app — DPS Noida',
+    url: 'portal.acados.app — Hodu Academy',
     content: (
-      <div className="p-5 space-y-4">
-        <div className="flex items-center justify-between">
+      <div className="bg-white rounded-b-xl overflow-hidden">
+        {/* Top nav bar */}
+        <div className="flex items-center gap-2 px-3 py-1.5 border-b border-slate-200 bg-white">
+          <div className="w-5 h-5 rounded-full bg-[#800000] flex items-center justify-center text-white text-[7px] font-black">HA</div>
           <div>
-            <p className="text-xs text-slate-500">Dashboard · Aug 2025</p>
-            <h3 className="text-white font-bold text-sm">Institute Overview</h3>
+            <p className="text-[8px] font-bold text-slate-800">Hodu Academy</p>
+            <p className="text-[6px] text-slate-400 uppercase tracking-wider">Academic Enterprise Suite</p>
           </div>
-          <span className="text-[10px] text-emerald-400 font-bold bg-emerald-400/10 border border-emerald-400/20 px-2.5 py-1 rounded-full">Live ✓</span>
-        </div>
-        <div className="grid grid-cols-2 gap-2">
-          {[['Students','1,247','enrolled'],['Fee Collected','₹8.4L','this month'],['Attendance','91.2%','today'],['New Leads','23','this week']].map(([l,v,s])=>(
-            <div key={l} className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-3">
-              <p className="text-[9px] text-slate-500">{l}</p>
-              <p className="text-base font-black text-white">{v}</p>
-              <p className="text-[9px] text-emerald-400">{s}</p>
-            </div>
-          ))}
-        </div>
-        <div className="bg-slate-800/60 rounded-xl p-3 border border-slate-700/50">
-          <p className="text-[10px] text-slate-400 mb-2">Lead Pipeline</p>
-          <div className="flex gap-1">
-            {[['New','8','bg-blue-500'],['Demo','6','bg-gold-500'],['Enrolled','9','bg-emerald-500']].map(([l,v,c])=>(
-              <div key={l} className="flex-1 text-center">
-                <div className={`${c} h-1.5 rounded-full mb-1`} />
-                <p className="text-white font-black text-sm">{v}</p>
-                <p className="text-[9px] text-slate-500">{l}</p>
-              </div>
+          <div className="ml-auto flex gap-1">
+            {['Acad','Ops','Setup','CRM'].map(t=>(
+              <span key={t} className="text-[7px] border border-slate-200 rounded px-1.5 py-0.5 text-slate-500">{t}</span>
             ))}
           </div>
         </div>
-        <div className="flex items-center justify-between pt-1 border-t border-slate-800">
-          <span className="text-xs text-slate-400">Auto fee reminders: ON</span>
-          <span className="text-[10px] text-gold-400">3 follow-ups due</span>
+        {/* Stats row */}
+        <div className="grid grid-cols-3 gap-1.5 p-2.5">
+          {[['TOTAL STUDENTS','1,247','#ef4444'],['TODAY\'S ATTENDANCE','78%','#22c55e'],['TOTAL TEACHERS','12','#a855f7'],['TOTAL EMPLOYEES','18','#3b82f6'],['PENDING TASKS','5','#f59e0b'],['ACTIVE CLASSES','14','#06b6d4']].map(([l,v,c])=>(
+            <div key={l} className="border border-slate-100 rounded-lg p-2 bg-slate-50">
+              <p className="text-[7px] text-slate-400 uppercase font-bold leading-tight mb-0.5">{l}</p>
+              <p className="text-base font-black" style={{color:c}}>{v}</p>
+            </div>
+          ))}
+        </div>
+        {/* Alert strip */}
+        <div className="mx-2.5 mb-2.5 bg-slate-900 rounded-lg p-2 space-y-1">
+          <p className="text-[7px] text-amber-400 font-bold uppercase tracking-wider">Real-Time Guardian Alert Center</p>
+          <div className="flex items-center gap-1.5">
+            <span className="text-[6px] bg-emerald-600 text-white font-bold px-1 py-0.5 rounded">WHATSAPP</span>
+            <span className="text-[8px] text-slate-300">Hi parent, Rajesh was present in 12th PCM today.</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="text-[6px] bg-blue-600 text-white font-bold px-1.5 py-0.5 rounded">SMS</span>
+            <span className="text-[8px] text-slate-300">Attendance alert: Sunita registered as Absent today.</span>
+          </div>
         </div>
       </div>
     ),
@@ -208,30 +225,44 @@ const HERO_SLIDES = [
     tag: 'Digital Content Library',
     url: 'portal.acados.app — Sunrise School',
     content: (
-      <div className="p-5 space-y-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-xs text-slate-500">Content Library</p>
-            <h3 className="text-white font-bold text-sm">Class X · Science Chapter 6</h3>
+      <div className="bg-[#f5f3f0] rounded-b-xl overflow-hidden">
+        {/* Step tabs */}
+        <div className="flex border-b border-slate-200 bg-white">
+          {['Step 1: Target Board','Step 2: Pull Materials','Step 3: Dispatch'].map((s,i)=>(
+            <div key={s} className={`flex-1 text-center text-[7px] font-bold py-1.5 ${i===0?'bg-[#800000] text-white':'text-slate-400'}`}>{s}</div>
+          ))}
+        </div>
+        <div className="grid grid-cols-2 gap-3 p-3">
+          {/* Board list */}
+          <div className="space-y-1.5">
+            <p className="text-[8px] font-bold text-[#800000] uppercase tracking-wider">Unified Search Index</p>
+            <p className="text-[9px] font-bold text-slate-700 leading-tight">Pre-configured Curriculums</p>
+            {[['CBSE','Grade 10','Mathematics Full Syllabus'],['Cambridge IGCSE','CIE A-Levels','Physics Full Syllabus'],['IB Diploma','IB Grade 12','Chemistry Full Syllabus']].map(([b,g,name])=>(
+              <div key={name} className="bg-white border border-slate-200 rounded-lg px-2 py-1.5 flex items-center justify-between">
+                <div>
+                  <div className="flex gap-1 mb-0.5">
+                    <span className="text-[6px] font-bold text-[#800000] border border-[#80000040] px-1 rounded">{b}</span>
+                    <span className="text-[6px] text-slate-400">{g}</span>
+                  </div>
+                  <p className="text-[8px] font-bold text-slate-700">{name}</p>
+                </div>
+                <span className="text-slate-300 text-xs">›</span>
+              </div>
+            ))}
+            <div className="bg-slate-900 text-white text-[7px] font-bold text-center py-1.5 rounded-lg">SCAN AVAILABLE SYLLABUS MATERIALS →</div>
           </div>
-          <span className="text-[10px] text-blue-400 font-bold bg-blue-400/10 border border-blue-400/20 px-2.5 py-1 rounded-full">CBSE ✓</span>
-        </div>
-        <div className="bg-slate-800/60 rounded-xl p-4 space-y-2 border border-slate-700/50">
-          <p className="text-[10px] text-slate-400 font-medium">Available Resources</p>
-          {[['📄 Chapter Notes PDF','Ready'],['📝 Practice Worksheet','24 Qs'],['🎯 Chapter Test','30 Qs'],['✅ Answer Key','Included']].map(([item,val])=>(
-            <div key={item} className="flex items-center justify-between py-1 border-b border-slate-700/40 last:border-0">
-              <span className="text-xs text-slate-300">{item}</span>
-              <span className="text-[10px] text-emerald-400 font-mono">{val}</span>
-            </div>
-          ))}
-        </div>
-        <div className="grid grid-cols-3 gap-2 text-center">
-          {[['Boards','15+','mapped'],['Questions','6L+','total'],['Classes','1-12','covered']].map(([l,v,s])=>(
-            <div key={l} className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-2">
-              <p className="text-sm font-black text-white">{v}</p>
-              <p className="text-[9px] text-slate-500">{s}</p>
-            </div>
-          ))}
+          {/* Chapter list */}
+          <div className="bg-white border border-slate-200 rounded-lg p-2">
+            <p className="text-[7px] text-slate-400 font-bold uppercase mb-0.5">Active Repository</p>
+            <p className="text-[8px] font-bold text-slate-600 mb-2">Chapter Listing (4 Chapters)</p>
+            <div className="border border-slate-100 rounded px-2 py-1 mb-1.5 text-[7px] text-slate-400">🔍 Search syllabus chapters…</div>
+            {['Chapter 1: Quadratic Equations','Chapter 2: Real Numbers','Chapter 3: Triangles','Chapter 4: Introduction to Trigonometry'].map((c,i)=>(
+              <div key={c} className={`flex items-center justify-between py-1 border-b border-slate-100 last:border-0 ${i===0?'text-[#800000]':'text-slate-600'}`}>
+                <span className="text-[8px] font-medium">{c}</span>
+                {i===0 && <span className="text-[#800000] text-xs">⊙</span>}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     ),
