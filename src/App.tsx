@@ -816,7 +816,7 @@ export default function App() {
                      
 
                       <h1 className="text-4xl sm:text-6xl lg:text-[4.5rem] font-serif font-extrabold text-white tracking-tight leading-[1.08]">
-                        The Academic OS <span className="text-maroon-400">built for India.</span>
+                        The Academic Operating System <span className="text-maroon-400">for Modern Institutions.</span>
                       </h1>
 
                       <p className="text-white/75 text-sm sm:text-lg max-w-lg leading-relaxed">
