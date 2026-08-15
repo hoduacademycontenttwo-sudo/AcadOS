@@ -32,6 +32,7 @@ import Loader from './components/Loader';
 import ModulePreviewPage from './components/ModulePreviewPage';
 import AcadBot from './components/AcadBot';
 import ClientsSection from './components/ClientsSection';
+import ModuleVideoPage from './components/ModuleVideoPage';
 
 /* ── Hero Module Carousel ─────────────────────────────── */
 const HERO_SLIDES = [
@@ -342,6 +343,7 @@ export default function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const [fullScreenModule, setFullScreenModule] = useState<null | 'learners-hub' | 'testmaker' | 'practice-cbt' | 'omr-evaluation' | 'erp-crm'>(null);
   const [previewModule, setPreviewModule] = useState<null | 'learners-hub' | 'testmaker' | 'practice-cbt' | 'omr-evaluation' | 'erp-crm'>(null);
+  const [videoModuleId, setVideoModuleId] = useState<string | null>(null);
 
   // Show loader only on initial page load / refresh
   useEffect(() => {
@@ -951,7 +953,7 @@ export default function App() {
     return (
       <button
         key={mod.id}
-        onClick={() => navigateTo(mod.id)}
+        onClick={() => setVideoModuleId(mod.id)}
         className="flex-none w-[78vw] snap-start sm:w-auto group bg-white border border-slate-150 rounded-2xl overflow-hidden flex flex-col text-left hover:border-maroon-200 hover:shadow-lg transition-all duration-300"
       >
         {/* Card image */}
@@ -1849,6 +1851,25 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* Module Video Page — full-screen overlay */}
+      <AnimatePresence>
+        {videoModuleId && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 30 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[9990] overflow-y-auto"
+          >
+            <ModuleVideoPage
+              moduleId={videoModuleId}
+              onBack={() => setVideoModuleId(null)}
+              onBookDemo={() => { setVideoModuleId(null); setIsDemoModalOpen(true); }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Booking Form Dialog Modal */}
       <DemoModal
