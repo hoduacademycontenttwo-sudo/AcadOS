@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&display=swap&font-display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -78,12 +78,20 @@
 @layer base {
   body {
     @apply font-sans bg-slate-50 text-slate-800 antialiased selection:bg-maroon-100 selection:text-maroon-800;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "kern" 1, "liga" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   h1, h2, h3, h4 {
     text-wrap: balance;
+    letter-spacing: -0.02em;
+    font-feature-settings: "kern" 1, "liga" 1;
   }
+
+  h1 { letter-spacing: -0.03em; }
+  h2 { letter-spacing: -0.025em; }
 
   p {
     text-wrap: pretty;
@@ -226,6 +234,43 @@
   background: linear-gradient(90deg, #800000, #9e1b1b, #c99a55, #9e1b1b, #800000);
   background-size: 200% auto;
   animation: btn-shine 3s linear infinite;
+}
+
+/* ─── Premium heading gradient ─── */
+.heading-gradient {
+  background: linear-gradient(135deg, #0A0A0F 0%, #3b0000 60%, #800000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section eyebrow label */
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Thin hairline divider */
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #e5dfd4 20%, #e5dfd4 80%, transparent 100%);
+}
+
+/* Premium body text — slightly wider tracking for readability */
+.body-reading {
+  letter-spacing: 0.005em;
+  line-height: 1.65;
+}
+
+/* Maroon text gradient for accent spans */
+.text-maroon-gradient {
+  background: linear-gradient(135deg, #800000 0%, #c99a55 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ─── Why AcadOS Page ─── */

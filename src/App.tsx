@@ -846,12 +846,12 @@ export default function App() {
                     <div className="lg:col-span-6 space-y-5 sm:space-y-8">
                      
 
-                      <h1 className="text-4xl sm:text-6xl lg:text-[4.5rem] font-serif font-extrabold text-white tracking-tight leading-[1.08]">
-                        The Academic Operating System <span className="text-maroon-400">for Modern Institutions.</span>
+                      <h1 className="text-4xl sm:text-6xl lg:text-[4.75rem] font-serif font-extrabold text-white leading-[1.05]" style={{letterSpacing:'-0.03em'}}>
+                        The Academic Operating System <em className="not-italic text-maroon-300">for Modern Institutions.</em>
                       </h1>
 
-                      <p className="text-white/75 text-sm sm:text-lg max-w-lg leading-relaxed">
-                       A connected learning infrastructure combining rich resources, intelligent test creation, adaptive practice, computer-based test and seamless operations — one platform, your brand
+                      <p className="text-white/70 text-sm sm:text-[1.05rem] max-w-lg body-reading">
+                        A connected learning infrastructure — rich content, intelligent test creation, adaptive practice, computer-based testing, and seamless operations. One platform, your brand.
                       </p>
 
                       {/* CTA row — horizontal on all sizes */}
@@ -919,13 +919,14 @@ export default function App() {
                 id="modules-container"
               >
                 <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
-                  <div className="space-y-2 max-w-xl">
-                    <h3 className="text-4xl sm:text-5xl font-serif font-extrabold text-slate-900 tracking-tight leading-[1.05]" style={{textWrap:'balance'}}>
+                  <div className="space-y-3 max-w-xl">
+                    <span className="eyebrow text-maroon-600 inline-block mb-1">Platform Modules</span>
+                    <h3 className="text-4xl sm:text-5xl font-serif font-extrabold text-slate-900 leading-[1.05]" style={{textWrap:'balance',letterSpacing:'-0.025em'}}>
                       Everything your institution needs
                     </h3>
-                    <p className="text-slate-500 text-base">Five integrated modules. One platform. Your brand.</p>
+                    <p className="text-slate-500 text-[1rem] body-reading">Five integrated modules. One platform, your brand.</p>
                   </div>
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-maroon-600 bg-maroon-50 border border-maroon-100 px-3 py-1.5 rounded-full shrink-0 self-start sm:self-auto">
+                  <span className="eyebrow text-maroon-600 bg-maroon-50 border border-maroon-100 px-3 py-1.5 rounded-full shrink-0 self-start sm:self-auto">
                     All Modules
                   </span>
                 </div>

@@ -526,7 +526,7 @@ export function ErpCrmPlayground() {
                     return (
                       <button
                         key={idy}
-                        onClick={() => { handleMenuItemSelect(item); setSidebarOpen(false); }}
+                        onClick={() => { handleMenuItemSelect(item); if (window.innerWidth < 640) setSidebarOpen(false); }}
                         className={`w-full text-left px-3 py-2.5 rounded-lg text-xs font-medium flex items-center justify-between transition-all ${isActive ? 'bg-maroon-50 text-maroon-800 font-bold border border-maroon-100' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'}`}
                       >
                         <span>{item}</span>
