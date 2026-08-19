@@ -1861,10 +1861,10 @@ export default function App() {
            <p className="flex items-center gap-2 text-slate-500">
   <span>📧 E-mail:</span> 
   <a 
-    href="mailto:hoduacademycontenttwo@gmail.com?subject=Inquiry%20from%20Website&body=Hi%20Hodu%20Academy%20Team%2C%0A%0AI%20would%20like%20to%20know%20more%20about..." 
+    href="mailto:hoducationtechnologies@gmail.com?subject=Inquiry%20from%20Website&body=Hi%20Hodu%20Academy%20Team%2C%0A%0AI%20would%20like%20to%20know%20more%20about..." 
     className="font-bold break-all hover:underline hover:text-slate-700"
   >
-    hoduacademycontenttwo@gmail.com
+    hoducationtechnologies@gmail.com
   </a>
 </p>
               
