@@ -1099,7 +1099,7 @@ export default function App() {
                       </p>
                       <p className="flex items-center gap-2">
                         <Mail className="w-3.5 h-3.5 text-gold-400 shrink-0" />
-                        <strong>hoduacademycontenttwo@gmail.com</strong>
+                        <strong>hoducationtechnologies@gmail.com</strong>
                       </p>
                     </div>
                   </div>
