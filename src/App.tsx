@@ -1732,7 +1732,7 @@ export default function App() {
                       <Mail className="w-5 h-5 text-maroon-600 shrink-0 mt-0.5" />
                       <p>
                         <strong>Academic Inquiry Emails:</strong><br />
-                        hoduacademycontenttwo@gmail.com<br />
+                        hoducationtechnologies@gmail.com<br />
                         support@acados.app / support@acados.co
                       </p>
                     </div>
