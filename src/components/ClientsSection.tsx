@@ -80,33 +80,34 @@ function CardImage({ client }: { client: Client }) {
   const Icon = client.type === 'school' ? GraduationCap : Building2;
 
   return (
-    <div className="relative h-36 w-full overflow-hidden rounded-t-2xl">
-      {/* fallback gradient always underneath */}
+    <div
+      className="relative h-36 w-full overflow-hidden rounded-t-2xl flex items-center justify-center p-3"
+      style={{ background: `linear-gradient(135deg, ${client.color}14 0%, ${client.color}06 100%)` }}
+    >
+      {/* fallback initials / icon */}
       <div
-        className="absolute inset-0 flex flex-col items-center justify-center gap-2"
-        style={{ background: `linear-gradient(135deg, ${client.color}18 0%, ${client.color}08 100%)` }}
+        className={`absolute inset-0 flex flex-col items-center justify-center gap-1.5 transition-opacity duration-300 ${loaded && !errored ? 'opacity-0' : 'opacity-100'}`}
       >
-        <Icon className="w-8 h-8 opacity-20" style={{ color: client.color }} />
-        <span className="text-2xl font-black opacity-20" style={{ color: client.color }}>{client.initials}</span>
+        <Icon className="w-8 h-8 opacity-25" style={{ color: client.color }} />
+        <span className="text-xl font-black opacity-25" style={{ color: client.color }}>{client.initials}</span>
       </div>
 
-      {/* real image on top */}
+      {/* real logo badge */}
       {client.image && !errored && (
-        <img
-          src={client.image}
-          alt={client.name}
-          onLoad={() => setLoaded(true)}
-          onError={() => setErrored(true)}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
-        />
+        <div className="relative z-10 w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-white shadow-xs border border-slate-100/90 p-2.5 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105">
+          <img
+            src={client.image}
+            alt={client.name}
+            onLoad={() => setLoaded(true)}
+            onError={() => setErrored(true)}
+            className={`w-full h-full object-contain transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+          />
+        </div>
       )}
-
-      {/* color tint overlay */}
-      <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 40%, rgba(255,255,255,0.95) 100%)` }} />
 
       {/* type badge */}
       <span
-        className="absolute top-3 left-3 text-[9px] font-mono font-bold uppercase tracking-widest px-2 py-0.5 rounded-full"
+        className="absolute top-3 left-3 z-20 text-[9px] font-mono font-bold uppercase tracking-widest px-2 py-0.5 rounded-full shadow-xs"
         style={{ background: `${client.color}18`, color: client.color, border: `1px solid ${client.color}35` }}
       >
         {client.type === 'school' ? 'School' : 'Coaching'}
@@ -209,7 +210,7 @@ export default function ClientsSection() {
                       style={{ background: `${active.color}15`, border: `2px solid ${active.color}30`, color: active.color }}
                     >
                       {active.image ? (
-                        <img src={active.image} alt={active.name} className="w-full h-full object-cover" />
+                        <img src={active.image} alt={active.name} className="w-full h-full object-contain p-1 bg-white" />
                       ) : (
                         active.initials
                       )}
