@@ -205,10 +205,14 @@ export default function ClientsSection() {
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-center gap-3">
                     <div
-                      className="w-11 h-11 rounded-xl flex items-center justify-center font-black text-sm shrink-0"
+                      className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-sm shrink-0 overflow-hidden"
                       style={{ background: `${active.color}15`, border: `2px solid ${active.color}30`, color: active.color }}
                     >
-                      {active.initials}
+                      {active.image ? (
+                        <img src={active.image} alt={active.name} className="w-full h-full object-cover" />
+                      ) : (
+                        active.initials
+                      )}
                     </div>
                     <div>
                       <p className="text-[#0A0A0F] font-bold text-sm leading-tight">{active.name}</p>
