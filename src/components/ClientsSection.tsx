@@ -81,33 +81,32 @@ function CardImage({ client }: { client: Client }) {
 
   return (
     <div
-      className="relative h-36 w-full overflow-hidden rounded-t-2xl flex items-center justify-center p-3"
-      style={{ background: `linear-gradient(135deg, ${client.color}14 0%, ${client.color}06 100%)` }}
+      className="relative h-40 w-full overflow-hidden rounded-t-2xl flex items-center justify-center bg-white"
+      style={{ background: `linear-gradient(135deg, ${client.color}10 0%, #ffffff 100%)` }}
     >
       {/* fallback initials / icon */}
       <div
         className={`absolute inset-0 flex flex-col items-center justify-center gap-1.5 transition-opacity duration-300 ${loaded && !errored ? 'opacity-0' : 'opacity-100'}`}
+        style={{ background: `linear-gradient(135deg, ${client.color}14 0%, ${client.color}06 100%)` }}
       >
         <Icon className="w-8 h-8 opacity-25" style={{ color: client.color }} />
         <span className="text-xl font-black opacity-25" style={{ color: client.color }}>{client.initials}</span>
       </div>
 
-      {/* real logo badge */}
+      {/* real image filling complete placeholder */}
       {client.image && !errored && (
-        <div className="relative z-10 w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-white shadow-xs border border-slate-100/90 p-2.5 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105">
-          <img
-            src={client.image}
-            alt={client.name}
-            onLoad={() => setLoaded(true)}
-            onError={() => setErrored(true)}
-            className={`w-full h-full object-contain transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
-          />
-        </div>
+        <img
+          src={client.image}
+          alt={client.name}
+          onLoad={() => setLoaded(true)}
+          onError={() => setErrored(true)}
+          className={`absolute inset-0 w-full h-full object-contain p-2.5 transition-all duration-300 group-hover:scale-105 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+        />
       )}
 
       {/* type badge */}
       <span
-        className="absolute top-3 left-3 z-20 text-[9px] font-mono font-bold uppercase tracking-widest px-2 py-0.5 rounded-full shadow-xs"
+        className="absolute top-3 left-3 z-20 text-[9px] font-mono font-bold uppercase tracking-widest px-2 py-0.5 rounded-full shadow-xs backdrop-blur-xs"
         style={{ background: `${client.color}18`, color: client.color, border: `1px solid ${client.color}35` }}
       >
         {client.type === 'school' ? 'School' : 'Coaching'}
