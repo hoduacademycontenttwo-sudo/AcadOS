@@ -524,24 +524,16 @@ export default function App() {
           
           {/* Logo brand */}
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigateTo('home')}>
-            <img src={acadosLogo} alt="AcadOS Logo" className="w-10 h-10 object-contain shrink-0 rounded-xl" />
+            <img src={acadosLogo} alt="AcadOS Logo" className="w-12 h-12 sm:w-14 sm:h-14 object-contain shrink-0" />
 
-            <div className="flex items-center gap-1.5">
-
-              <span className="text-lg font-black tracking-tight text-maroon-700 font-sans uppercase">
-
+            <div className="flex items-center gap-2">
+              <span className="text-xl sm:text-2xl font-black tracking-tight text-maroon-700 font-sans uppercase">
                 AcadOS
-
               </span>
-
               <span className="bg-gold-500/10 text-gold-600 font-bold font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded border border-gold-400/20">
-
                 v2.0
-
               </span>
-
             </div>
-
           </div>
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6 text-xs font-bold uppercase tracking-wider text-slate-800">
@@ -1809,9 +1801,9 @@ export default function App() {
           
           {/* Company Brief block (4 columns) */}
           <div className="md:col-span-4 space-y-4">
-            <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => navigateTo('home')}>
-              <img src={acadosLogo} alt="AcadOS Logo" className="w-9 h-9 object-contain shrink-0 rounded-lg" />
-              <span className="text-md font-black tracking-widest text-white uppercase font-sans">
+            <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigateTo('home')}>
+              <img src={acadosLogo} alt="AcadOS Logo" className="w-11 h-11 object-contain shrink-0" />
+              <span className="text-lg font-black tracking-widest text-white uppercase font-sans">
                 AcadOS
               </span>
             </div>
