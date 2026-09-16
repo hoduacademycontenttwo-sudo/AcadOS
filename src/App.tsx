@@ -27,7 +27,7 @@ import WhyAcadOS from './components/WhyAcadOS';
 import vpSinghPic from './assets/vp-singh.jpg';
 import rohitjainPic from './assets/rohit-jain.png';
 import abhishekagarwalPic from './assets/abhishek-agarwal.png';
-import htLogo from './assets/HT.jpg';
+import acadosLogo from './assets/logo-mark.png';
 import Loader from './components/Loader';
 import ModulePreviewPage from './components/ModulePreviewPage';
 import AcadBot from './components/AcadBot';
@@ -523,9 +523,8 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           
           {/* Logo brand */}
-       <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigateTo('home')}>
-
-            <img src={htLogo} alt="HT Logo" className="w-10 h-10 rounded-full object-cover shrink-0" />
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigateTo('home')}>
+            <img src={acadosLogo} alt="AcadOS Logo" className="w-10 h-10 object-contain shrink-0 rounded-xl" />
 
             <div className="flex items-center gap-1.5">
 
@@ -1811,7 +1810,7 @@ export default function App() {
           {/* Company Brief block (4 columns) */}
           <div className="md:col-span-4 space-y-4">
             <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => navigateTo('home')}>
-              <img src={htLogo} alt="HT Logo" className="w-9 h-9 rounded-full object-cover shrink-0" />
+              <img src={acadosLogo} alt="AcadOS Logo" className="w-9 h-9 object-contain shrink-0 rounded-lg" />
               <span className="text-md font-black tracking-widest text-white uppercase font-sans">
                 AcadOS
               </span>
