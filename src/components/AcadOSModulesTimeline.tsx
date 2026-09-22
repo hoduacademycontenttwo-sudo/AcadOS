@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { 
   ArrowUpRight, 
-  ChevronRight,
-  Layers
+  ChevronRight
 } from 'lucide-react';
 
 export interface AcadOSModulesTimelineProps {
@@ -152,47 +151,32 @@ export default function AcadOSModulesTimeline({ onExploreModule, onBookDemo }: A
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ============================================================ */}
-        {/* HEADER SECTION                                               */}
+        {/* HEADER SECTION (Center Aligned)                              */}
         {/* ============================================================ */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-16 md:pb-24 border-b border-slate-200/80">
-          <div className="space-y-3 max-w-2xl">
-            {/* Eyebrow */}
-            <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-[#800000] animate-pulse" />
-              <span className="text-[11px] font-mono font-black uppercase tracking-[0.25em] text-[#800000]">
-                PLATFORM ECOSYSTEM —
-              </span>
-            </div>
-
-            {/* Main Title */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-slate-900 tracking-tight leading-[1.1]">
-              One OS. Four Modules.{' '}
-              <span className="relative inline-block text-[#800000]">
-                Zero Silos.
-                <svg className="absolute -bottom-1 left-0 w-full h-2 text-[#800000]/25" viewBox="0 0 100 8" preserveAspectRatio="none">
-                  <path d="M0 5 Q 50 0 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
-                </svg>
-              </span>
-            </h2>
-
-            {/* Subtitle */}
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed pt-1">
-              Explore the interconnected educational operating system powering exams, ERP, admissions, and evaluation.
-            </p>
-          </div>
-
-          {/* Top-right corner metadata badge */}
-          <div className="flex flex-col md:items-end gap-2 shrink-0">
-            <div className="inline-flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-full border border-slate-200 shadow-xs">
-              <Layers className="w-3.5 h-3.5 text-[#800000]" />
-              <span className="text-[10px] font-mono font-bold tracking-widest text-slate-700 uppercase">
-                MODULES / REAL-TIME ARCHITECTURE
-              </span>
-            </div>
-            <span className="text-[10px] font-mono text-slate-400">
-              Interactive 01 → 04 Journey
+        <div className="text-center max-w-3xl mx-auto pb-14 md:pb-20 border-b border-slate-200/80 space-y-3">
+          {/* Eyebrow */}
+          <div className="flex items-center justify-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-[#800000] animate-pulse" />
+            <span className="text-[11px] font-mono font-black uppercase tracking-[0.25em] text-[#800000]">
+              PLATFORM ECOSYSTEM —
             </span>
           </div>
+
+          {/* Main Title */}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-slate-900 tracking-tight leading-[1.1]">
+            One OS. Four Modules.{' '}
+            <span className="relative inline-block text-[#800000]">
+              Zero Silos.
+              <svg className="absolute -bottom-1 left-0 w-full h-2 text-[#800000]/25" viewBox="0 0 100 8" preserveAspectRatio="none">
+                <path d="M0 5 Q 50 0 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
+              </svg>
+            </span>
+          </h2>
+
+          {/* Subtitle */}
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed pt-1 max-w-2xl mx-auto">
+            Explore the interconnected educational operating system powering exams, ERP, admissions, and evaluation.
+          </p>
         </div>
 
         {/* ============================================================ */}
