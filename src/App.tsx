@@ -13,7 +13,7 @@ import { PageId, DemoBooking } from './types';
 import TestMakerPlayground from './components/TestMakerPlayground';
 import CBTPlayground from './components/CBTPlayground';
 import DemoModal from './components/DemoModal';
-import EcosystemChart from './components/EcosystemChart';
+import AcadOSModulesTimeline from './components/AcadOSModulesTimeline';
 import BeforeAfterSlider from './components/BeforeAfterSlider';
 import ContentLibraryTabs from './components/ContentLibraryTabs';
 import OMREvaluationMicroDemo from './components/OMREvaluationMicroDemo';
@@ -887,157 +887,17 @@ export default function App() {
               </section>
 
 
-              {/* HE-4: ECOSYSTEM MAP */}
-              <motion.section
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.7, ease: 'easeOut' }}
-                className="bg-slate-100/50 py-12 border-y border-slate-200"
-              >
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                  <EcosystemChart />
-                </div>
-              </motion.section>
-
-              {/* MODULES SECTION */}
-              <motion.section
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.7, ease: 'easeOut' }}
-                className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-                id="modules-container"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
-                  <div className="space-y-3 max-w-xl">
-                    <span className="eyebrow text-maroon-600 inline-block mb-1">Platform Modules</span>
-                    <h3 className="text-4xl sm:text-5xl font-serif font-extrabold text-slate-900 leading-[1.05]" style={{textWrap:'balance',letterSpacing:'-0.025em'}}>
-                      Everything your institution needs
-                    </h3>
-                    <p className="text-slate-500 text-[1rem] body-reading">Five integrated modules. One platform, your brand.</p>
-                  </div>
-                  <span className="eyebrow text-maroon-600 bg-maroon-50 border border-maroon-100 px-3 py-1.5 rounded-full shrink-0 self-start sm:self-auto">
-                    All Modules
-                  </span>
-                </div>
-
-              {/* Module cards — horizontal scroll on mobile, 5-col grid on desktop */}
-<div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 sm:grid sm:grid-cols-2 lg:grid-cols-5 sm:overflow-visible sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
-  {[
-    {
-      id: 'testmaker' as const,
-      icon: BookOpenCheck,
-      label: 'TestMaker',
-      desc: 'Generate balanced exam papers from 6 Lakh+ syllabus-aligned questions in minutes.',
-      stat: '6 Lakh+ Qs',
-      color: '#800000',
-      img: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&h=280&fit=crop&q=80'
-    },
-    {
-      id: 'practice-cbt' as const,
-      icon: Trophy,
-      label: 'CBT Mock Tests',
-      desc: 'NTA-style exam portal for JEE, NEET & boards. Live timers, instant analytics.',
-      stat: 'Score ↑23%',
-      color: '#800000',
-      img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=280&fit=crop&q=80'
-    },
-    {
-      id: 'omr-evaluation' as const,
-      icon: Smartphone,
-      label: 'OMR Scanning',
-      desc: 'Grade bubble answer sheets with any smartphone camera in seconds.',
-      stat: '99.8% Accuracy',
-      color: '#b0813f',
-      img: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=280&fit=crop&q=80'
-    },
-    {
-      id: 'erp-crm' as const,
-      icon: Database,
-      label: 'Institute ERP',
-      desc: 'Fee ledger, attendance, staff registers and academic schedule in one place.',
-      stat: 'Saves 40% Ops',
-      color: '#9e1b1b',
-      img: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=280&fit=crop&q=80'
-    },
-    {
-      id: 'content-library' as const,
-      icon: Globe,
-      label: 'Content Library',
-      desc: 'CBSE, IGCSE & IB aligned pre-loaded curriculum worksheets and notes.',
-      stat: '6 lakh+ Resources',
-      color: '#150000',
-      img: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=280&fit=crop&q=80'
-    }
-  ].map((mod) => {
-    const Icon = mod.icon;
-
-    return (
-      <button
-        key={mod.id}
-        onClick={() => setVideoModuleId(mod.id)}
-        className="flex-none w-[78vw] snap-start sm:w-auto group bg-white border border-slate-150 rounded-2xl overflow-hidden flex flex-col text-left hover:border-maroon-200 hover:shadow-lg transition-all duration-300"
-      >
-        {/* Card image */}
-        <div className="relative h-36 overflow-hidden">
-          <img
-            src={mod.img}
-            alt={mod.label}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(to bottom, ${mod.color}22 0%, ${mod.color}55 100%)`
-            }}
-          />
-
-          {/* Stat badge over image */}
-          <span
-            className="absolute top-3 right-3 text-[9px] font-mono font-bold px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-sm"
-            style={{ color: mod.color }}
-          >
-            {mod.stat}
-          </span>
-
-          {/* Icon over image */}
-          <div className="absolute bottom-3 left-3 w-9 h-9 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur-sm shadow-sm">
-            <Icon
-              style={{
-                color: mod.color,
-                width: 16,
-                height: 16
-              }}
-            />
-          </div>
-        </div>
-
-        {/* Card body */}
-        <div className="p-4 flex flex-col gap-3 flex-1">
-          <div className="space-y-1 flex-1">
-            <h5 className="font-serif font-extrabold text-slate-900 text-base leading-snug">
-              {mod.label}
-            </h5>
-
-            <p className="text-slate-500 text-xs leading-relaxed">
-              {mod.desc}
-            </p>
-          </div>
-
-          <div
-            className="flex items-center gap-1 text-[11px] font-bold"
-            style={{ color: mod.color }}
-          >
-            Explore <ChevronRight className="w-3 h-3" />
-          </div>
-        </div>
-      </button>
-    );
-  })}
-</div>
-</motion.section>
+              {/* ACADOS 6 CORE MODULES INTERACTIVE TIMELINE */}
+              <AcadOSModulesTimeline 
+                onExploreModule={(modId) => {
+                  if (modId === 'admissions-crm' || modId === 'erp-crm') {
+                    setPreviewModule('erp-crm');
+                  } else {
+                    setPreviewModule(modId as any);
+                  }
+                }}
+                onBookDemo={() => setIsDemoModalOpen(true)}
+              />
 
               {/* HE-9: BEFORE / AFTER REVOLUTION */}
               <motion.section
