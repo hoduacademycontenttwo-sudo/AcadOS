@@ -34,329 +34,167 @@ import AcadBot from './components/AcadBot';
 import ClientsSection from './components/ClientsSection';
 import ModuleVideoPage from './components/ModuleVideoPage';
 
-/* ── Hero Module Carousel ─────────────────────────────── */
-const HERO_SLIDES = [
+/* ── Hero Product Showcase Data ─────────────────────────────── */
+const HERO_MODULE_SHOWCASE = [
   {
-    label: 'TestMaker',
-    tag: 'AI Paper Generator',
-    url: 'portal.acados.app — Apex Academy',
-    content: (
-      <div className="bg-[#f5f3f0] rounded-b-xl overflow-hidden">
-        {/* Step bar */}
-        <div className="flex items-center gap-3 px-4 py-2 bg-white border-b border-slate-200 text-[9px] font-bold text-slate-400">
-          <span className="flex items-center gap-1"><span className="w-4 h-4 rounded-full bg-[#800000] text-white flex items-center justify-center text-[8px]">1</span> Setup</span>
-          <span className="text-slate-300">›</span>
-          <span className="flex items-center gap-1"><span className="w-4 h-4 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center text-[8px]">2</span> Select Questions</span>
-          <span className="text-slate-300">›</span>
-          <span className="flex items-center gap-1"><span className="w-4 h-4 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center text-[8px]">3</span> Review & Create</span>
-        </div>
-        <div className="p-4 space-y-3">
-          <div>
-            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Choose Creation Mode</p>
-            <div className="grid grid-cols-4 gap-1.5">
-              {['Swift','Architect','Picker','Pattern'].map((m,i)=>(
-                <div key={m} className={`rounded-lg p-2 text-center border text-[9px] font-bold ${i===0?'border-[#800000] bg-red-50 text-[#800000]':'border-slate-200 bg-white text-slate-400'}`}>{m}</div>
-              ))}
-            </div>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-lg p-3 space-y-2">
-            <p className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">Test Paper Setup</p>
-            <div className="space-y-1.5">
-              <div className="border border-slate-200 rounded px-2 py-1.5 text-[10px] text-slate-600">Term Exam Practice Paper</div>
-              <div className="grid grid-cols-2 gap-1.5">
-                <div className="border border-slate-200 rounded px-2 py-1.5 text-[10px] text-slate-600">40</div>
-                <div className="border border-slate-200 rounded px-2 py-1.5 text-[10px] text-slate-600">60</div>
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-end">
-            <div className="bg-[#800000] text-white text-[9px] font-bold px-3 py-1.5 rounded-lg">NEXT: SELECT QUESTIONS ›</div>
-          </div>
-        </div>
-      </div>
-    ),
+    id: 'testmaker',
+    label: 'TestMaker Generator',
+    step: '01',
+    tag: 'EXAM AUTOMATION',
+    headline: 'AI Paper & Question Bank Generator',
+    image: '/modules/testmaker.jpg',
+    badge: '600K+ Questions',
+    metric: '40 Qs in 1.4s',
   },
   {
-    label: 'CBT Platform',
-    tag: 'NTA-Style Mock Exam',
-    url: 'portal.acados.app — Vision IAS Prep',
-    content: (
-      <div className="bg-[#f5f3f0] rounded-b-xl overflow-hidden">
-        {/* dark header */}
-        <div className="bg-[#5a0000] px-4 py-2.5 flex items-center justify-between">
-          <div>
-            <p className="text-white font-bold text-[11px]">CURRENT ELECTRICITY MOCK TEST</p>
-            <p className="text-white/60 text-[9px]">Question 1 of 20</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-white font-mono text-[10px]">00:59:56</span>
-            <span className="bg-red-600 text-white text-[8px] font-bold px-2 py-0.5 rounded">EXIT</span>
-          </div>
-        </div>
-        <div className="flex gap-0">
-          {/* Question area */}
-          <div className="flex-1 p-3 space-y-2">
-            <div className="flex items-center gap-2">
-              <span className="text-[10px] font-bold text-slate-700">Question 1:</span>
-              <span className="text-[8px] border border-slate-300 rounded px-1.5 py-0.5 text-slate-500">Single Choice</span>
-              <span className="ml-auto text-[9px] font-bold text-slate-600">4 Marks</span>
-            </div>
-            <p className="text-[9px] text-slate-700 leading-relaxed">A wire is stretched slowly by ten per cent. Its new resistance and specific resistance become:</p>
-            {['1.2 times, 1.3 times','1.21 times, same','both remain the same','1.1 times, 1.1 times'].map((opt,i)=>(
-              <div key={i} className="flex items-center gap-2 border border-slate-200 bg-white rounded px-2 py-1">
-                <span className="text-[9px] font-bold text-slate-400 w-3">{String.fromCharCode(65+i)}</span>
-                <span className="text-[9px] text-slate-600">{opt}</span>
-              </div>
-            ))}
-            <div className="flex gap-1 pt-1">
-              <span className="bg-emerald-600 text-white text-[7px] font-bold px-2 py-1 rounded">SAVE & NEXT</span>
-              <span className="border border-slate-300 text-slate-500 text-[7px] font-bold px-2 py-1 rounded">CLEAR</span>
-              <span className="bg-purple-600 text-white text-[7px] font-bold px-2 py-1 rounded">MARK FOR REVIEW</span>
-            </div>
-          </div>
-          {/* Palette */}
-          <div className="w-20 bg-white border-l border-slate-200 p-2 shrink-0">
-            <p className="text-[7px] font-bold text-slate-500 uppercase mb-1.5">Question Palette</p>
-            <div className="grid grid-cols-4 gap-0.5">
-              {Array.from({length:20},(_,i)=>(
-                <div key={i} className={`w-4 h-4 rounded text-[7px] flex items-center justify-center font-bold ${i===0?'bg-red-500 text-white':i<3?'bg-emerald-500 text-white':'border border-slate-300 text-slate-400'}`}>{i+1}</div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    ),
+    id: 'practice-cbt',
+    label: 'CBT Simulator',
+    step: '02',
+    tag: 'NTA SIMULATION',
+    headline: 'Real-Time Computer Based Test Platform',
+    image: '/modules/cbt.png',
+    badge: 'JEE / NEET Engine',
+    metric: 'Sub-second Latency',
   },
   {
-    label: 'OMR Scanning',
-    tag: 'Smartphone Grading',
-    url: 'portal.acados.app — Sri Ram Coaching',
-    content: (
-      <div className="bg-[#f5f3f0] rounded-b-xl overflow-hidden">
-        {/* Step tabs */}
-        <div className="flex border-b border-slate-200 bg-white">
-          {['Step 1: Configure','Step 2: Camera Scan','Step 3: Analytics'].map((s,i)=>(
-            <div key={s} className={`flex-1 text-center text-[8px] font-bold py-1.5 ${i===0?'bg-[#800000] text-white':'text-slate-400'}`}>{s}</div>
-          ))}
-        </div>
-        <div className="grid grid-cols-2 gap-3 p-3">
-          {/* Left config */}
-          <div className="space-y-2">
-            <p className="text-[9px] font-bold text-[#800000] uppercase tracking-wider">Academic Set-Up</p>
-            <p className="text-[10px] font-bold text-slate-700">Select Grid Length</p>
-            <div className="space-y-1.5">
-              <p className="text-[8px] text-slate-500 font-bold uppercase">Number of Questions:</p>
-              <div className="grid grid-cols-3 gap-1">
-                {['10 MCQs','20 MCQs','30 MCQs'].map((o,i)=>(
-                  <div key={o} className={`text-[8px] font-bold text-center py-1 rounded border ${i===1?'border-[#800000] text-[#800000] bg-red-50':'border-slate-200 text-slate-400 bg-white'}`}>{o}</div>
-                ))}
-              </div>
-              <div className="grid grid-cols-2 gap-1">
-                <div className="border border-slate-200 bg-white rounded px-1.5 py-1 text-[8px] text-slate-500">+1 Mark</div>
-                <div className="border border-slate-200 bg-white rounded px-1.5 py-1 text-[8px] text-slate-500">0 (No Penalty)</div>
-              </div>
-            </div>
-            <div className="bg-slate-900 text-white text-[8px] font-bold text-center py-1.5 rounded-lg">ASSEMBLE OMR SHEET & SCAN →</div>
-          </div>
-          {/* Right preview */}
-          <div className="bg-white border border-slate-200 rounded-lg p-2">
-            <p className="text-[7px] text-slate-400 font-bold uppercase mb-1">Template Preview</p>
-            <p className="text-[8px] font-bold text-slate-700 mb-2">Mock Mid-Term · Science Grid</p>
-            {['Q01','Q02','Q03','Q04','Q05'].map(q=>(
-              <div key={q} className="flex items-center justify-between py-0.5 border-b border-slate-100">
-                <span className="text-[8px] text-slate-500">{q}</span>
-                <div className="flex gap-1">
-                  {['A','B','C','D'].map(o=>(
-                    <div key={o} className="w-3 h-3 rounded-full border border-slate-300 flex items-center justify-center text-[6px] text-slate-400">{o}</div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    ),
+    id: 'omr-evaluation',
+    label: 'OMR Evaluation',
+    step: '03',
+    tag: 'COMPUTER VISION',
+    headline: 'Smartphone Bubble Sheet Scanner',
+    image: '/modules/omr.jpg',
+    badge: '99.8% AI Accuracy',
+    metric: '100 Sheets / 5 Min',
   },
   {
-    label: 'ERP + CRM',
-    tag: 'Institute Management',
-    url: 'portal.acados.app — Hoducation',
-    content: (
-      <div className="bg-white rounded-b-xl overflow-hidden">
-        {/* Top nav bar */}
-        <div className="flex items-center gap-2 px-3 py-1.5 border-b border-slate-200 bg-white">
-          <div className="w-5 h-5 rounded-full bg-[#800000] flex items-center justify-center text-white text-[7px] font-black">HT</div>
-          <div>
-            <p className="text-[8px] font-bold text-slate-800">Hoducation</p>
-            <p className="text-[6px] text-slate-400 uppercase tracking-wider">Academic Enterprise Suite</p>
-          </div>
-          <div className="ml-auto flex gap-1">
-            {['Acad','Ops','Setup','CRM'].map(t=>(
-              <span key={t} className="text-[7px] border border-slate-200 rounded px-1.5 py-0.5 text-slate-500">{t}</span>
-            ))}
-          </div>
-        </div>
-        {/* Stats row */}
-        <div className="grid grid-cols-3 gap-1.5 p-2.5">
-          {[['TOTAL STUDENTS','1,247','#ef4444'],['TODAY\'S ATTENDANCE','78%','#22c55e'],['TOTAL TEACHERS','12','#a855f7'],['TOTAL EMPLOYEES','18','#3b82f6'],['PENDING TASKS','5','#f59e0b'],['ACTIVE CLASSES','14','#06b6d4']].map(([l,v,c])=>(
-            <div key={l} className="border border-slate-100 rounded-lg p-2 bg-slate-50">
-              <p className="text-[7px] text-slate-400 uppercase font-bold leading-tight mb-0.5">{l}</p>
-              <p className="text-base font-black" style={{color:c}}>{v}</p>
-            </div>
-          ))}
-        </div>
-        {/* Alert strip */}
-        <div className="mx-2.5 mb-2.5 bg-slate-900 rounded-lg p-2 space-y-1">
-          <p className="text-[7px] text-amber-400 font-bold uppercase tracking-wider">Real-Time Guardian Alert Center</p>
-          <div className="flex items-center gap-1.5">
-            <span className="text-[6px] bg-emerald-600 text-white font-bold px-1 py-0.5 rounded">WHATSAPP</span>
-            <span className="text-[8px] text-slate-300">Hi parent, Rajesh was present in 12th PCM today.</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="text-[6px] bg-blue-600 text-white font-bold px-1.5 py-0.5 rounded">SMS</span>
-            <span className="text-[8px] text-slate-300">Attendance alert: Sunita registered as Absent today.</span>
-          </div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    label: 'Learners Hub',
-    tag: 'Digital Content Library',
-    url: 'portal.acados.app — Sunrise School',
-    content: (
-      <div className="bg-[#f5f3f0] rounded-b-xl overflow-hidden">
-        {/* Step tabs */}
-        <div className="flex border-b border-slate-200 bg-white">
-          {['Step 1: Target Board','Step 2: Pull Materials','Step 3: Dispatch'].map((s,i)=>(
-            <div key={s} className={`flex-1 text-center text-[7px] font-bold py-1.5 ${i===0?'bg-[#800000] text-white':'text-slate-400'}`}>{s}</div>
-          ))}
-        </div>
-        <div className="grid grid-cols-2 gap-3 p-3">
-          {/* Board list */}
-          <div className="space-y-1.5">
-            <p className="text-[8px] font-bold text-[#800000] uppercase tracking-wider">Unified Search Index</p>
-            <p className="text-[9px] font-bold text-slate-700 leading-tight">Pre-configured Curriculums</p>
-            {[['CBSE','Grade 10','Mathematics Full Syllabus'],['Cambridge IGCSE','CIE A-Levels','Physics Full Syllabus'],['IB Diploma','IB Grade 12','Chemistry Full Syllabus']].map(([b,g,name])=>(
-              <div key={name} className="bg-white border border-slate-200 rounded-lg px-2 py-1.5 flex items-center justify-between">
-                <div>
-                  <div className="flex gap-1 mb-0.5">
-                    <span className="text-[6px] font-bold text-[#800000] border border-[#80000040] px-1 rounded">{b}</span>
-                    <span className="text-[6px] text-slate-400">{g}</span>
-                  </div>
-                  <p className="text-[8px] font-bold text-slate-700">{name}</p>
-                </div>
-                <span className="text-slate-300 text-xs">›</span>
-              </div>
-            ))}
-            <div className="bg-slate-900 text-white text-[7px] font-bold text-center py-1.5 rounded-lg">SCAN AVAILABLE SYLLABUS MATERIALS →</div>
-          </div>
-          {/* Chapter list */}
-          <div className="bg-white border border-slate-200 rounded-lg p-2">
-            <p className="text-[7px] text-slate-400 font-bold uppercase mb-0.5">Active Repository</p>
-            <p className="text-[8px] font-bold text-slate-600 mb-2">Chapter Listing (4 Chapters)</p>
-            <div className="border border-slate-100 rounded px-2 py-1 mb-1.5 text-[7px] text-slate-400">🔍 Search syllabus chapters…</div>
-            {['Chapter 1: Quadratic Equations','Chapter 2: Real Numbers','Chapter 3: Triangles','Chapter 4: Introduction to Trigonometry'].map((c,i)=>(
-              <div key={c} className={`flex items-center justify-between py-1 border-b border-slate-100 last:border-0 ${i===0?'text-[#800000]':'text-slate-600'}`}>
-                <span className="text-[8px] font-medium">{c}</span>
-                {i===0 && <span className="text-[#800000] text-xs">⊙</span>}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    ),
+    id: 'erp-crm',
+    label: 'Institute ERP + CRM',
+    step: '04',
+    tag: 'CAMPUS OS',
+    headline: 'Unified Campus Management & Funnel',
+    image: '/modules/erp.jpg',
+    badge: 'All-in-One ERP',
+    metric: '40% Time Saved',
   },
 ];
 
-function HeroModuleCarousel() {
-  const [idx, setIdx] = React.useState(0);
-  const [paused, setPaused] = React.useState(false);
-  const slide = HERO_SLIDES[idx];
+function HeroProductShowcase({ onExplore }: { onExplore?: (id: string) => void }) {
+  const [activeIdx, setActiveIdx] = React.useState(0);
+  const [isPaused, setIsPaused] = React.useState(false);
+  const current = HERO_MODULE_SHOWCASE[activeIdx];
 
   React.useEffect(() => {
-    if (paused) return;
-    const t = setInterval(() => setIdx(i => (i + 1) % HERO_SLIDES.length), 3500);
-    return () => clearInterval(t);
-  }, [paused]);
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % HERO_MODULE_SHOWCASE.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [isPaused]);
 
   return (
-    <div className="hidden sm:block lg:col-span-6 relative" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-      <div className="absolute -inset-4 bg-maroon-800/20 rounded-3xl blur-2xl" />
-      <div className="relative bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-2xl">
-        {/* Browser chrome */}
-        <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-800 bg-slate-950">
-          <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-          <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
-          <div className="ml-3 flex-1 bg-slate-800 rounded-md px-3 py-1 text-[10px] text-slate-500 font-mono truncate">
-            {slide.url}
-          </div>
-          <div className="flex items-center gap-1.5 text-[9px] text-emerald-400 font-bold shrink-0">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />LIVE
-          </div>
-        </div>
-
-        {/* Module label bar */}
-        <div className="flex items-center justify-between px-5 pt-4 pb-0">
-          <div>
-            <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-maroon-400">{slide.tag}</p>
-            <p className="text-white font-extrabold text-sm">{slide.label}</p>
-          </div>
-          {/* Dot indicators */}
-          <div className="flex gap-1.5">
-            {HERO_SLIDES.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => { setIdx(i); setPaused(true); }}
-                className={`rounded-full transition-all duration-300 ${i === idx ? 'w-4 h-1.5 bg-maroon-400' : 'w-1.5 h-1.5 bg-slate-700 hover:bg-slate-500'}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Slide content */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, x: 12 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -12 }}
-            transition={{ duration: 0.35, ease: 'easeOut' }}
+    <div 
+      className="w-full max-w-5xl mx-auto pt-8 sm:pt-12 text-left"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Module Selector Pill Bar */}
+      <div className="flex items-center justify-center gap-1.5 sm:gap-2.5 p-1.5 rounded-2xl bg-black/25 backdrop-blur-md border border-white/15 max-w-2xl mx-auto mb-6 flex-wrap">
+        {HERO_MODULE_SHOWCASE.map((item, i) => (
+          <button
+            key={item.id}
+            onClick={() => {
+              setActiveIdx(i);
+              setIsPaused(true);
+            }}
+            className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center gap-2 cursor-pointer ${
+              i === activeIdx
+                ? 'bg-white text-maroon-900 shadow-md font-bold scale-[1.02]'
+                : 'text-white/70 hover:text-white hover:bg-white/10'
+            }`}
           >
-            {slide.content}
-          </motion.div>
-        </AnimatePresence>
+            <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${
+              i === activeIdx ? 'bg-maroon-100 text-maroon-900 font-bold' : 'bg-white/10 text-white/60'
+            }`}>
+              {item.step}
+            </span>
+            <span>{item.label}</span>
+          </button>
+        ))}
+      </div>
 
-        {/* Progress bar */}
-        {!paused && (
-          <div className="h-0.5 bg-slate-800">
+      {/* Main Glassmorphic Showcase Stage */}
+      <div className="relative rounded-2xl sm:rounded-3xl bg-slate-900/90 border border-white/20 p-2.5 sm:p-4 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] backdrop-blur-xl group">
+        {/* Glow backlight */}
+        <div className="absolute -inset-1 bg-gradient-to-r from-maroon-500/30 via-gold-500/20 to-maroon-600/30 rounded-3xl blur-2xl -z-10 opacity-70 group-hover:opacity-100 transition-opacity" />
+
+        {/* Browser Top Bar */}
+        <div className="flex items-center justify-between px-3 sm:px-4 py-2 border-b border-white/10 bg-slate-950/60 rounded-t-xl mb-2 sm:mb-3">
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+            <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+            <span className="ml-2 text-[10px] sm:text-xs font-mono text-white/50 hidden sm:inline-block">
+              portal.acados.app / {current.id}
+            </span>
+          </div>
+          
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-mono font-bold text-amber-300 bg-amber-400/10 px-2.5 py-0.5 rounded-full border border-amber-400/20">
+              {current.badge}
+            </span>
+            <div className="flex items-center gap-1.5 text-[9px] font-mono text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              LIVE
+            </div>
+          </div>
+        </div>
+
+        {/* Mockup Image Display Container */}
+        <div 
+          onClick={() => onExplore && onExplore(current.id)}
+          className="relative rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer bg-slate-950 aspect-video max-h-[520px] flex items-center justify-center group/img shadow-inner"
+        >
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={current.id}
+              src={current.image}
+              alt={current.headline}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.02 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+              className="w-full h-full object-cover object-center rounded-xl sm:rounded-2xl"
+            />
+          </AnimatePresence>
+
+          {/* Hover overlay hint */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity flex items-end justify-between p-4 sm:p-6">
+            <div>
+              <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-maroon-300">
+                {current.tag}
+              </p>
+              <h5 className="text-white font-bold text-sm sm:text-lg">
+                {current.headline}
+              </h5>
+            </div>
+            <span className="inline-flex items-center gap-1 text-xs font-bold text-white bg-[#800000] hover:bg-[#660000] px-4 py-2 rounded-xl shadow-lg transition-transform group-hover/img:translate-y-0 translate-y-2">
+              Explore Module <ArrowRight className="w-3.5 h-3.5" />
+            </span>
+          </div>
+        </div>
+
+        {/* Dynamic Progress Indicator */}
+        {!isPaused && (
+          <div className="h-1 bg-white/10 rounded-full mt-3 overflow-hidden">
             <motion.div
-              key={idx}
-              className="h-full bg-maroon-600"
+              key={activeIdx}
+              className="h-full bg-gradient-to-r from-maroon-400 to-amber-300 rounded-full"
               initial={{ width: '0%' }}
               animate={{ width: '100%' }}
-              transition={{ duration: 3.5, ease: 'linear' }}
+              transition={{ duration: 4.5, ease: 'linear' }}
             />
           </div>
         )}
-      </div>
-
-      {/* Module nav pills below */}
-      <div className="flex gap-2 mt-3 flex-wrap">
-        {HERO_SLIDES.map((s, i) => (
-          <button
-            key={i}
-            onClick={() => { setIdx(i); setPaused(true); }}
-            className={`text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full transition-all ${
-              i === idx
-                ? 'bg-white text-maroon-800 shadow-sm'
-                : 'bg-white/10 text-white/60 hover:bg-white/20'
-            }`}
-          >
-            {s.label}
-          </button>
-        ))}
       </div>
     </div>
   );
@@ -830,49 +668,66 @@ export default function App() {
                 {/* Subtle grid texture */}
                 <div className="absolute inset-0 opacity-[0.04]" style={{backgroundImage: 'linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)', backgroundSize: '60px 60px'}} />
 
-                <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 md:py-28 lg:py-32 text-center">
+                <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-24 text-center">
                   <div className="space-y-6 sm:space-y-8 flex flex-col items-center">
 
-                    <h1 className="text-4xl sm:text-6xl lg:text-[4.75rem] font-serif font-extrabold text-white leading-[1.08] tracking-tight max-w-3xl">
-                      The Academic Operating System <em className="not-italic text-maroon-300">for Modern Institutions.</em>
+                    {/* Top Eyebrow Glassmorphic Pill */}
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-white text-xs font-semibold shadow-xs">
+                      <span className="h-2 w-2 rounded-full bg-amber-400 animate-pulse" />
+                      <span className="tracking-wide">AI-POWERED EDUCATIONAL OPERATING SYSTEM</span>
+                    </div>
+
+                    {/* Main Headline */}
+                    <h1 className="text-4xl sm:text-6xl lg:text-[4.75rem] font-serif font-extrabold text-white leading-[1.06] tracking-tight max-w-4xl">
+                      The Academic Operating System <em className="not-italic text-maroon-200">for Modern Institutions.</em>
                     </h1>
 
+                    {/* Subtitle */}
                     <p className="text-white/80 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed body-reading">
                       A connected learning infrastructure — rich content, intelligent test creation, adaptive practice, computer-based testing, and seamless operations. One platform, your brand.
                     </p>
 
                     {/* CTA row — centered */}
-                    <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-2">
+                    <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-1">
                       <button
                         onClick={() => setIsDemoModalOpen(true)}
-                        className="bg-white text-maroon-800 hover:bg-slate-100 font-bold text-xs sm:text-sm py-3.5 px-6 sm:px-8 rounded-xl transition-all active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg cursor-pointer"
+                        className="bg-white text-maroon-900 hover:bg-slate-100 font-extrabold text-xs sm:text-sm py-3.5 px-6 sm:px-8 rounded-xl transition-all active:scale-[0.98] flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl cursor-pointer"
                       >
-                        Book Demo <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                        Book Live Demo <ArrowRight className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => {
                           const el = document.getElementById('platform-ecosystem-timeline');
                           if (el) el.scrollIntoView({ behavior: 'smooth' });
                         }}
-                        className="bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold text-xs sm:text-sm py-3.5 px-6 sm:px-8 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
+                        className="bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold text-xs sm:text-sm py-3.5 px-6 sm:px-8 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer backdrop-blur-md"
                       >
-                        Explore Modules
+                        Explore 4 Core Modules
                       </button>
                     </div>
 
-                    {/* Proof strip — centered */}
-                    <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-12 pt-8 sm:pt-10 border-t border-white/15 w-full max-w-xl mx-auto">
+                    {/* Proof stats strip */}
+                    <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-12 pt-6 sm:pt-8 border-t border-white/15 w-full max-w-2xl mx-auto">
                       {[
-                        { num: '6 Lakh+', label: 'Questions' },
+                        { num: '6 Lakh+', label: 'Verified Questions' },
                         { num: '15+', label: 'Exams Mapped' },
-                        { num: '100%', label: 'Your Brand' },
+                        { num: '100%', label: 'Your White-Label Brand' },
                       ].map((stat, i) => (
                         <div key={i} className={`text-center ${i > 0 ? 'sm:pl-10 sm:border-l sm:border-white/15' : ''}`}>
-                          <span className="block text-2xl sm:text-3xl font-black text-white leading-none">{stat.num}</span>
+                          <span className="block text-2xl sm:text-3xl font-black text-white leading-none tracking-tight">{stat.num}</span>
                           <span className="text-xs text-white/70 font-medium mt-1.5 block">{stat.label}</span>
                         </div>
                       ))}
                     </div>
+
+                    {/* Grand Product Showcase Stage */}
+                    <HeroProductShowcase onExplore={(modId) => {
+                      if (modId === 'erp-crm') {
+                        setPreviewModule('erp-crm');
+                      } else {
+                        setPreviewModule(modId as any);
+                      }
+                    }} />
 
                   </div>
                 </div>
