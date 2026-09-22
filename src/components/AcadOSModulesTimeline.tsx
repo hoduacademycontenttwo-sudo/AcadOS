@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { 
-  CheckCircle2, 
   ArrowUpRight, 
   ChevronRight,
-  Layers,
-  Sparkles
+  Layers
 } from 'lucide-react';
 
 export interface AcadOSModulesTimelineProps {
@@ -18,8 +16,6 @@ interface ModuleItem {
   title: string;
   subtitle: string;
   keywords: string[];
-  description: string;
-  capabilities: string[];
   tag: string;
   badge: string;
   imageSrc: string;
@@ -33,17 +29,10 @@ const MODULES_DATA: ModuleItem[] = [
     title: 'TestMaker Paper Generator',
     subtitle: 'AI-Powered Exam Paper & Blueprint Generator',
     keywords: ['QUESTION BANK', 'SMART PAPERS', 'BLUEPRINT'],
-    description: 'Assemble balanced, syllabus-aligned test papers and question banks in under 2 minutes. Tap into 600K+ verified questions with automated Set A/B shuffling.',
-    capabilities: [
-      '6 Lakh+ curated CBSE, JEE, NEET & Olympiad questions',
-      'Multi-set paper generator with automated answer keys',
-      'Dual-column print-ready PDF & editable Word export',
-      'Bloom taxonomy & cognitive difficulty distribution'
-    ],
     tag: 'EXAM AUTOMATION',
     badge: '600K+ Question Bank',
     imageSrc: '/modules/testmaker.jpg',
-    imageAlt: 'TestMaker Paper Generator Dashboard'
+    imageAlt: 'TestMaker Paper Generator'
   },
   {
     id: 'practice-cbt',
@@ -51,17 +40,10 @@ const MODULES_DATA: ModuleItem[] = [
     title: 'CBT Mock Exam Platform',
     subtitle: 'NTA-Grade Computer Based Test Portal',
     keywords: ['NTA SIMULATION', 'LIVE TIMERS', 'REAL-TIME RANKS'],
-    description: 'Deploy online tests replicating the exact NTA exam environment for JEE Main/Advanced, NEET, and Olympiads with sub-second latency and cheat protection.',
-    capabilities: [
-      'Exact NTA question palette with review & mark states',
-      'Real-time live rank lists & multi-institute benchmarking',
-      'Detailed subject, speed & negative-marking analytics',
-      'Automated timer auto-submit with anti-tab switch detection'
-    ],
     tag: 'EXAM SIMULATION',
     badge: 'JEE / NEET Live Engine',
     imageSrc: '/modules/cbt.png',
-    imageAlt: 'CBT Mock Exam Platform Test Environment'
+    imageAlt: 'CBT Mock Exam Platform'
   },
   {
     id: 'omr-evaluation',
@@ -69,17 +51,10 @@ const MODULES_DATA: ModuleItem[] = [
     title: 'OMR SmartPhone Evaluation',
     subtitle: 'Instant Smartphone Camera OMR Scanner',
     keywords: ['MOBILE VISION', '99.8% ACCURACY', '1-CLICK SCORE'],
-    description: 'Grade physical bubble sheets in seconds using standard smartphone cameras. Eliminate expensive hardware scanners with computer vision processing.',
-    capabilities: [
-      '99.8% optical accuracy under normal lighting & tilts',
-      'Instant WhatsApp & SMS result scorecard distribution',
-      'Batch-evaluates 100+ sheets in under 5 minutes',
-      'Auto-generates student weakness & error heatmaps'
-    ],
     tag: 'COMPUTER VISION',
     badge: '99.8% AI Accuracy',
     imageSrc: '/modules/omr.jpg',
-    imageAlt: 'Smartphone OMR Evaluation Simulator'
+    imageAlt: 'Smartphone OMR Evaluation'
   },
   {
     id: 'erp-crm',
@@ -87,17 +62,10 @@ const MODULES_DATA: ModuleItem[] = [
     title: 'Institute ERP and CRM Suite',
     subtitle: 'Unified Campus Management & Admissions Funnel',
     keywords: ['FEE MANAGEMENT', 'ATTENDANCE', 'ADMISSIONS CRM'],
-    description: 'Complete institutional administration suite unifying fee collection, attendance registers, timetable automation, and high-conversion admissions CRM.',
-    capabilities: [
-      'Centralized admissions CRM with WhatsApp automated follow-ups',
-      'Fee ledger with installment plans & instant receipt generator',
-      '1-tap RFID, biometric & app-based attendance tracker',
-      'Multi-branch administrative oversight & executive analytics'
-    ],
     tag: 'ERP + CRM SUITE',
     badge: 'All-in-One Campus OS',
     imageSrc: '/modules/erp.jpg',
-    imageAlt: 'Institute ERP and CRM Suite Management Console'
+    imageAlt: 'Institute ERP and CRM Suite'
   }
 ];
 
@@ -265,7 +233,7 @@ export default function AcadOSModulesTimeline({ onExploreModule, onBookDemo }: A
                     className={`absolute left-6 md:left-1/2 -translate-x-1/2 z-20 flex items-center justify-center cursor-pointer transition-all duration-300 focus:outline-none ${
                       isActive ? 'scale-125' : 'hover:scale-110'
                     }`}
-                    style={{ top: '32px' }}
+                    style={{ top: '24px' }}
                   >
                     {/* Glowing outer ring when active */}
                     <div 
@@ -306,7 +274,7 @@ export default function AcadOSModulesTimeline({ onExploreModule, onBookDemo }: A
                           {module.keywords.map((kw, ki) => (
                             <span 
                               key={ki}
-                              className="text-xs lg:text-sm font-mono font-extrabold text-slate-700 tracking-wider bg-white/80 border border-slate-200/90 px-3 py-1 rounded-lg shadow-2xs"
+                              className="text-xs lg:text-sm font-mono font-extrabold text-slate-700 tracking-wider bg-white border border-slate-200 px-3 py-1 rounded-lg shadow-xs"
                             >
                               {kw}
                             </span>
@@ -320,10 +288,8 @@ export default function AcadOSModulesTimeline({ onExploreModule, onBookDemo }: A
                       /* DESKTOP & MOBILE: Module Card for steps 01, 03 */
                       <ModuleCard 
                         module={module}
-                        isRightSide={false}
                         isActive={isActive}
                         onExplore={() => onExploreModule && onExploreModule(module.id)}
-                        onDemo={onBookDemo}
                       />
                     )}
                   </div>
@@ -335,10 +301,8 @@ export default function AcadOSModulesTimeline({ onExploreModule, onBookDemo }: A
                       /* DESKTOP & MOBILE: Module Card for steps 02, 04 */
                       <ModuleCard 
                         module={module}
-                        isRightSide={true}
                         isActive={isActive}
                         onExplore={() => onExploreModule && onExploreModule(module.id)}
-                        onDemo={onBookDemo}
                       />
                     ) : (
                       /* DESKTOP RIGHT: Keyword tags for steps 01, 03 */
@@ -353,7 +317,7 @@ export default function AcadOSModulesTimeline({ onExploreModule, onBookDemo }: A
                           {module.keywords.map((kw, ki) => (
                             <span 
                               key={ki}
-                              className="text-xs lg:text-sm font-mono font-extrabold text-slate-700 tracking-wider bg-white/80 border border-slate-200/90 px-3 py-1 rounded-lg shadow-2xs"
+                              className="text-xs lg:text-sm font-mono font-extrabold text-slate-700 tracking-wider bg-white border border-slate-200 px-3 py-1 rounded-lg shadow-xs"
                             >
                               {kw}
                             </span>
@@ -408,124 +372,62 @@ export default function AcadOSModulesTimeline({ onExploreModule, onBookDemo }: A
 }
 
 // ======================================================================
-// MODULE CARD COMPONENT WITH REAL LAPTOP MOCKUP IMAGE
+// CLEAN BORDERLESS MODULE CARD (ONLY TITLE, IMAGE & EXPLORE BUTTON)
 // ======================================================================
 interface ModuleCardProps {
   module: ModuleItem;
-  isRightSide: boolean;
   isActive: boolean;
   onExplore?: () => void;
-  onDemo?: () => void;
 }
 
-function ModuleCard({ module, isRightSide, isActive, onExplore, onDemo }: ModuleCardProps) {
+function ModuleCard({ module, isActive, onExplore }: ModuleCardProps) {
   return (
-    <div 
-      className={`group relative bg-white rounded-3xl border transition-all duration-300 overflow-hidden text-left ${
-        isActive 
-          ? 'border-[#800000]/40 shadow-xl ring-1 ring-[#800000]/20 -translate-y-1' 
-          : 'border-slate-200/90 hover:border-slate-300 hover:shadow-lg shadow-sm'
-      }`}
-    >
-      {/* Speech-bubble notch pointing toward central timeline on desktop */}
-      <div 
-        className={`hidden md:block absolute top-7 w-3.5 h-3.5 bg-white transform rotate-45 border transition-colors ${
-          isActive ? 'border-[#800000]/30' : 'border-slate-200'
-        } ${
-          isRightSide 
-            ? '-left-[8px] border-b-0 border-r-0' 
-            : '-right-[8px] border-t-0 border-l-0'
-        }`}
-      />
-
-      {/* Top Header Row with Step Number & Tag */}
-      <div className="p-6 pb-4 border-b border-slate-100 flex items-center justify-between">
-        <div className="flex items-center gap-2.5">
-          <span className="text-xl sm:text-2xl font-mono font-black text-[#800000] tracking-tighter">
+    <div className="relative text-left space-y-4 group">
+      {/* Step Title & Category */}
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <span className="text-2xl sm:text-3xl font-mono font-black text-[#800000] tracking-tighter">
             {module.stepNumber}
           </span>
           <div>
-            <h4 className="text-lg sm:text-xl font-serif font-extrabold text-slate-900 tracking-tight leading-snug">
+            <h4 className="text-lg sm:text-xl font-serif font-extrabold text-slate-900 tracking-tight leading-snug group-hover:text-[#800000] transition-colors">
               {module.title}
             </h4>
-            <p className="text-[11px] text-slate-500 font-sans leading-tight font-medium">
+            <p className="text-xs text-slate-500 font-sans font-medium">
               {module.subtitle}
             </p>
           </div>
         </div>
 
-        {/* Category tag */}
-        <span className="text-[9px] font-mono font-bold uppercase tracking-widest px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200 shrink-0">
+        <span className="hidden sm:inline-block text-[9px] font-mono font-bold uppercase tracking-widest px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200 shrink-0">
           {module.tag}
         </span>
       </div>
 
-      {/* High-Resolution Laptop Mockup Image Area */}
-      <div className="p-3 sm:p-4 bg-slate-50/70 border-b border-slate-100 overflow-hidden">
-        <div className="relative rounded-2xl overflow-hidden border border-slate-200/80 bg-white shadow-inner group/img">
-          <img 
-            src={module.imageSrc} 
-            alt={module.imageAlt}
-            className="w-full h-auto object-cover transform group-hover/img:scale-[1.02] transition-transform duration-500 ease-out"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity pointer-events-none" />
-        </div>
+      {/* Clean Laptop Mockup Image (Without inner border box) */}
+      <div 
+        onClick={onExplore}
+        className="relative rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300 transform group-hover:-translate-y-1"
+      >
+        <img 
+          src={module.imageSrc} 
+          alt={module.imageAlt}
+          className="w-full h-auto object-cover rounded-2xl"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded-2xl" />
       </div>
 
-      {/* Card Content & Capabilities List */}
-      <div className="p-6 space-y-4">
-        {/* Description */}
-        <p className="text-slate-600 text-xs sm:text-[13px] leading-relaxed">
-          {module.description}
-        </p>
-
-        {/* Capabilities Checklist */}
-        <div className="space-y-2 pt-1 border-t border-slate-100">
-          <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-400 block pt-1">
-            KEY CAPABILITIES
-          </span>
-          <ul className="space-y-2">
-            {module.capabilities.map((cap, ci) => (
-              <li key={ci} className="flex items-start gap-2.5 text-xs text-slate-700">
-                <CheckCircle2 className="w-4 h-4 text-[#800000] shrink-0 mt-0.5" />
-                <span className="leading-snug">{cap}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Mobile Keyword tags (visible only on small screens) */}
-        <div className="md:hidden flex flex-wrap gap-1.5 pt-2 border-t border-slate-100">
-          {module.keywords.map((kw, ki) => (
-            <span 
-              key={ki}
-              className="text-[9px] font-mono font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded"
-            >
-              {kw}
-            </span>
-          ))}
-        </div>
-
-        {/* Action Button */}
-        <div className="pt-2 flex items-center justify-between gap-3">
-          <button
-            onClick={onExplore}
-            className="text-xs font-bold text-[#800000] hover:text-[#550000] flex items-center gap-1 group/btn transition-colors cursor-pointer"
-          >
-            <span>Explore {module.title}</span>
-            <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-          </button>
-
-          <button
-            onClick={onDemo}
-            className="text-[11px] font-mono font-bold text-slate-500 hover:text-slate-900 px-3 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 transition-colors cursor-pointer"
-          >
-            Try Demo
-          </button>
-        </div>
+      {/* Explore Button */}
+      <div className="pt-1 flex items-center justify-start">
+        <button
+          onClick={onExplore}
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#800000] hover:bg-[#660000] text-white text-xs font-bold uppercase tracking-wider shadow-sm hover:shadow transition-all active:scale-[0.98] cursor-pointer group/btn"
+        >
+          <span>Explore {module.title}</span>
+          <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+        </button>
       </div>
-
     </div>
   );
 }
