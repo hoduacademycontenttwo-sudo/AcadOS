@@ -34,171 +34,7 @@ import AcadBot from './components/AcadBot';
 import ClientsSection from './components/ClientsSection';
 import ModuleVideoPage from './components/ModuleVideoPage';
 
-/* ── Hero Product Showcase Data ─────────────────────────────── */
-const HERO_MODULE_SHOWCASE = [
-  {
-    id: 'testmaker',
-    label: 'TestMaker Generator',
-    step: '01',
-    tag: 'EXAM AUTOMATION',
-    headline: 'AI Paper & Question Bank Generator',
-    image: '/modules/testmaker.jpg',
-    badge: '600K+ Questions',
-    metric: '40 Qs in 1.4s',
-  },
-  {
-    id: 'practice-cbt',
-    label: 'CBT Simulator',
-    step: '02',
-    tag: 'NTA SIMULATION',
-    headline: 'Real-Time Computer Based Test Platform',
-    image: '/modules/cbt.png',
-    badge: 'JEE / NEET Engine',
-    metric: 'Sub-second Latency',
-  },
-  {
-    id: 'omr-evaluation',
-    label: 'OMR Evaluation',
-    step: '03',
-    tag: 'COMPUTER VISION',
-    headline: 'Smartphone Bubble Sheet Scanner',
-    image: '/modules/omr.jpg',
-    badge: '99.8% AI Accuracy',
-    metric: '100 Sheets / 5 Min',
-  },
-  {
-    id: 'erp-crm',
-    label: 'Institute ERP + CRM',
-    step: '04',
-    tag: 'CAMPUS OS',
-    headline: 'Unified Campus Management & Funnel',
-    image: '/modules/erp.jpg',
-    badge: 'All-in-One ERP',
-    metric: '40% Time Saved',
-  },
-];
 
-function HeroProductShowcase({ onExplore }: { onExplore?: (id: string) => void }) {
-  const [activeIdx, setActiveIdx] = React.useState(0);
-  const [isPaused, setIsPaused] = React.useState(false);
-  const current = HERO_MODULE_SHOWCASE[activeIdx];
-
-  React.useEffect(() => {
-    if (isPaused) return;
-    const timer = setInterval(() => {
-      setActiveIdx((prev) => (prev + 1) % HERO_MODULE_SHOWCASE.length);
-    }, 4500);
-    return () => clearInterval(timer);
-  }, [isPaused]);
-
-  return (
-    <div 
-      className="w-full max-w-5xl mx-auto pt-8 sm:pt-12 text-left"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
-      {/* Module Selector Pill Bar */}
-      <div className="flex items-center justify-center gap-1.5 sm:gap-2.5 p-1.5 rounded-2xl bg-black/25 backdrop-blur-md border border-white/15 max-w-2xl mx-auto mb-6 flex-wrap">
-        {HERO_MODULE_SHOWCASE.map((item, i) => (
-          <button
-            key={item.id}
-            onClick={() => {
-              setActiveIdx(i);
-              setIsPaused(true);
-            }}
-            className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center gap-2 cursor-pointer ${
-              i === activeIdx
-                ? 'bg-white text-maroon-900 shadow-md font-bold scale-[1.02]'
-                : 'text-white/70 hover:text-white hover:bg-white/10'
-            }`}
-          >
-            <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${
-              i === activeIdx ? 'bg-maroon-100 text-maroon-900 font-bold' : 'bg-white/10 text-white/60'
-            }`}>
-              {item.step}
-            </span>
-            <span>{item.label}</span>
-          </button>
-        ))}
-      </div>
-
-      {/* Main Glassmorphic Showcase Stage */}
-      <div className="relative rounded-2xl sm:rounded-3xl bg-slate-900/90 border border-white/20 p-2.5 sm:p-4 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] backdrop-blur-xl group">
-        {/* Glow backlight */}
-        <div className="absolute -inset-1 bg-gradient-to-r from-maroon-500/30 via-gold-500/20 to-maroon-600/30 rounded-3xl blur-2xl -z-10 opacity-70 group-hover:opacity-100 transition-opacity" />
-
-        {/* Browser Top Bar */}
-        <div className="flex items-center justify-between px-3 sm:px-4 py-2 border-b border-white/10 bg-slate-950/60 rounded-t-xl mb-2 sm:mb-3">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-            <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-            <span className="ml-2 text-[10px] sm:text-xs font-mono text-white/50 hidden sm:inline-block">
-              portal.acados.app / {current.id}
-            </span>
-          </div>
-          
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono font-bold text-amber-300 bg-amber-400/10 px-2.5 py-0.5 rounded-full border border-amber-400/20">
-              {current.badge}
-            </span>
-            <div className="flex items-center gap-1.5 text-[9px] font-mono text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              LIVE
-            </div>
-          </div>
-        </div>
-
-        {/* Mockup Image Display Container */}
-        <div 
-          onClick={() => onExplore && onExplore(current.id)}
-          className="relative rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer bg-slate-950 aspect-video max-h-[520px] flex items-center justify-center group/img shadow-inner"
-        >
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={current.id}
-              src={current.image}
-              alt={current.headline}
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.02 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
-              className="w-full h-full object-cover object-center rounded-xl sm:rounded-2xl"
-            />
-          </AnimatePresence>
-
-          {/* Hover overlay hint */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity flex items-end justify-between p-4 sm:p-6">
-            <div>
-              <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-maroon-300">
-                {current.tag}
-              </p>
-              <h5 className="text-white font-bold text-sm sm:text-lg">
-                {current.headline}
-              </h5>
-            </div>
-            <span className="inline-flex items-center gap-1 text-xs font-bold text-white bg-[#800000] hover:bg-[#660000] px-4 py-2 rounded-xl shadow-lg transition-transform group-hover/img:translate-y-0 translate-y-2">
-              Explore Module <ArrowRight className="w-3.5 h-3.5" />
-            </span>
-          </div>
-        </div>
-
-        {/* Dynamic Progress Indicator */}
-        {!isPaused && (
-          <div className="h-1 bg-white/10 rounded-full mt-3 overflow-hidden">
-            <motion.div
-              key={activeIdx}
-              className="h-full bg-gradient-to-r from-maroon-400 to-amber-300 rounded-full"
-              initial={{ width: '0%' }}
-              animate={{ width: '100%' }}
-              transition={{ duration: 4.5, ease: 'linear' }}
-            />
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
 
 export default function App() {
   const [page, setPage] = useState<PageId>('home');
@@ -657,41 +493,34 @@ export default function App() {
               className="space-y-16 md:space-y-24 pb-16"
             >
               
-              {/* HERO SECTION */}
-              <section className="relative overflow-hidden" id="hero-block">
-                {/* Full-bleed light maroon bg */}
-                <div className="absolute inset-0 bg-maroon-700" />
-                {/* Lighter maroon glow left */}
-                <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_top_left,rgba(158,27,27,0.5),transparent_70%)] pointer-events-none" />
-                {/* Gold shimmer right */}
-                <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_bottom_right,rgba(223,178,113,0.12),transparent_70%)] pointer-events-none" />
+              {/* COMPACT HERO SECTION */}
+              <section className="relative overflow-hidden py-12 sm:py-16 md:py-20" id="hero-block">
+                {/* Full-bleed rich maroon bg */}
+                <div className="absolute inset-0 bg-gradient-to-b from-maroon-800 via-maroon-700 to-maroon-800" />
+                {/* Lighter maroon glow center */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(158,27,27,0.5),transparent_70%)] pointer-events-none" />
                 {/* Subtle grid texture */}
                 <div className="absolute inset-0 opacity-[0.04]" style={{backgroundImage: 'linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)', backgroundSize: '60px 60px'}} />
 
-                <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-24 text-center">
-                  <div className="space-y-6 sm:space-y-8 flex flex-col items-center">
+                <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                  <div className="space-y-5 sm:space-y-6 flex flex-col items-center">
 
-                    {/* Top Eyebrow Glassmorphic Pill */}
-                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-white text-xs font-semibold shadow-xs">
-                      <span className="h-2 w-2 rounded-full bg-amber-400 animate-pulse" />
-                      <span className="tracking-wide">AI-POWERED EDUCATIONAL OPERATING SYSTEM</span>
-                    </div>
-
-                    {/* Main Headline */}
-                    <h1 className="text-4xl sm:text-6xl lg:text-[4.75rem] font-serif font-extrabold text-white leading-[1.06] tracking-tight max-w-4xl">
-                      The Academic Operating System <em className="not-italic text-maroon-200">for Modern Institutions.</em>
+                    {/* Main Headline in 2 Clean Lines */}
+                    <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-serif font-extrabold text-white leading-[1.15] tracking-tight max-w-3xl">
+                      The Academic Operating System <br className="hidden sm:inline" />
+                      <em className="not-italic text-maroon-200">for Modern Institutions.</em>
                     </h1>
 
                     {/* Subtitle */}
-                    <p className="text-white/80 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed body-reading">
+                    <p className="text-white/80 text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed body-reading">
                       A connected learning infrastructure — rich content, intelligent test creation, adaptive practice, computer-based testing, and seamless operations. One platform, your brand.
                     </p>
 
                     {/* CTA row — centered */}
-                    <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-1">
+                    <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
                       <button
                         onClick={() => setIsDemoModalOpen(true)}
-                        className="bg-white text-maroon-900 hover:bg-slate-100 font-extrabold text-xs sm:text-sm py-3.5 px-6 sm:px-8 rounded-xl transition-all active:scale-[0.98] flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl cursor-pointer"
+                        className="bg-white text-maroon-900 hover:bg-slate-100 font-extrabold text-xs sm:text-sm py-3 px-6 sm:px-7 rounded-xl transition-all active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg cursor-pointer"
                       >
                         Book Live Demo <ArrowRight className="w-4 h-4" />
                       </button>
@@ -700,34 +529,25 @@ export default function App() {
                           const el = document.getElementById('platform-ecosystem-timeline');
                           if (el) el.scrollIntoView({ behavior: 'smooth' });
                         }}
-                        className="bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold text-xs sm:text-sm py-3.5 px-6 sm:px-8 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer backdrop-blur-md"
+                        className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-xs sm:text-sm py-3 px-6 sm:px-7 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer backdrop-blur-md"
                       >
                         Explore 4 Core Modules
                       </button>
                     </div>
 
                     {/* Proof stats strip */}
-                    <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-12 pt-6 sm:pt-8 border-t border-white/15 w-full max-w-2xl mx-auto">
+                    <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 pt-6 border-t border-white/15 w-full max-w-lg mx-auto">
                       {[
-                        { num: '6 Lakh+', label: 'Verified Questions' },
+                        { num: '6 Lakh+', label: 'Questions' },
                         { num: '15+', label: 'Exams Mapped' },
-                        { num: '100%', label: 'Your White-Label Brand' },
+                        { num: '100%', label: 'Your Brand' },
                       ].map((stat, i) => (
-                        <div key={i} className={`text-center ${i > 0 ? 'sm:pl-10 sm:border-l sm:border-white/15' : ''}`}>
-                          <span className="block text-2xl sm:text-3xl font-black text-white leading-none tracking-tight">{stat.num}</span>
-                          <span className="text-xs text-white/70 font-medium mt-1.5 block">{stat.label}</span>
+                        <div key={i} className={`text-center ${i > 0 ? 'sm:pl-8 sm:border-l sm:border-white/15' : ''}`}>
+                          <span className="block text-xl sm:text-2xl font-black text-white leading-none">{stat.num}</span>
+                          <span className="text-[11px] text-white/70 font-medium mt-1 block">{stat.label}</span>
                         </div>
                       ))}
                     </div>
-
-                    {/* Grand Product Showcase Stage */}
-                    <HeroProductShowcase onExplore={(modId) => {
-                      if (modId === 'erp-crm') {
-                        setPreviewModule('erp-crm');
-                      } else {
-                        setPreviewModule(modId as any);
-                      }
-                    }} />
 
                   </div>
                 </div>
