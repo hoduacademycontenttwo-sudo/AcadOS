@@ -312,3 +312,24 @@
   0%, 100% { opacity: 0.18; transform: scale(1); }
   50%       { opacity: 0.32; transform: scale(1.12); }
 }
+
+/* ─── Vertical Marquee Scroll for Before/After comparison ─── */
+@keyframes marquee-vertical {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical 28s linear infinite;
+}
+
+@media (hover: hover) {
+  .animate-marquee-vertical:hover {
+    animation-play-state: paused;
+  }
+}
+
