@@ -830,57 +830,49 @@ export default function App() {
                 {/* Subtle grid texture */}
                 <div className="absolute inset-0 opacity-[0.04]" style={{backgroundImage: 'linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)', backgroundSize: '60px 60px'}} />
 
-                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 md:py-28 lg:py-32">
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+                <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 md:py-28 lg:py-32 text-center">
+                  <div className="space-y-6 sm:space-y-8 flex flex-col items-center">
 
-                    {/* LEFT: Copy */}
-                    <div className="lg:col-span-6 space-y-5 sm:space-y-8">
-                     
+                    <h1 className="text-4xl sm:text-6xl lg:text-[4.75rem] font-serif font-extrabold text-white leading-[1.08] tracking-tight max-w-3xl">
+                      The Academic Operating System <em className="not-italic text-maroon-300">for Modern Institutions.</em>
+                    </h1>
 
-                      <h1 className="text-4xl sm:text-6xl lg:text-[4.75rem] font-serif font-extrabold text-white leading-[1.05]" style={{letterSpacing:'-0.03em'}}>
-                        The Academic Operating System <em className="not-italic text-maroon-300">for Modern Institutions.</em>
-                      </h1>
+                    <p className="text-white/80 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed body-reading">
+                      A connected learning infrastructure — rich content, intelligent test creation, adaptive practice, computer-based testing, and seamless operations. One platform, your brand.
+                    </p>
 
-                      <p className="text-white/70 text-sm sm:text-[1.05rem] max-w-lg body-reading">
-                        A connected learning infrastructure — rich content, intelligent test creation, adaptive practice, computer-based testing, and seamless operations. One platform, your brand.
-                      </p>
-
-                      {/* CTA row — horizontal on all sizes */}
-                      <div className="flex flex-row gap-2 sm:gap-3">
-                        <button
-                          onClick={() => setIsDemoModalOpen(true)}
-                          className="flex-1 sm:flex-none bg-white text-maroon-800 hover:bg-slate-100 font-bold text-xs sm:text-sm py-3 sm:py-3.5 px-4 sm:px-7 rounded-xl transition-all active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg"
-                        >
-                          Book Demo <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                        </button>
-                        <button
-                          onClick={() => {
-                            const el = document.getElementById('modules-container');
-                            if (el) el.scrollIntoView({ behavior: 'smooth' });
-                          }}
-                          className="flex-1 sm:flex-none bg-white/5 hover:bg-white/10 border border-white/15 text-white font-semibold text-xs sm:text-sm py-3 sm:py-3.5 px-4 sm:px-7 rounded-xl transition-all flex items-center justify-center gap-2"
-                        >
-                          Explore Modules
-                        </button>
-                      </div>
-
-                      {/* Proof strip */}
-                      <div className="flex items-center gap-5 sm:gap-8 pt-4 sm:pt-6 border-t border-white/10">
-                        {[
-                          { num: '6 Lakh+', label: 'Questions' },
-                          { num: '15+', label: 'Exams Mapped' },
-                          { num: '100%', label: 'Your Brand' },
-                        ].map((stat, i) => (
-                          <div key={i} className={i > 0 ? 'pl-5 sm:pl-8 border-l border-white/10' : ''}>
-                            <span className="block text-xl sm:text-2xl font-black text-white leading-none">{stat.num}</span>
-                            <span className="text-[10px] sm:text-xs text-white/60 font-medium mt-1 block">{stat.label}</span>
-                          </div>
-                        ))}
-                      </div>
+                    {/* CTA row — centered */}
+                    <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-2">
+                      <button
+                        onClick={() => setIsDemoModalOpen(true)}
+                        className="bg-white text-maroon-800 hover:bg-slate-100 font-bold text-xs sm:text-sm py-3.5 px-6 sm:px-8 rounded-xl transition-all active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg cursor-pointer"
+                      >
+                        Book Demo <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                      </button>
+                      <button
+                        onClick={() => {
+                          const el = document.getElementById('platform-ecosystem-timeline');
+                          if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold text-xs sm:text-sm py-3.5 px-6 sm:px-8 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
+                      >
+                        Explore Modules
+                      </button>
                     </div>
 
-                    {/* RIGHT: Module Interface Carousel */}
-                    <HeroModuleCarousel />
+                    {/* Proof strip — centered */}
+                    <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-12 pt-8 sm:pt-10 border-t border-white/15 w-full max-w-xl mx-auto">
+                      {[
+                        { num: '6 Lakh+', label: 'Questions' },
+                        { num: '15+', label: 'Exams Mapped' },
+                        { num: '100%', label: 'Your Brand' },
+                      ].map((stat, i) => (
+                        <div key={i} className={`text-center ${i > 0 ? 'sm:pl-10 sm:border-l sm:border-white/15' : ''}`}>
+                          <span className="block text-2xl sm:text-3xl font-black text-white leading-none">{stat.num}</span>
+                          <span className="text-xs text-white/70 font-medium mt-1.5 block">{stat.label}</span>
+                        </div>
+                      ))}
+                    </div>
 
                   </div>
                 </div>
