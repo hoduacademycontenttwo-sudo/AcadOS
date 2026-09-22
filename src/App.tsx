@@ -180,14 +180,14 @@ const HERO_SLIDES = [
   {
     label: 'ERP + CRM',
     tag: 'Institute Management',
-    url: 'portal.acados.app — Hodu Academy',
+    url: 'portal.acados.app — Hoducation',
     content: (
       <div className="bg-white rounded-b-xl overflow-hidden">
         {/* Top nav bar */}
         <div className="flex items-center gap-2 px-3 py-1.5 border-b border-slate-200 bg-white">
-          <div className="w-5 h-5 rounded-full bg-[#800000] flex items-center justify-center text-white text-[7px] font-black">HA</div>
+          <div className="w-5 h-5 rounded-full bg-[#800000] flex items-center justify-center text-white text-[7px] font-black">HT</div>
           <div>
-            <p className="text-[8px] font-bold text-slate-800">Hodu Academy</p>
+            <p className="text-[8px] font-bold text-slate-800">Hoducation</p>
             <p className="text-[6px] text-slate-400 uppercase tracking-wider">Academic Enterprise Suite</p>
           </div>
           <div className="ml-auto flex gap-1">
@@ -396,16 +396,16 @@ export default function App() {
 
   // Dynamic SEO Page Title and Description Updates to optimize search relevance
   useEffect(() => {
-    let title = 'AcadOS — Ultimate Academic Operating System | Powered by Hodu Academy';
+    let title = 'AcadOS — Ultimate Academic Operating System | Powered by Hoducation Technologies';
     let description = 'AcadOS is a comprehensive academic operating system providing digital library resources, question banks, online CBT testing, OMR scanning, and educational ERP tools for schools and coaching institutes.';
 
     switch (page) {
       case 'home':
-        title = 'AcadOS — The Academic Operating System by Hodu Academy';
+        title = 'AcadOS — The Academic Operating System by Hoducation Technologies';
         description = 'Empower schools & coaching institutes with premium educational technology. High-quality TestMaker, digital learning tools, ERP & mock CBT exam systems.';
         break;
       case 'schools':
-        title = 'School Academic Solutions — AcadOS by Hodu Academy';
+        title = 'School Academic Solutions — AcadOS by Hoducation Technologies';
         description = 'Standardise, benchmark, and scale academic excellence across K-12 school systems. Unified syllabus trackers, digital content, and structured question papers.';
         break;
       case 'coaching':
@@ -437,11 +437,11 @@ export default function App() {
         description = 'Explore high-quality, pre-loaded educational content and textbooks designed to align with core pedagogical standards and curricula.';
         break;
       case 'about':
-        title = 'About Hodu Academy & AcadOS Vision';
+        title = 'About Hoducation Technologies & AcadOS Vision';
         description = 'Learn about our mission to revolutionize global academic administrative processes with scalable, state-of-the-art educational operating systems.';
         break;
       case 'contact':
-        title = 'Contact Hodu Academy — Book your AcadOS Demo';
+        title = 'Contact Hoducation Technologies — Book your AcadOS Demo';
         description = 'Get in touch with educational technology experts. Request a personalized live platform demo for your K-12 schools or coaching institutes.';
         break;
       default:
@@ -1852,7 +1852,7 @@ export default function App() {
            <p className="flex items-center gap-2 text-slate-500">
   <span>📧 E-mail:</span> 
   <a 
-    href="mailto:hoducationtechnologies@gmail.com?subject=Inquiry%20from%20Website&body=Hi%20Hodu%20Academy%20Team%2C%0A%0AI%20would%20like%20to%20know%20more%20about..." 
+    href="mailto:hoducationtechnologies@gmail.com?subject=Inquiry%20from%20Website&body=Hi%20Hoducation%20Technologies%20Team%2C%0A%0AI%20would%20like%20to%20know%20more%20about..." 
     className="font-bold break-all hover:underline hover:text-slate-700"
   >
     hoducationtechnologies@gmail.com
