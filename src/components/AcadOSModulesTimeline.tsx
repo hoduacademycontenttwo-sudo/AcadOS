@@ -23,8 +23,19 @@ interface ModuleItem {
 
 const MODULES_DATA: ModuleItem[] = [
   {
-    id: 'testmaker',
+    id: 'learners-hub',
     stepNumber: '01 —',
+    title: 'Learners Hub Digital Library',
+    subtitle: 'Pre-configured Curriculum & Comprehensive Content Catalog',
+    keywords: ['DIGITAL CATALOG', 'NCERT MAPPING', 'CLASS ACTION'],
+    tag: 'DIGITAL LIBRARY',
+    badge: '500K+ Resources Mapped',
+    imageSrc: '/modules/learners-hub.jpg',
+    imageAlt: 'Learners Hub Digital Library'
+  },
+  {
+    id: 'testmaker',
+    stepNumber: '02 —',
     title: 'TestMaker Paper Generator',
     subtitle: 'AI-Powered Exam Paper & Blueprint Generator',
     keywords: ['QUESTION BANK', 'SMART PAPERS', 'BLUEPRINT'],
@@ -35,7 +46,7 @@ const MODULES_DATA: ModuleItem[] = [
   },
   {
     id: 'practice-cbt',
-    stepNumber: '02 —',
+    stepNumber: '03 —',
     title: 'CBT Mock Exam Platform',
     subtitle: 'NTA-Grade Computer Based Test Portal',
     keywords: ['NTA SIMULATION', 'LIVE TIMERS', 'REAL-TIME RANKS'],
@@ -46,7 +57,7 @@ const MODULES_DATA: ModuleItem[] = [
   },
   {
     id: 'omr-evaluation',
-    stepNumber: '03 —',
+    stepNumber: '04 —',
     title: 'OMR SmartPhone Evaluation',
     subtitle: 'Instant Smartphone Camera OMR Scanner',
     keywords: ['MOBILE VISION', '99.8% ACCURACY', '1-CLICK SCORE'],
@@ -57,7 +68,7 @@ const MODULES_DATA: ModuleItem[] = [
   },
   {
     id: 'erp-crm',
-    stepNumber: '04 —',
+    stepNumber: '05 —',
     title: 'Institute ERP and CRM Suite',
     subtitle: 'Unified Campus Management & Admissions Funnel',
     keywords: ['FEE MANAGEMENT', 'ATTENDANCE', 'ADMISSIONS CRM'],
@@ -164,7 +175,7 @@ export default function AcadOSModulesTimeline({ onExploreModule, onBookDemo }: A
 
           {/* Main Title */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-slate-900 tracking-tight leading-[1.1]">
-            One OS. Four Modules.{' '}
+            One OS. Five Modules.{' '}
             <span className="relative inline-block text-[#800000]">
               Zero Silos.
               <svg className="absolute -bottom-1 left-0 w-full h-2 text-[#800000]/25" viewBox="0 0 100 8" preserveAspectRatio="none">
@@ -175,7 +186,7 @@ export default function AcadOSModulesTimeline({ onExploreModule, onBookDemo }: A
 
           {/* Subtitle */}
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed pt-1 max-w-2xl mx-auto">
-            Explore the interconnected educational operating system powering exams, ERP, admissions, and evaluation.
+            Explore the interconnected educational operating system powering content, assessments, CBT exams, ERP, admissions, and smartphone evaluation.
           </p>
         </div>
 
@@ -197,7 +208,7 @@ export default function AcadOSModulesTimeline({ onExploreModule, onBookDemo }: A
             />
           </div>
 
-          {/* 4 Alternating Steps */}
+          {/* 5 Alternating Steps */}
           <div className="space-y-16 md:space-y-28">
             {MODULES_DATA.map((module, index) => {
               const isEven = index % 2 === 1; // Step 02, 04 on desktop right
@@ -242,23 +253,29 @@ export default function AcadOSModulesTimeline({ onExploreModule, onBookDemo }: A
                     </div>
                   </button>
 
-                  {/* LEFT SIDE (Desktop) */}
-                  {/* If Even: Shows Keywords on Left | If Odd: Shows Card on Left */}
-                  <div className={`pl-16 md:pl-0 ${isEven ? 'md:order-1' : 'md:order-1'}`}>
-                    {isEven ? (
-                      /* DESKTOP LEFT: Keyword tags for steps 02, 04 */
-                      <div className="hidden md:flex flex-col items-end text-right pr-8 lg:pr-12 space-y-3">
-                        <div className="inline-flex items-center gap-2">
+                  {/* LEFT SIDE ON DESKTOP */}
+                  <div className="pl-16 md:pl-0">
+                    {!isEven ? (
+                      // Odd steps (01, 03, 05): Card on Left
+                      <ModuleCard 
+                        module={module} 
+                        isActive={isActive} 
+                        onExplore={() => onExploreModule?.(module.id)} 
+                      />
+                    ) : (
+                      // Even steps (02, 04): Keywords/Features on Left
+                      <div className="hidden md:flex flex-col items-end justify-center text-right space-y-4 pr-10">
+                        <div className="flex items-center gap-2">
                           <span className="text-[11px] font-mono font-bold text-[#800000] tracking-widest uppercase">
                             KEYWORD ARCHITECTURE
                           </span>
-                          <span className="w-6 h-[2px] bg-[#800000]" />
+                          <span className="w-4 h-[2px] bg-[#800000]" />
                         </div>
-                        <div className="flex flex-col items-end gap-1.5">
-                          {module.keywords.map((kw, ki) => (
+                        <div className="flex flex-wrap justify-end gap-2 max-w-sm">
+                          {module.keywords.map((kw, kwIdx) => (
                             <span 
-                              key={ki}
-                              className="text-xs lg:text-sm font-mono font-extrabold text-slate-700 tracking-wider bg-white border border-slate-200 px-3 py-1 rounded-lg shadow-xs"
+                              key={kwIdx}
+                              className="text-xs font-mono font-bold text-slate-800 bg-white border border-slate-200 px-3.5 py-1.5 rounded-lg shadow-2xs uppercase tracking-wider"
                             >
                               {kw}
                             </span>
@@ -268,40 +285,32 @@ export default function AcadOSModulesTimeline({ onExploreModule, onBookDemo }: A
                           {module.badge}
                         </span>
                       </div>
-                    ) : (
-                      /* DESKTOP & MOBILE: Module Card for steps 01, 03 */
-                      <ModuleCard 
-                        module={module}
-                        isActive={isActive}
-                        onExplore={() => onExploreModule && onExploreModule(module.id)}
-                      />
                     )}
                   </div>
 
-                  {/* RIGHT SIDE (Desktop) */}
-                  {/* If Even: Shows Card on Right | If Odd: Shows Keywords on Right */}
-                  <div className={`pl-16 md:pl-0 ${isEven ? 'md:order-2' : 'md:order-2'}`}>
+                  {/* RIGHT SIDE ON DESKTOP */}
+                  <div className="pl-16 md:pl-0">
                     {isEven ? (
-                      /* DESKTOP & MOBILE: Module Card for steps 02, 04 */
+                      // Even steps (02, 04): Card on Right
                       <ModuleCard 
-                        module={module}
-                        isActive={isActive}
-                        onExplore={() => onExploreModule && onExploreModule(module.id)}
+                        module={module} 
+                        isActive={isActive} 
+                        onExplore={() => onExploreModule?.(module.id)} 
                       />
                     ) : (
-                      /* DESKTOP RIGHT: Keyword tags for steps 01, 03 */
-                      <div className="hidden md:flex flex-col items-start text-left pl-8 lg:pl-12 space-y-3">
-                        <div className="inline-flex items-center gap-2">
-                          <span className="w-6 h-[2px] bg-[#800000]" />
+                      // Odd steps (01, 03, 05): Keywords/Features on Right
+                      <div className="hidden md:flex flex-col items-start justify-center text-left space-y-4 pl-10">
+                        <div className="flex items-center gap-2">
+                          <span className="w-4 h-[2px] bg-[#800000]" />
                           <span className="text-[11px] font-mono font-bold text-[#800000] tracking-widest uppercase">
                             KEYWORD ARCHITECTURE
                           </span>
                         </div>
-                        <div className="flex flex-col items-start gap-1.5">
-                          {module.keywords.map((kw, ki) => (
+                        <div className="flex flex-wrap justify-start gap-2 max-w-sm">
+                          {module.keywords.map((kw, kwIdx) => (
                             <span 
-                              key={ki}
-                              className="text-xs lg:text-sm font-mono font-extrabold text-slate-700 tracking-wider bg-white border border-slate-200 px-3 py-1 rounded-lg shadow-xs"
+                              key={kwIdx}
+                              className="text-xs font-mono font-bold text-slate-800 bg-white border border-slate-200 px-3.5 py-1.5 rounded-lg shadow-2xs uppercase tracking-wider"
                             >
                               {kw}
                             </span>
@@ -329,7 +338,7 @@ export default function AcadOSModulesTimeline({ onExploreModule, onBookDemo }: A
           
           <div className="space-y-2 max-w-xl">
             <h3 className="text-xl sm:text-2xl font-serif font-extrabold text-slate-900 tracking-tight">
-              Ready to experience all 4 modules configured for your institute?
+              Ready to experience all 5 modules configured for your institute?
             </h3>
             <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
               Book a live 1-on-1 walkthrough. We'll set up your white-labelled portal with your logo and syllabus in 48 hours.
@@ -379,13 +388,9 @@ function ModuleCard({ module, isActive, onExplore }: ModuleCardProps) {
             </p>
           </div>
         </div>
-
-        <span className="hidden sm:inline-block text-[9px] font-mono font-bold uppercase tracking-widest px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200 shrink-0">
-          {module.tag}
-        </span>
       </div>
 
-      {/* Clean Laptop Mockup Image (Without inner border box) */}
+      {/* Clean Laptop Mockup Image */}
       <div 
         onClick={onExplore}
         className="relative rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300 transform group-hover:-translate-y-1"
@@ -396,17 +401,16 @@ function ModuleCard({ module, isActive, onExplore }: ModuleCardProps) {
           className="w-full h-auto object-cover rounded-2xl"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded-2xl" />
       </div>
 
-      {/* Explore Button */}
-      <div className="pt-1 flex items-center justify-start">
+      {/* Explore Module Action Button */}
+      <div className="pt-1">
         <button
           onClick={onExplore}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#800000] hover:bg-[#660000] text-white text-xs font-bold uppercase tracking-wider shadow-sm hover:shadow transition-all active:scale-[0.98] cursor-pointer group/btn"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#800000] hover:bg-[#660000] text-white text-xs font-bold uppercase tracking-wider shadow-sm transition-all duration-200 active:scale-95 cursor-pointer"
         >
-          <span>Explore {module.title}</span>
-          <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+          <span>EXPLORE {module.title.toUpperCase()}</span>
+          <ArrowUpRight className="w-3.5 h-3.5" />
         </button>
       </div>
     </div>

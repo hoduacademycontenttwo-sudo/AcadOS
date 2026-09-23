@@ -557,7 +557,7 @@ export default function App() {
                         }}
                         className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-xs sm:text-sm py-3 px-6 sm:px-7 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer backdrop-blur-md"
                       >
-                        Explore 4 Core Modules
+                        Explore 5 Core Modules
                       </button>
                     </div>
 
