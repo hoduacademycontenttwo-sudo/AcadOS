@@ -14,7 +14,6 @@ import TestMakerPlayground from './components/TestMakerPlayground';
 import CBTPlayground from './components/CBTPlayground';
 import DemoModal from './components/DemoModal';
 import AcadOSModulesTimeline from './components/AcadOSModulesTimeline';
-import ProblemStatement from './components/ProblemStatement';
 import BeforeAfterSlider from './components/BeforeAfterSlider';
 import ContentLibraryTabs from './components/ContentLibraryTabs';
 import OMREvaluationMicroDemo from './components/OMREvaluationMicroDemo';
@@ -553,11 +552,6 @@ export default function App() {
                   </div>
                 </div>
               </section>
-
-              {/* PROBLEM STATEMENT: ACADEMIC BOTTLENECKS & OPERATIONAL FRICTION */}
-              <ProblemStatement 
-                onBookDemo={() => setIsDemoModalOpen(true)}
-              />
 
               {/* ACADOS 4 CORE MODULES INTERACTIVE TIMELINE */}
               <AcadOSModulesTimeline 

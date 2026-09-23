@@ -175,6 +175,48 @@ Respond in a warm, helpful, concise tone. Use bullet points when listing feature
   }
 });
 
+import { processContactLeadPipeline, ContactLeadPayload } from "./server/resend";
+
+// Lead Generation & Dual-Email Automation Pipeline with Resend API
+app.post("/api/contact", async (req, res) => {
+  try {
+    const body: ContactLeadPayload = req.body || {};
+    const { firstName, workEmail, companyName } = body;
+
+    // Validate mandatory fields
+    if (!firstName || !workEmail || !companyName) {
+      return res.status(400).json({
+        error: "Missing required fields: firstName, workEmail, and companyName are required.",
+        required: ["firstName", "workEmail", "companyName"]
+      });
+    }
+
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(workEmail)) {
+      return res.status(400).json({ error: "Invalid workEmail format." });
+    }
+
+    console.log(`[AcadOS Lead] Processing lead for ${firstName} (${companyName}) - ${workEmail}`);
+
+    // Execute 3-step automated workflow
+    const result = await processContactLeadPipeline(body);
+
+    console.log(`[AcadOS Lead] Lead processed successfully:`, result);
+
+    res.status(200).json({
+      success: true,
+      message: "Lead registered successfully, admin notified and confirmation email dispatched.",
+      data: result
+    });
+  } catch (error: any) {
+    console.error("[AcadOS Lead] Pipeline error:", error);
+    res.status(500).json({
+      error: error.message || "An error occurred while executing lead automation pipeline."
+    });
+  }
+});
+
 // Start the Express server or mount Vite middleware
 async function startServer() {
   if (process.env.NODE_ENV !== "production") {

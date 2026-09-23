@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, School, User, Calendar, CheckSquare, Layers, Send, X, Star, CalendarDays, CheckCircle2, MessageSquare } from 'lucide-react';
+import { Mail, Phone, School, User, Calendar, CheckSquare, Layers, Send, X, Star, CalendarDays, CheckCircle2, MessageSquare, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { DemoBooking } from '../types';
 import { supabase } from '../lib/supabase';
@@ -34,6 +34,7 @@ export default function DemoModal({ isOpen, onClose, onSuccess }: DemoModalProps
   const [preferredTime, setPreferredTime] = useState<string>('Morning (10:00 AM - 1:00 PM)');
 
   const [formError, setFormError] = useState<string>('');
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   // Toggle checklist module selection
@@ -65,6 +66,13 @@ export default function DemoModal({ isOpen, onClose, onSuccess }: DemoModalProps
       return;
     }
 
+    setIsSubmitting(true);
+    setFormError('');
+
+    const nameParts = name.trim().split(/\s+/);
+    const firstName = nameParts[0] || name;
+    const lastName = nameParts.slice(1).join(' ') || '';
+
     const newBooking: DemoBooking = {
       id: 'ACC_' + Math.random().toString(36).substring(2, 9).toUpperCase(),
       name,
@@ -79,43 +87,65 @@ export default function DemoModal({ isOpen, onClose, onSuccess }: DemoModalProps
       createdAt: new Date().toISOString()
     };
 
-    // Save to Supabase
-    await supabase.from('demo_leads').insert({
-      id: newBooking.id,
-      name: newBooking.name,
-      institution_name: newBooking.institutionName,
-      role: newBooking.role,
-      phone: newBooking.phone,
-      email: newBooking.email,
-      institution_type: newBooking.institutionType,
-      students_count: newBooking.studentsCount,
-      interested_modules: newBooking.interestedModules,
-      preferred_time: newBooking.preferredTime,
-      created_at: newBooking.createdAt,
-    });
+    try {
+      // 1. Trigger Resend 3-Step Dual-Email Automation Pipeline
+      const contactPayload = {
+        firstName,
+        lastName,
+        workEmail: email,
+        companyName: institutionName,
+        phoneCode: '+91',
+        phone,
+        industry: `${interestedModules.join(', ')} (${institutionType})`,
+        estimatedSize: studentsCount,
+        context: `Role: ${role} | Preferred Slot: ${preferredTime}`
+      };
 
-    // Also save to localStorage as backup
-    const existing = localStorage.getItem('acados_demo_leads');
-    const leadsList = existing ? JSON.parse(existing) : [];
-    leadsList.unshift(newBooking);
-    localStorage.setItem('acados_demo_leads', JSON.stringify(leadsList));
+      try {
+        await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(contactPayload)
+        });
+      } catch (apiErr) {
+        console.warn('API contact route call notice:', apiErr);
+      }
 
-    // Send welcome email (fire and forget)
-    fetch('https://bgaidfuzvcrjbxmpfvym.supabase.co/functions/v1/send-welcome-email', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: newBooking.name,
-        email: newBooking.email,
-        institutionName: newBooking.institutionName,
-        institutionType: newBooking.institutionType,
-        interestedModules: newBooking.interestedModules,
-      }),
-    }).catch(() => {}); // silent fail if email service not configured
+      // 2. Save to Supabase
+      try {
+        await supabase.from('demo_leads').insert({
+          id: newBooking.id,
+          name: newBooking.name,
+          institution_name: newBooking.institutionName,
+          role: newBooking.role,
+          phone: newBooking.phone,
+          email: newBooking.email,
+          institution_type: newBooking.institutionType,
+          students_count: newBooking.studentsCount,
+          interested_modules: newBooking.interestedModules,
+          preferred_time: newBooking.preferredTime,
+          created_at: newBooking.createdAt,
+        });
+      } catch (dbErr) {
+        console.warn('Supabase insert notice:', dbErr);
+      }
 
-    onSuccess(newBooking);
-    setIsSubmitted(true);
-    setFormError('');
+      // 3. Backup to localStorage
+      try {
+        const existing = localStorage.getItem('acados_demo_leads');
+        const leadsList = existing ? JSON.parse(existing) : [];
+        leadsList.unshift(newBooking);
+        localStorage.setItem('acados_demo_leads', JSON.stringify(leadsList));
+      } catch (lsErr) {}
+
+      onSuccess(newBooking);
+      setIsSubmitted(true);
+    } catch (err: any) {
+      console.error('Demo booking error:', err);
+      setFormError(err.message || 'Unable to submit right now. Please connect via WhatsApp.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleResetForm = () => {
@@ -402,10 +432,22 @@ export default function DemoModal({ isOpen, onClose, onSuccess }: DemoModalProps
 
                       <button
                         type="submit"
-                        className="bg-gradient-to-r from-maroon-600 to-maroon-800 text-white hover:from-maroon-700 hover:to-maroon-900 font-extrabold py-3 px-6 rounded-xl text-xs uppercase tracking-wider flex items-center gap-2 transition-all active:scale-[0.98] shadow-md cursor-pointer"
+                        disabled={isSubmitting}
+                        className={`bg-gradient-to-r from-maroon-600 to-maroon-800 text-white font-extrabold py-3 px-6 rounded-xl text-xs uppercase tracking-wider flex items-center gap-2 transition-all active:scale-[0.98] shadow-md ${
+                          isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:from-maroon-700 hover:to-maroon-900 cursor-pointer'
+                        }`}
                       >
-                        <Send className="w-3.5 h-3.5 text-gold-400" />
-                        <span>Confirm Slot booking</span>
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="w-3.5 h-3.5 text-gold-400 animate-spin" />
+                            <span>Dispatching Request...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Send className="w-3.5 h-3.5 text-gold-400" />
+                            <span>Confirm Slot Booking</span>
+                          </>
+                        )}
                       </button>
                     </div>
                   </div>
