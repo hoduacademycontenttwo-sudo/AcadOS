@@ -61,14 +61,6 @@ export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-12 lg:mb-16">
-          <motion.p 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-[11px] font-mono font-bold tracking-widest uppercase text-[#800000]"
-          >
-            The Everyday Friction
-          </motion.p>
 
           <motion.h2 
             initial={{ opacity: 0, y: 14 }}
