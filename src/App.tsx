@@ -15,8 +15,8 @@ import CBTPlayground from './components/CBTPlayground';
 import DemoModal from './components/DemoModal';
 import AcadOSModulesTimeline from './components/AcadOSModulesTimeline';
 import ProblemStatement from './components/ProblemStatement';
-import BeforeAfterSlider from './components/BeforeAfterSlider';
 import ContentLibraryTabs from './components/ContentLibraryTabs';
+
 import OMREvaluationMicroDemo from './components/OMREvaluationMicroDemo';
 import LearnersHubMicroDemo from './components/LearnersHubMicroDemo';
 import SuccessStories from './components/SuccessStories';
@@ -585,16 +585,6 @@ export default function App() {
                 onBookDemo={() => setIsDemoModalOpen(true)}
               />
 
-              {/* HE-9: BEFORE / AFTER REVOLUTION */}
-              <motion.section
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.7, ease: 'easeOut' }}
-                className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-              >
-                <BeforeAfterSlider />
-              </motion.section>
 
               {/* CLIENTS SECTION */}
               <ClientsSection />
