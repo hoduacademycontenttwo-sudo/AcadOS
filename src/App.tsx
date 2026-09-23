@@ -505,10 +505,10 @@ export default function App() {
                 <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                   <div className="space-y-5 sm:space-y-6 flex flex-col items-center">
 
-                    {/* Main Headline in 2 Clean Lines */}
-                    <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-serif font-extrabold text-white leading-[1.15] tracking-tight max-w-3xl">
-                      The Academic Operating System <br className="hidden sm:inline" />
-                      <em className="not-italic text-maroon-200">for Modern Institutions.</em>
+                    {/* Main Headline in Exact 2 Clean Lines */}
+                    <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-serif font-extrabold text-white leading-[1.15] tracking-tight max-w-5xl mx-auto">
+                      <span className="block">The Academic Operating System</span>
+                      <span className="block text-maroon-200 font-serif italic">for Modern Institutions.</span>
                     </h1>
 
                     {/* Subtitle */}
