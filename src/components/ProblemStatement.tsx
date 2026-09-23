@@ -47,27 +47,26 @@ const PROBLEMS: ProblemItem[] = [
 
 export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
   return (
-    <section className="relative py-20 lg:py-28 bg-[#121214] border-b border-zinc-800/80 overflow-hidden text-white">
-      {/* Background ambient lighting */}
+    <section className="relative py-20 lg:py-28 bg-[#faf8f5] border-b border-stone-200/80 overflow-hidden">
+      {/* Subtle grid background */}
       <div 
-        className="absolute inset-0 opacity-[0.04] pointer-events-none" 
+        className="absolute inset-0 opacity-[0.035] pointer-events-none" 
         style={{
-          backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(#800000 1px, transparent 1px)',
           backgroundSize: '24px 24px'
         }}
       />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#800000]/15 rounded-full blur-3xl pointer-events-none" />
 
       <style>{`
         .anim-container {
           width: 100%;
           min-height: 290px;
-          background: #18181b;
+          background: transparent;
           position: relative;
-          box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
           overflow: hidden;
-          border-radius: 16px;
-          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          border-radius: 12px;
+          transition: all 0.3s ease;
         }
 
         .anim-card {
@@ -76,26 +75,27 @@ export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
           height: 100%;
           position: relative;
           z-index: 2;
-          padding: 1.25rem;
           display: flex;
           flex-direction: column;
-          gap: 0.85rem;
-          background-color: rgba(24, 24, 27, 0.7);
-          border: 1px solid rgba(255, 255, 255, 0.12);
+          padding: 1.25rem;
+          gap: 0.75rem;
+          color: #1e293b;
+          background-color: rgba(255, 255, 255, 0.75);
+          border: 1px solid rgba(255, 255, 255, 0.8);
           -webkit-backdrop-filter: blur(20px);
           backdrop-filter: blur(20px);
-          border-radius: 16px;
+          border-radius: 12px;
           transition: all ease 0.3s;
         }
 
         .anim-container::after,
         .anim-container::before {
-          width: 120px;
-          height: 120px;
+          width: 110px;
+          height: 110px;
           content: "";
           position: absolute;
           border-radius: 50%;
-          transition: 0.5s ease-in-out;
+          transition: 0.5s linear;
           pointer-events: none;
           z-index: 1;
         }
@@ -103,53 +103,52 @@ export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
         .anim-container::after {
           top: -20px;
           left: -20px;
-          background-color: rgba(128, 0, 0, 0.65);
-          animation: animFirst 6s ease-in-out infinite;
+          background-color: rgba(0, 174, 169, 0.4);
+          animation: animFirst 5s linear infinite;
         }
 
         .anim-container::before {
-          background-color: rgba(225, 29, 72, 0.45);
-          top: 65%;
-          left: 65%;
-          animation: animSecond 6s ease-in-out infinite;
-          animation-delay: 2.5s;
+          background-color: rgba(0, 174, 169, 0.3);
+          top: 70%;
+          left: 70%;
+          animation: animSecond 5s linear infinite;
+          animation-delay: 3s;
         }
 
         .anim-container:hover {
-          box-shadow: 0px 10px 30px rgba(128, 0, 0, 0.45);
-          transform: translateY(-4px);
+          box-shadow: 0px 8px 25px rgba(0, 174, 169, 0.28);
+          transform: translateY(-3px);
         }
 
         .anim-container:hover .anim-card {
-          background-color: rgba(24, 24, 27, 0.55);
-          border-color: rgba(255, 255, 255, 0.25);
+          background-color: rgba(255, 255, 255, 0.6);
         }
 
         .anim-container:hover::after {
-          left: calc(100% - 90px);
-          transform: scale(1.25);
+          left: calc(100% - 85px);
+          transform: scale(1.2);
         }
 
         .anim-container:hover::before {
-          left: -15px;
-          transform: scale(1.25);
+          left: -10px;
+          transform: scale(1.2);
         }
 
         @keyframes animFirst {
           0%, 100% {
-            transform: translateY(0px) scale(1);
+            transform: translateY(0px);
           }
           50% {
-            transform: translateY(20px) scale(1.15);
+            transform: translateY(15px);
           }
         }
 
         @keyframes animSecond {
           0%, 100% {
-            transform: translateY(0px) scale(1);
+            transform: translateY(0px);
           }
           50% {
-            transform: translateY(-20px) scale(1.15);
+            transform: translateY(-15px);
           }
         }
       `}</style>
@@ -162,7 +161,7 @@ export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-white tracking-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-stone-900 tracking-tight"
           >
             Operational Bottlenecks Holding Institutions Back
           </motion.h2>
@@ -172,13 +171,13 @@ export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto font-sans"
+            className="text-stone-600 text-sm sm:text-base max-w-2xl mx-auto font-sans"
           >
             Fragmented tools, manual paperwork, and delayed evaluations drain faculty hours and weaken student trust.
           </motion.p>
         </div>
 
-        {/* Animated Glass Orb Cards Grid */}
+        {/* Animated Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {PROBLEMS.map((problem, index) => (
             <motion.div
@@ -193,22 +192,22 @@ export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
                 <div className="anim-card">
                   
                   {/* Problem Image Preview */}
-                  <div className="relative rounded-xl overflow-hidden aspect-[16/10] bg-black/50 border border-white/10 shadow-inner">
+                  <div className="relative rounded-lg overflow-hidden aspect-[16/10] bg-stone-100 border border-stone-200/70 shadow-sm">
                     <img 
                       src={problem.image} 
                       alt={problem.imageAlt}
-                      className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-all duration-500"
                       loading="lazy"
                     />
                   </div>
 
                   {/* Problem Heading */}
-                  <h3 className="text-base sm:text-lg font-serif font-bold text-white leading-snug group-hover:text-rose-100 transition-colors">
+                  <h3 className="text-base sm:text-lg font-serif font-bold text-stone-900 leading-snug group-hover:text-teal-900 transition-colors">
                     {problem.title}
                   </h3>
 
                   {/* Subheading */}
-                  <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed mt-auto">
+                  <p className="text-xs sm:text-sm text-stone-600 font-sans leading-relaxed mt-auto">
                     {problem.subtitle}
                   </p>
 
