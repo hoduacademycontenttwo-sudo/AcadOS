@@ -47,92 +47,110 @@ const PROBLEMS: ProblemItem[] = [
 
 export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
   return (
-    <section className="relative py-20 lg:py-28 bg-[#18181b] border-b border-zinc-800 overflow-hidden text-white">
-      {/* Background radial glow */}
+    <section className="relative py-20 lg:py-28 bg-[#121214] border-b border-zinc-800/80 overflow-hidden text-white">
+      {/* Background ambient lighting */}
       <div 
-        className="absolute inset-0 opacity-[0.05] pointer-events-none" 
+        className="absolute inset-0 opacity-[0.04] pointer-events-none" 
         style={{
           backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
           backgroundSize: '24px 24px'
         }}
       />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-red-900/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#800000]/15 rounded-full blur-3xl pointer-events-none" />
 
       <style>{`
-        .problem-skew-card {
+        .anim-container {
           width: 100%;
-          min-height: 240px;
-          padding: 1.25rem;
-          background: rgba(39, 39, 42, 0.65);
-          border-radius: 16px;
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border-top: 1px solid rgba(255, 255, 255, 0.15);
-          border-bottom: 3px solid rgba(255, 255, 255, 0.12);
-          border-left: 2px solid rgba(255, 255, 255, 0.2);
-          border-right: 1px solid rgba(255, 255, 255, 0.08);
-          box-shadow: -20px 30px 30px rgba(0, 0, 0, 0.45);
-          transform: skewX(6deg);
-          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          min-height: 290px;
+          background: #18181b;
+          position: relative;
+          box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
           overflow: hidden;
-          color: white;
-          display: flex;
-          flex-direction: column;
+          border-radius: 16px;
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        @media (max-width: 640px) {
-          .problem-skew-card {
-            transform: skewX(3deg);
+        .anim-card {
+          cursor: pointer;
+          width: 100%;
+          height: 100%;
+          position: relative;
+          z-index: 2;
+          padding: 1.25rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.85rem;
+          background-color: rgba(24, 24, 27, 0.7);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+          border-radius: 16px;
+          transition: all ease 0.3s;
+        }
+
+        .anim-container::after,
+        .anim-container::before {
+          width: 120px;
+          height: 120px;
+          content: "";
+          position: absolute;
+          border-radius: 50%;
+          transition: 0.5s ease-in-out;
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        .anim-container::after {
+          top: -20px;
+          left: -20px;
+          background-color: rgba(128, 0, 0, 0.65);
+          animation: animFirst 6s ease-in-out infinite;
+        }
+
+        .anim-container::before {
+          background-color: rgba(225, 29, 72, 0.45);
+          top: 65%;
+          left: 65%;
+          animation: animSecond 6s ease-in-out infinite;
+          animation-delay: 2.5s;
+        }
+
+        .anim-container:hover {
+          box-shadow: 0px 10px 30px rgba(128, 0, 0, 0.45);
+          transform: translateY(-4px);
+        }
+
+        .anim-container:hover .anim-card {
+          background-color: rgba(24, 24, 27, 0.55);
+          border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .anim-container:hover::after {
+          left: calc(100% - 90px);
+          transform: scale(1.25);
+        }
+
+        .anim-container:hover::before {
+          left: -15px;
+          transform: scale(1.25);
+        }
+
+        @keyframes animFirst {
+          0%, 100% {
+            transform: translateY(0px) scale(1);
+          }
+          50% {
+            transform: translateY(20px) scale(1.15);
           }
         }
 
-        .problem-skew-card:hover {
-          transform: skew(0deg) translateY(-8px);
-          background: rgba(45, 45, 50, 0.9);
-          box-shadow: 0px 25px 40px rgba(0, 0, 0, 0.6);
-          border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .traffic-dots {
-          display: flex;
-          flex-direction: row;
-          gap: 6px;
-          align-items: center;
-          margin-bottom: 0.85rem;
-        }
-
-        .dot-red {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          background-color: #ff605c;
-          box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.4);
-        }
-
-        .dot-yellow {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          background-color: #ffbd44;
-          box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.4);
-        }
-
-        .dot-green {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          background-color: #00ca4e;
-          box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.4);
-        }
-
-        .problem-card-title {
-          font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-          font-size: 1.125rem;
-          font-weight: 700;
-          color: rgb(244, 244, 245);
-          text-shadow: -2px 2px 8px rgba(0, 0, 0, 0.6);
-          line-height: 1.35;
-          margin-bottom: 0.75rem;
+        @keyframes animSecond {
+          0%, 100% {
+            transform: translateY(0px) scale(1);
+          }
+          50% {
+            transform: translateY(-20px) scale(1.15);
+          }
         }
       `}</style>
 
@@ -160,8 +178,8 @@ export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
           </motion.p>
         </div>
 
-        {/* 4 Skewed Glassmorphic Problem Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 pt-4 pb-8">
+        {/* Animated Glass Orb Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {PROBLEMS.map((problem, index) => (
             <motion.div
               key={problem.id}
@@ -169,35 +187,32 @@ export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: index * 0.08 }}
-              className="flex justify-center"
+              className="flex"
             >
-              <div className="problem-skew-card group cursor-pointer">
-                {/* Traffic lights dots */}
-                <div className="traffic-dots">
-                  <span className="dot-red" />
-                  <span className="dot-yellow" />
-                  <span className="dot-green" />
+              <div className="anim-container group">
+                <div className="anim-card">
+                  
+                  {/* Problem Image Preview */}
+                  <div className="relative rounded-xl overflow-hidden aspect-[16/10] bg-black/50 border border-white/10 shadow-inner">
+                    <img 
+                      src={problem.image} 
+                      alt={problem.imageAlt}
+                      className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  {/* Problem Heading */}
+                  <h3 className="text-base sm:text-lg font-serif font-bold text-white leading-snug group-hover:text-rose-100 transition-colors">
+                    {problem.title}
+                  </h3>
+
+                  {/* Subheading */}
+                  <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed mt-auto">
+                    {problem.subtitle}
+                  </p>
+
                 </div>
-
-                {/* Problem Heading */}
-                <h3 className="problem-card-title">
-                  {problem.title}
-                </h3>
-
-                {/* Problem Image Preview */}
-                <div className="relative rounded-xl overflow-hidden aspect-[16/10] bg-black/40 border border-white/10 mb-3 shadow-inner">
-                  <img 
-                    src={problem.image} 
-                    alt={problem.imageAlt}
-                    className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                    loading="lazy"
-                  />
-                </div>
-
-                {/* Subheading / Description */}
-                <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed mt-auto">
-                  {problem.subtitle}
-                </p>
               </div>
             </motion.div>
           ))}
