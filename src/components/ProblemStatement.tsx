@@ -47,7 +47,7 @@ const PROBLEMS: ProblemItem[] = [
 
 export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
   return (
-    <section className="relative py-20 lg:py-28 bg-[#faf8f5] border-b border-stone-200/80 overflow-hidden">
+    <section className="relative py-12 md:py-16 bg-[#faf8f5] border-b border-stone-200/80 overflow-hidden">
       {/* Subtle grid background */}
       <div 
         className="absolute inset-0 opacity-[0.035] pointer-events-none" 
@@ -60,13 +60,13 @@ export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
       <style>{`
         .anim-container {
           width: 100%;
-          min-height: 290px;
+          min-height: 280px;
           background: transparent;
           position: relative;
-          box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+          box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.07);
           overflow: hidden;
-          border-radius: 12px;
-          transition: all 0.3s ease;
+          border-radius: 14px;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .anim-card {
@@ -78,20 +78,20 @@ export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
           display: flex;
           flex-direction: column;
           padding: 1.25rem;
-          gap: 0.75rem;
+          gap: 0.85rem;
           color: #1e293b;
-          background-color: rgba(255, 255, 255, 0.75);
-          border: 1px solid rgba(255, 255, 255, 0.8);
+          background-color: rgba(255, 255, 255, 0.8);
+          border: 1px solid rgba(255, 255, 255, 0.85);
           -webkit-backdrop-filter: blur(20px);
           backdrop-filter: blur(20px);
-          border-radius: 12px;
+          border-radius: 14px;
           transition: all ease 0.3s;
         }
 
         .anim-container::after,
         .anim-container::before {
-          width: 110px;
-          height: 110px;
+          width: 120px;
+          height: 120px;
           content: "";
           position: absolute;
           border-radius: 50%;
@@ -116,22 +116,22 @@ export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
         }
 
         .anim-container:hover {
-          box-shadow: 0px 8px 25px rgba(0, 174, 169, 0.28);
-          transform: translateY(-3px);
+          box-shadow: 0px 10px 28px rgba(0, 174, 169, 0.28);
+          transform: translateY(-4px);
         }
 
         .anim-container:hover .anim-card {
-          background-color: rgba(255, 255, 255, 0.6);
+          background-color: rgba(255, 255, 255, 0.65);
         }
 
         .anim-container:hover::after {
-          left: calc(100% - 85px);
-          transform: scale(1.2);
+          left: calc(100% - 90px);
+          transform: scale(1.25);
         }
 
         .anim-container:hover::before {
-          left: -10px;
-          transform: scale(1.2);
+          left: -15px;
+          transform: scale(1.25);
         }
 
         @keyframes animFirst {
@@ -156,12 +156,12 @@ export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-14 lg:mb-18">
+        <div className="text-center max-w-3xl mx-auto space-y-2.5 mb-8 md:mb-10">
           <motion.h2 
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-stone-900 tracking-tight"
+            className="text-2xl sm:text-3xl lg:text-4xl font-serif font-extrabold text-stone-900 tracking-tight leading-tight"
           >
             Operational Bottlenecks Holding Institutions Back
           </motion.h2>
@@ -170,15 +170,15 @@ export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-stone-600 text-sm sm:text-base max-w-2xl mx-auto font-sans"
+            transition={{ delay: 0.08 }}
+            className="text-stone-600 text-xs sm:text-sm md:text-base max-w-2xl mx-auto font-sans leading-relaxed"
           >
             Fragmented tools, manual paperwork, and delayed evaluations drain faculty hours and weaken student trust.
           </motion.p>
         </div>
 
         {/* Animated Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
           {PROBLEMS.map((problem, index) => (
             <motion.div
               key={problem.id}
@@ -192,7 +192,7 @@ export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
                 <div className="anim-card">
                   
                   {/* Problem Image Preview */}
-                  <div className="relative rounded-lg overflow-hidden aspect-[16/10] bg-stone-100 border border-stone-200/70 shadow-sm">
+                  <div className="relative rounded-xl overflow-hidden aspect-[16/10] bg-stone-100 border border-stone-200/70 shadow-xs">
                     <img 
                       src={problem.image} 
                       alt={problem.imageAlt}
@@ -202,12 +202,12 @@ export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
                   </div>
 
                   {/* Problem Heading */}
-                  <h3 className="text-base sm:text-lg font-serif font-bold text-stone-900 leading-snug group-hover:text-teal-900 transition-colors">
+                  <h3 className="text-base font-serif font-bold text-stone-900 leading-snug group-hover:text-teal-900 transition-colors">
                     {problem.title}
                   </h3>
 
                   {/* Subheading */}
-                  <p className="text-xs sm:text-sm text-stone-600 font-sans leading-relaxed mt-auto">
+                  <p className="text-xs sm:text-[13px] text-stone-600 font-sans leading-relaxed mt-auto">
                     {problem.subtitle}
                   </p>
 

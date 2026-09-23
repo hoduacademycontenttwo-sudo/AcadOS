@@ -506,7 +506,7 @@ export default function App() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="space-y-16 md:space-y-24 pb-16"
+              className="space-y-0 pb-16"
             >
               
               {/* HERO SECTION WITH DOTFIELD INTERACTIVE BACKGROUND */}
