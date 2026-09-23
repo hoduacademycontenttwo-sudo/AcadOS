@@ -114,7 +114,7 @@ export function SchoolsSolutionHub() {
       shortLabel: 'Learners App',
       icon: Users,
       problem: 'Disjointed study notes and disconnected student progress tracking.',
-      solution: 'White-labeled portal for daily homework sheets (DPPs) and performance portfolios.',
+      solution: 'Custom-branded portal for daily homework sheets (DPPs) and performance portfolios.',
       badge: 'Digital Student Portal',
       component: <LearnersHubMicroDemo />
     }
@@ -140,7 +140,7 @@ export function SchoolsSolutionHub() {
             Tired of managing multiple disconnected software vendors?
           </h4>
           <p className="text-xs text-slate-550 leading-relaxed font-sans">
-            Unify administrative accounting, parental alerts, lesson design, and grading in one white-labeled dashboard.
+            Unify administrative accounting, parental alerts, lesson design, and grading in one custom-branded dashboard.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-4 text-center shrink-0 w-full md:w-auto">

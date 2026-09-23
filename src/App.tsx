@@ -14,6 +14,7 @@ import TestMakerPlayground from './components/TestMakerPlayground';
 import CBTPlayground from './components/CBTPlayground';
 import DemoModal from './components/DemoModal';
 import AcadOSModulesTimeline from './components/AcadOSModulesTimeline';
+import ProblemStatement from './components/ProblemStatement';
 import BeforeAfterSlider from './components/BeforeAfterSlider';
 import ContentLibraryTabs from './components/ContentLibraryTabs';
 import OMREvaluationMicroDemo from './components/OMREvaluationMicroDemo';
@@ -553,8 +554,12 @@ export default function App() {
                 </div>
               </section>
 
+              {/* PROBLEM STATEMENT: ACADEMIC BOTTLENECKS & OPERATIONAL FRICTION */}
+              <ProblemStatement 
+                onBookDemo={() => setIsDemoModalOpen(true)}
+              />
 
-              {/* ACADOS 6 CORE MODULES INTERACTIVE TIMELINE */}
+              {/* ACADOS 4 CORE MODULES INTERACTIVE TIMELINE */}
               <AcadOSModulesTimeline 
                 onExploreModule={(modId) => {
                   if (modId === 'admissions-crm' || modId === 'erp-crm') {
@@ -595,7 +600,7 @@ export default function App() {
                         Ready to transform academics?
                       </span>
                       <h3 className="text-2xl sm:text-3xl font-black tracking-tight font-sans text-white leading-tight">
-                        Let's Build It<br />White-Labeled.
+                        Let's Build Your<br />Custom Software.
                       </h3>
                       <p className="text-maroon-100 text-xs sm:text-sm leading-relaxed font-sans">
                         Fill out our short questionnaire. Access sandbox accounts and let us mock up worksheets, reports, and portal views custom-tailored with your school's color theme and logo.
@@ -1209,7 +1214,7 @@ export default function App() {
                   Platform booking
                 </span>
                 <h1 className="text-2xl sm:text-3xl font-serif font-light text-slate-905 tracking-tight leading-tight">
-                  Let’s Deploy Your <span className="italic text-maroon-700">White-Labeled Portal Sandbox</span>
+                  Let’s Deploy Your <span className="italic text-maroon-700">Custom Branded Portal Sandbox</span>
                 </h1>
                 <p className="text-xs sm:text-sm text-slate-550 max-w-2xl mx-auto leading-relaxed font-sans">
                   Select your school caps and interested module lists. Our academic architects will reach out within 1 business hour with customized worksheets.

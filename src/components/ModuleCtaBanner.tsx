@@ -15,7 +15,7 @@ export default function ModuleCtaBanner({ module, onBookDemo }: ModuleCtaBannerP
       case 'erp-crm':
         return "Ready to simplify your administrative ERP & admissions CRM? Book a customized demo now.";
       case 'learners-hub':
-        return "Empower students with a white-labeled mobile Learners Hub? Book a customized demo now.";
+        return "Empower students with a custom-branded mobile Learners Hub? Book a customized demo now.";
       case 'practice-cbt':
         return "Ready to launch NTA-style computerized exam CBT panels? Book a customized demo now.";
       case 'omr-evaluation':
