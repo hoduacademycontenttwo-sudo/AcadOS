@@ -1,5 +1,5 @@
-import React from 'react';
-import { XCircle, CheckCircle2, Sparkles, ArrowRight } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { XCircle, CheckCircle2, Sparkles, ArrowRight, MoveVertical } from 'lucide-react';
 
 interface ComparisonItem {
   category: string;
@@ -60,8 +60,105 @@ const COMPARISON_ITEMS: ComparisonItem[] = [
 ];
 
 export default function BeforeAfterSlider() {
-  // Double the list for seamless infinite loop scrolling
-  const infiniteItems = [...COMPARISON_ITEMS, ...COMPARISON_ITEMS];
+  // Triple the items for perfectly seamless infinite wrap-around dragging & scrolling
+  const infiniteItems = [...COMPARISON_ITEMS, ...COMPARISON_ITEMS, ...COMPARISON_ITEMS];
+  
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const dragStartYRef = useRef(0);
+  const dragStartScrollTopRef = useRef(0);
+
+  // High-performance Auto-Scroll & Infinite Wrap Loop
+  useEffect(() => {
+    let animId: number;
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const scrollSpeed = 0.65; // px per frame
+
+    const step = () => {
+      if (container && !isDragging && !isHovered) {
+        container.scrollTop += scrollSpeed;
+        
+        // When scroll reaches 2/3 of total content, loop smoothly back to 1/3
+        const singleSetHeight = container.scrollHeight / 3;
+        if (container.scrollTop >= singleSetHeight * 2) {
+          container.scrollTop -= singleSetHeight;
+        } else if (container.scrollTop <= 0) {
+          container.scrollTop += singleSetHeight;
+        }
+      }
+      animId = requestAnimationFrame(step);
+    };
+
+    animId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animId);
+  }, [isDragging, isHovered]);
+
+  // Mouse Drag Handlers
+  const handleMouseDown = (e: React.MouseEvent) => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    setIsDragging(true);
+    dragStartYRef.current = e.pageY - container.offsetTop;
+    dragStartScrollTopRef.current = container.scrollTop;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    e.preventDefault();
+    const currentY = e.pageY - container.offsetTop;
+    const walk = (currentY - dragStartYRef.current) * 1.3;
+    container.scrollTop = dragStartScrollTopRef.current - walk;
+
+    // Boundary wrap during drag
+    const singleSetHeight = container.scrollHeight / 3;
+    if (container.scrollTop >= singleSetHeight * 2) {
+      container.scrollTop -= singleSetHeight;
+      dragStartScrollTopRef.current -= singleSetHeight;
+    } else if (container.scrollTop <= 0) {
+      container.scrollTop += singleSetHeight;
+      dragStartScrollTopRef.current += singleSetHeight;
+    }
+  };
+
+  const handleMouseUpOrLeave = () => {
+    setIsDragging(false);
+  };
+
+  // Touch Handlers for Mobile Grab & Drag
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    setIsDragging(true);
+    dragStartYRef.current = e.touches[0].pageY - container.offsetTop;
+    dragStartScrollTopRef.current = container.scrollTop;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging) return;
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    const currentY = e.touches[0].pageY - container.offsetTop;
+    const walk = (currentY - dragStartYRef.current) * 1.2;
+    container.scrollTop = dragStartScrollTopRef.current - walk;
+
+    const singleSetHeight = container.scrollHeight / 3;
+    if (container.scrollTop >= singleSetHeight * 2) {
+      container.scrollTop -= singleSetHeight;
+      dragStartScrollTopRef.current -= singleSetHeight;
+    } else if (container.scrollTop <= 0) {
+      container.scrollTop += singleSetHeight;
+      dragStartScrollTopRef.current += singleSetHeight;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
 
   return (
     <div className="bg-white rounded-3xl border border-slate-200/90 p-6 md:p-8 shadow-sm overflow-hidden" id="before-after-view">
@@ -76,9 +173,12 @@ export default function BeforeAfterSlider() {
             Streamlining <span className="italic text-[#800000]">Administrative & Academic</span> Bottlenecks
           </h4>
         </div>
-        <p className="text-slate-500 text-xs sm:text-sm max-w-sm">
-          Continuous operational upgrades from legacy manual friction to automated institutional intelligence.
-        </p>
+        
+        {/* Grab & Scroll Badge Hint */}
+        <div className="flex items-center gap-2 text-[11px] font-mono font-bold text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full border border-slate-200 shrink-0 self-start sm:self-auto select-none">
+          <MoveVertical className="w-3.5 h-3.5 text-[#800000] animate-bounce" />
+          <span>Grab & Drag to Scroll</span>
+        </div>
       </div>
 
       {/* Grid Comparison Headers (Desktop) */}
@@ -92,17 +192,39 @@ export default function BeforeAfterSlider() {
         </div>
       </div>
 
-      {/* Auto-scrolling infinite vertical marquee container */}
-      <div className="relative h-[480px] sm:h-[540px] overflow-hidden rounded-2xl group select-none">
-        
+      {/* Auto-scrolling & Drag-to-Scroll Container */}
+      <div 
+        className="relative h-[480px] sm:h-[540px] overflow-hidden rounded-2xl select-none"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => {
+          setIsHovered(false);
+          handleMouseUpOrLeave();
+        }}
+      >
         {/* Top Gradient Fade Mask */}
         <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-white via-white/80 to-transparent z-10 pointer-events-none" />
         
         {/* Bottom Gradient Fade Mask */}
         <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-white via-white/80 to-transparent z-10 pointer-events-none" />
 
-        {/* Scrolling Track (Infinite Upward Motion) */}
-        <div className="flex flex-col gap-4 animate-marquee-vertical group-hover:[animation-play-state:paused] py-2">
+        {/* Grab & Scroll Track */}
+        <div 
+          ref={scrollContainerRef}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUpOrLeave}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          className={`h-full overflow-y-auto no-scrollbar py-2 space-y-4 ${
+            isDragging ? 'cursor-grabbing' : 'cursor-grab'
+          }`}
+          style={{
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            WebkitOverflowScrolling: 'touch'
+          }}
+        >
           {infiniteItems.map((item, idx) => (
             <div
               key={`${item.category}-${idx}`}
