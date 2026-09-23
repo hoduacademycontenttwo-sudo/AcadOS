@@ -19,29 +19,29 @@ const PROBLEMS: ProblemItem[] = [
     id: 'testmaker-problem',
     title: 'Manual Paper Setting & Formatting',
     subtitle: 'Hours wasted hunting questions and formatting complex LaTeX math equations in MS Word.',
-    image: '/modules/testmaker.jpg',
-    imageAlt: 'Manual paper setting bottleneck'
+    image: '/problems/manual-paper-formatting.jpg',
+    imageAlt: 'Messy exam paper drafts and manual formatting friction'
   },
   {
     id: 'omr-problem',
     title: 'Slow OMR Evaluation & 4–7 Day Delays',
     subtitle: 'Physical answer sheets pile up, delaying student results and killing feedback momentum.',
-    image: '/modules/omr.jpg',
-    imageAlt: 'OMR evaluation delay'
+    image: '/problems/omr-evaluation-delays.jpg',
+    imageAlt: 'Stacks of un-evaluated OMR sheets causing long result delays'
   },
   {
     id: 'cbt-problem',
     title: 'Generic Portals & Lost Brand Equity',
     subtitle: 'Third-party mock test portals with external vendor logos, high fees, and server lag.',
-    image: '/modules/cbt.png',
-    imageAlt: 'Generic 3rd party test portal'
+    image: '/problems/generic-portal-crashes.jpg',
+    imageAlt: 'Generic 3rd party mock test portal with error timeout and lost identity'
   },
   {
     id: 'erp-problem',
     title: 'Scattered Registers & Lost Admissions',
     subtitle: 'Student leads lost in paper registers and manual offline fee collection leakages.',
-    image: '/modules/erp.jpg',
-    imageAlt: 'Scattered registers and lost leads'
+    image: '/problems/scattered-paper-registers.jpg',
+    imageAlt: 'Cluttered paper registers, lost student admission logs, and manual fee slips'
   }
 ];
 
