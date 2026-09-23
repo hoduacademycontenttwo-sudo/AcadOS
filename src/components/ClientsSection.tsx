@@ -127,9 +127,6 @@ export default function ClientsSection() {
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* heading */}
         <div className="text-center mb-12 space-y-3">
-          <span className="inline-block text-[10px] font-mono font-bold uppercase tracking-widest text-[#800000] bg-[#80000010] border border-[#80000025] px-3 py-1 rounded-full">
-            Our Clients
-          </span>
           <h2 className="text-3xl sm:text-4xl font-serif font-extrabold text-[#0A0A0F] tracking-tight">
             Trusted by schools &amp; coaching institutes
           </h2>

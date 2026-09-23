@@ -328,9 +328,6 @@ export default function AcadOSModulesTimeline({ onExploreModule, onBookDemo }: A
           <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-[#800000]/8 to-transparent rounded-full blur-3xl pointer-events-none" />
           
           <div className="space-y-2 max-w-xl">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#800000]/10 text-[#800000] border border-[#800000]/20">
-              UNIFIED DEPLOYMENT
-            </span>
             <h3 className="text-xl sm:text-2xl font-serif font-extrabold text-slate-900 tracking-tight">
               Ready to experience all 4 modules configured for your institute?
             </h3>

@@ -609,11 +609,7 @@ export default function App() {
                     {/* Decorative circles */}
                     <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-white/5 pointer-events-none" />
                     <div className="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-white/5 pointer-events-none" />
-
                     <div className="space-y-4 relative z-10">
-                      <span className="bg-gold-500/20 text-gold-300 font-mono text-[9px] uppercase tracking-widest font-bold px-2.5 py-1 rounded-full border border-gold-500/15 inline-block">
-                        Ready to transform academics?
-                      </span>
                       <h3 className="text-2xl sm:text-3xl font-black tracking-tight font-sans text-white leading-tight">
                         Let's Build Your<br />Custom Software.
                       </h3>
