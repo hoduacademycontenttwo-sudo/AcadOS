@@ -16,6 +16,7 @@ import DemoModal from './components/DemoModal';
 import AcadOSModulesTimeline from './components/AcadOSModulesTimeline';
 import ProblemStatement from './components/ProblemStatement';
 import ContentLibraryTabs from './components/ContentLibraryTabs';
+import Lightfall from './components/Lightfall';
 
 import OMREvaluationMicroDemo from './components/OMREvaluationMicroDemo';
 import LearnersHubMicroDemo from './components/LearnersHubMicroDemo';
@@ -508,14 +509,30 @@ export default function App() {
               className="space-y-16 md:space-y-24 pb-16"
             >
               
-              {/* COMPACT HERO SECTION */}
-              <section className="relative overflow-hidden py-12 sm:py-16 md:py-20" id="hero-block">
-                {/* Full-bleed rich maroon bg */}
-                <div className="absolute inset-0 bg-gradient-to-b from-maroon-800 via-maroon-700 to-maroon-800" />
-                {/* Lighter maroon glow center */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(158,27,27,0.5),transparent_70%)] pointer-events-none" />
-                {/* Subtle grid texture */}
-                <div className="absolute inset-0 opacity-[0.04]" style={{backgroundImage: 'linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)', backgroundSize: '60px 60px'}} />
+              {/* HERO SECTION WITH LIGHTFALL WEBGL BACKGROUND */}
+              <section className="relative overflow-hidden py-14 sm:py-20 md:py-24" id="hero-block">
+                {/* Lightfall Animated Background */}
+                <div className="absolute inset-0 w-full h-full overflow-hidden">
+                  <Lightfall
+                    colors={['#A6C8FF', '#5227FF', '#FF9FFC']}
+                    backgroundColor="#0A29FF"
+                    speed={1}
+                    streakCount={8}
+                    streakWidth={1}
+                    streakLength={1}
+                    glow={1}
+                    density={1}
+                    twinkle={1}
+                    zoom={2}
+                    backgroundGlow={1}
+                    opacity={1}
+                    mouseInteraction={true}
+                    mouseStrength={1}
+                    mouseRadius={0.6}
+                  />
+                  {/* Subtle dark overlay to ensure maximum text readability and depth */}
+                  <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+                </div>
 
                 <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                   <div className="space-y-5 sm:space-y-6 flex flex-col items-center">
