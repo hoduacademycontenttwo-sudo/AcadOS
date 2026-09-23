@@ -735,18 +735,18 @@ export default function AcadBot() {
             exit={{ scale: 0, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 400, damping: 20 }}
             onClick={() => setOpen(true)}
-            className="fixed bottom-6 right-6 z-[9998] flex items-center gap-2 rounded-2xl shadow-2xl cursor-pointer"
-            style={{ background: 'linear-gradient(135deg,#800000,#3b0000)', padding: '10px 16px 10px 10px' }}
+            className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-[9998] flex items-center gap-2.5 rounded-full sm:rounded-2xl shadow-2xl cursor-pointer p-2.5 sm:py-2.5 sm:px-4"
+            style={{ background: 'linear-gradient(135deg,#800000,#3b0000)' }}
             aria-label="Open AcadBot"
           >
-            <BotAvatar speaking={false} size={40} />
-            <div className="text-left">
+            <BotAvatar speaking={false} size={42} />
+            <div className="text-left hidden sm:block">
               <p className="text-white text-xs font-bold leading-tight">Ask Acad</p>
-              <p className="text-red-200 text-[10px] leading-tight">AcadOS AI Assistant</p>
+              <p className="text-red-200 text-[10px] leading-tight font-medium">AcadOS AI Assistant</p>
             </div>
             <motion.span
-              className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-emerald-400"
-              animate={{ scale: [1, 1.4, 1] }}
+              className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-[#18181b]"
+              animate={{ scale: [1, 1.3, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             />
           </motion.button>

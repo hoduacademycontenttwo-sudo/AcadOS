@@ -1373,86 +1373,86 @@ export default function App() {
       {/* ==================================== */}
       {/* 13. COMPREHENSIVE FOOTER             */}
       {/* ==================================== */}
-      <footer className="bg-slate-950 text-slate-350 border-t border-slate-850 pt-16 pb-8" id="footer-coordinates">
+      <footer className="bg-slate-950 text-white border-t border-slate-800 pt-16 pb-8" id="footer-coordinates">
         {/* Statutory Trust Bar */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 mb-8 border-b border-slate-900 flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 mb-8 border-b border-slate-800 flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
           <div className="flex items-center gap-2 text-emerald-400">
             <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span className="font-bold tracking-wider">DPDP ACT, 2023 COMPLIANT</span>
+            <span className="font-extrabold tracking-wider">DPDP ACT, 2023 COMPLIANT</span>
           </div>
-          <div className="flex flex-wrap items-center gap-4 text-slate-500 text-[11px]">
-            <span>🔒 AES-256 Encryption</span>
-            <span>&bull;</span>
-            <span>🛡️ DPBI Statutory Alignment</span>
-            <span>&bull;</span>
-            <span>👶 Section 9 Minor Data Protected</span>
-            <span>&bull;</span>
-            <span>⚖️ 100% Client Question IP Ownership</span>
+          <div className="flex flex-wrap items-center gap-4 text-white/90 text-xs font-bold">
+            <span className="text-white">🔒 AES-256 Encryption</span>
+            <span className="text-white/40">&bull;</span>
+            <span className="text-white">🛡️ DPBI Statutory Alignment</span>
+            <span className="text-white/40">&bull;</span>
+            <span className="text-white">👶 Section 9 Minor Data Protected</span>
+            <span className="text-white/40">&bull;</span>
+            <span className="text-white">⚖️ 100% Client Question IP Ownership</span>
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-8 text-xs font-sans pb-12 border-b border-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-8 text-xs font-sans pb-12 border-b border-slate-800">
           
           {/* Company Brief block (3 columns) */}
           <div className="md:col-span-3 space-y-4">
             <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigateTo('home')}>
               <img src={acadosLogo} alt="AcadOS Logo" className="w-11 h-11 object-contain shrink-0" />
-              <span className="text-lg font-black tracking-widest text-white uppercase font-sans">
+              <span className="text-xl font-black tracking-widest text-white uppercase font-sans">
                 AcadOS
               </span>
             </div>
 
-            <p className="text-slate-500 leading-relaxed text-[11px] max-w-xs">
+            <p className="text-white/90 font-medium leading-relaxed text-xs max-w-xs">
               A technology initiative of Hoducation Technologies Pvt. Ltd. Deploying premium academic operating systems for schools and coaching academies under their brand logo.
             </p>
 
-            <p className="font-mono text-[9px] text-slate-600 block">
+            <p className="font-mono text-[10px] text-white/70 font-semibold block">
               Jaipur Campus: C-28, Vaishali Estate, Gandhi Path (W), Rajasthan 302021, India
             </p>
           </div>
 
           {/* Solutions & modules links (3 Columns) */}
-          <div className="md:col-span-3 space-y-2.5 uppercase font-bold text-[10px] tracking-wider text-slate-500">
-            <span className="text-slate-400 font-bold block pb-1 border-b border-slate-900">Solutions</span>
-            <button onClick={() => navigateTo('schools')} className="hover:text-white block text-left">For K-12 Schools</button>
-            <button onClick={() => navigateTo('coaching')} className="hover:text-white block text-left">For Coachings</button>
-            <button onClick={() => navigateTo('content-library')} className="hover:text-white block text-left">Content Library</button>
-            <button onClick={() => setIsDemoModalOpen(true)} className="hover:text-white block text-left">Custom Branded OS</button>
+          <div className="md:col-span-3 space-y-3 uppercase font-bold text-xs tracking-wider text-white/80">
+            <span className="text-white font-extrabold block pb-1 border-b border-slate-800 text-[13px]">Solutions</span>
+            <button onClick={() => navigateTo('schools')} className="hover:text-emerald-400 block text-left transition-colors font-semibold">For K-12 Schools</button>
+            <button onClick={() => navigateTo('coaching')} className="hover:text-emerald-400 block text-left transition-colors font-semibold">For Coachings</button>
+            <button onClick={() => navigateTo('content-library')} className="hover:text-emerald-400 block text-left transition-colors font-semibold">Content Library</button>
+            <button onClick={() => setIsDemoModalOpen(true)} className="hover:text-emerald-400 block text-left transition-colors font-semibold">Custom Branded OS</button>
           </div>
 
           {/* Platform Modules (3 columns) */}
-          <div className="md:col-span-3 space-y-2.5 uppercase font-bold text-[10px] tracking-wider text-slate-500">
-            <span className="text-slate-400 font-bold block pb-1 border-b border-slate-900">Platform Modules</span>
-            <button onClick={() => navigateTo('learners-hub')} className="hover:text-white block text-left">Learners Hub</button>
-            <button onClick={() => navigateTo('testmaker')} className="hover:text-white block text-left">TestMaker Engine</button>
-            <button onClick={() => navigateTo('practice-cbt')} className="hover:text-white block text-left">Mock CBT Simulator</button>
-            <button onClick={() => navigateTo('omr-evaluation')} className="hover:text-white block text-left">Smartphone OMR</button>
-            <button onClick={() => navigateTo('erp-crm')} className="hover:text-white block text-left">ERP + Lead CRM</button>
+          <div className="md:col-span-3 space-y-3 uppercase font-bold text-xs tracking-wider text-white/80">
+            <span className="text-white font-extrabold block pb-1 border-b border-slate-800 text-[13px]">Platform Modules</span>
+            <button onClick={() => navigateTo('learners-hub')} className="hover:text-emerald-400 block text-left transition-colors font-semibold">Learners Hub</button>
+            <button onClick={() => navigateTo('testmaker')} className="hover:text-emerald-400 block text-left transition-colors font-semibold">TestMaker Engine</button>
+            <button onClick={() => navigateTo('practice-cbt')} className="hover:text-emerald-400 block text-left transition-colors font-semibold">Mock CBT Simulator</button>
+            <button onClick={() => navigateTo('omr-evaluation')} className="hover:text-emerald-400 block text-left transition-colors font-semibold">Smartphone OMR</button>
+            <button onClick={() => navigateTo('erp-crm')} className="hover:text-emerald-400 block text-left transition-colors font-semibold">ERP + Lead CRM</button>
           </div>
 
           {/* Legal & Compliance coords (3 columns) */}
-          <div className="md:col-span-3 space-y-2.5 uppercase font-bold text-[10px] tracking-wider text-slate-500">
-            <span className="text-slate-400 font-bold block pb-1 border-b border-slate-900">Legal & Governance</span>
-            <button onClick={() => navigateTo('privacy')} className="hover:text-white block text-left text-emerald-400/90 font-bold">Privacy Policy (DPDP 2023)</button>
-            <button onClick={() => navigateTo('terms')} className="hover:text-white block text-left">Terms & DPA Agreement</button>
-            <a href="mailto:hoducationtechnologies@gmail.com?subject=DPDP%20Grievance%20Redressal%20Inquiry" className="hover:text-white block text-left normal-case font-mono text-[10px]">Grievance Officer: Jaipur Desk</a>
-            <div className="pt-2 text-slate-400 font-sans normal-case text-[11px] font-normal">
-              <p>Hotline: <a href="tel:+919660034117" className="text-white font-bold hover:underline">+91 96600 34117</a></p>
-              <p>Email: <a href="mailto:hoducationtechnologies@gmail.com" className="text-white hover:underline break-all">hoducationtechnologies@gmail.com</a></p>
+          <div className="md:col-span-3 space-y-3 uppercase font-bold text-xs tracking-wider text-white/80">
+            <span className="text-white font-extrabold block pb-1 border-b border-slate-800 text-[13px]">Legal & Governance</span>
+            <button onClick={() => navigateTo('privacy')} className="hover:text-emerald-300 block text-left text-emerald-400 font-extrabold">Privacy Policy (DPDP 2023)</button>
+            <button onClick={() => navigateTo('terms')} className="hover:text-emerald-400 block text-left transition-colors font-semibold">Terms & DPA Agreement</button>
+            <a href="mailto:hoducationtechnologies@gmail.com?subject=DPDP%20Grievance%20Redressal%20Inquiry" className="hover:text-white block text-left normal-case font-mono text-xs font-semibold text-white/90">Grievance Officer: Jaipur Desk</a>
+            <div className="pt-2 text-white font-sans normal-case text-xs font-medium space-y-1">
+              <p>Hotline: <a href="tel:+919660034117" className="text-white font-extrabold hover:text-emerald-400 hover:underline">+91 96600 34117</a></p>
+              <p>Email: <a href="mailto:hoducationtechnologies@gmail.com" className="text-white font-bold hover:text-emerald-400 hover:underline break-all">hoducationtechnologies@gmail.com</a></p>
             </div>
           </div>
 
         </div>
 
         {/* Legal copyrights strip */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-[10px] text-slate-600 font-sans uppercase tracking-widest font-bold">
-          <span>© 2026 Hoducation Technologies Pvt Ltd. All Rights Reserved.</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-white/80 font-sans uppercase tracking-widest font-bold">
+          <span className="text-white/90 font-bold">© 2026 Hoducation Technologies Pvt Ltd. All Rights Reserved.</span>
           <div className="flex items-center gap-4">
-            <button onClick={() => navigateTo('privacy')} className="hover:text-slate-400">Privacy Policy</button>
-            <span>•</span>
-            <button onClick={() => navigateTo('terms')} className="hover:text-slate-400">Terms of Service & DPA</button>
-            <span>•</span>
-            <button onClick={() => navigateTo('contact')} className="hover:text-slate-400">Grievance Cell</button>
+            <button onClick={() => navigateTo('privacy')} className="hover:text-white text-white/80 transition-colors">Privacy Policy</button>
+            <span className="text-white/40">•</span>
+            <button onClick={() => navigateTo('terms')} className="hover:text-white text-white/80 transition-colors">Terms of Service & DPA</button>
+            <span className="text-white/40">•</span>
+            <button onClick={() => navigateTo('contact')} className="hover:text-white text-white/80 transition-colors">Grievance Cell</button>
           </div>
         </div>
       </footer>
