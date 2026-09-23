@@ -268,7 +268,7 @@ export default function BeforeAfterSlider() {
                       Automatic
                     </span>
                     <span className="bg-amber-50 text-amber-800 font-bold text-[9px] font-mono uppercase tracking-wider px-2 py-0.5 rounded border border-amber-200">
-                      White-Labeled
+                      Your Brand
                     </span>
                   </div>
                 </div>
