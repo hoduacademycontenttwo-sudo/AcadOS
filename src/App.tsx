@@ -33,6 +33,8 @@ import ModulePreviewPage from './components/ModulePreviewPage';
 import AcadBot from './components/AcadBot';
 import ClientsSection from './components/ClientsSection';
 import ModuleVideoPage from './components/ModuleVideoPage';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
 
 
 
@@ -118,6 +120,14 @@ export default function App() {
         title = 'Contact Hoducation Technologies — Book your AcadOS Demo';
         description = 'Get in touch with educational technology experts. Request a personalized live platform demo for your K-12 schools or coaching institutes.';
         break;
+      case 'privacy':
+        title = 'Privacy Policy & DPDP Act 2023 Charter — AcadOS';
+        description = 'Statutory data protection charter under India Digital Personal Data Protection Act 2023. Section 9 minor safeguards, encryption standards, and grievance contacts.';
+        break;
+      case 'terms':
+        title = 'Terms of Service & Data Processing Addendum (DPA) — AcadOS';
+        description = 'Master subscription terms, 100% intellectual property ownership, question bank protection, and binding DPA under DPDP Act Section 8.';
+        break;
       default:
         break;
     }
@@ -149,6 +159,8 @@ export default function App() {
       else if (hash === '#/about') setPage('about');
       else if (hash === '#/contact') setPage('contact');
       else if (hash === '#/why-acados') setPage('why-acados');
+      else if (hash === '#/privacy' || hash === '#/privacy-policy') setPage('privacy');
+      else if (hash === '#/terms' || hash === '#/terms-of-service' || hash === '#/dpa') setPage('terms');
       else setPage('home');
       setMenuOpen(false);
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -173,6 +185,8 @@ export default function App() {
     else if (pageId === 'contact') window.location.hash = '#/contact';
     else if (pageId === 'omr-evaluation') window.location.hash = '#/modules/omr-evaluation';
     else if (pageId === 'why-acados') window.location.hash = '#/why-acados';
+    else if (pageId === 'privacy') window.location.hash = '#/privacy';
+    else if (pageId === 'terms') window.location.hash = '#/terms';
   };
 
   const handleLeadSaved = (lead: DemoBooking) => {
@@ -1316,6 +1330,40 @@ export default function App() {
             </motion.div>
           )}
 
+          {/* ==================================== */}
+          {/* STATUTORY PRIVACY POLICY (DPDP 2023) */}
+          {/* ==================================== */}
+          {page === 'privacy' && (
+            <motion.div 
+              key="privacy-page"
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <PrivacyPolicy 
+                onNavigateToTerms={() => navigateTo('terms')}
+                onBookDemo={() => setIsDemoModalOpen(true)}
+              />
+            </motion.div>
+          )}
+
+          {/* ==================================== */}
+          {/* TERMS OF SERVICE & DPA AGREEMENT     */}
+          {/* ==================================== */}
+          {page === 'terms' && (
+            <motion.div 
+              key="terms-page"
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <TermsOfService 
+                onNavigateToPrivacy={() => navigateTo('privacy')}
+                onBookDemo={() => setIsDemoModalOpen(true)}
+              />
+            </motion.div>
+          )}
+
         </AnimatePresence>
       </div>
 
@@ -1323,10 +1371,27 @@ export default function App() {
       {/* 13. COMPREHENSIVE FOOTER             */}
       {/* ==================================== */}
       <footer className="bg-slate-950 text-slate-350 border-t border-slate-850 pt-16 pb-8" id="footer-coordinates">
+        {/* Statutory Trust Bar */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 mb-8 border-b border-slate-900 flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
+          <div className="flex items-center gap-2 text-emerald-400">
+            <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+            <span className="font-bold tracking-wider">DPDP ACT, 2023 COMPLIANT</span>
+          </div>
+          <div className="flex flex-wrap items-center gap-4 text-slate-500 text-[11px]">
+            <span>🔒 AES-256 Encryption</span>
+            <span>&bull;</span>
+            <span>🛡️ DPBI Statutory Alignment</span>
+            <span>&bull;</span>
+            <span>👶 Section 9 Minor Data Protected</span>
+            <span>&bull;</span>
+            <span>⚖️ 100% Client Question IP Ownership</span>
+          </div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-8 text-xs font-sans pb-12 border-b border-slate-900">
           
-          {/* Company Brief block (4 columns) */}
-          <div className="md:col-span-4 space-y-4">
+          {/* Company Brief block (3 columns) */}
+          <div className="md:col-span-3 space-y-4">
             <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigateTo('home')}>
               <img src={acadosLogo} alt="AcadOS Logo" className="w-11 h-11 object-contain shrink-0" />
               <span className="text-lg font-black tracking-widest text-white uppercase font-sans">
@@ -1339,52 +1404,38 @@ export default function App() {
             </p>
 
             <p className="font-mono text-[9px] text-slate-600 block">
-              Jaipur Branch: C-28, Vaishali Estate, Gandhi Path (W), India
+              Jaipur Campus: C-28, Vaishali Estate, Gandhi Path (W), Rajasthan 302021, India
             </p>
           </div>
 
-          {/* Solutions & modules links (4 Columns) */}
-          <div className="md:col-span-4 grid grid-cols-2 gap-4 uppercase font-bold text-[10px] tracking-wider text-slate-500">
-            <div className="space-y-2.5">
-              <span className="text-slate-400 font-bold block pb-1 border-b border-slate-900">Solutions</span>
-              <button onClick={() => navigateTo('schools')} className="hover:text-white block text-left">For K-12 Schools</button>
-              <button onClick={() => navigateTo('coaching')} className="hover:text-white block text-left">For Coachings</button>
-              <button onClick={() => setIsDemoModalOpen(true)} className="hover:text-white block text-left">White-label OS</button>
-            </div>
-            <div className="space-y-2.5">
-              <span className="text-slate-400 font-bold block pb-1 border-b border-slate-900">Platform Modules</span>
-              <button onClick={() => navigateTo('learners-hub')} className="hover:text-white block text-left">Learners Hub</button>
-              <button onClick={() => navigateTo('testmaker')} className="hover:text-white block text-left">TestMaker Engine</button>
-              <button onClick={() => navigateTo('practice-cbt')} className="hover:text-white block text-left">Mock CBT simulator</button>
-              <button onClick={() => navigateTo('erp-crm')} className="hover:text-white block text-left">ERP + Lead CRM</button>
-            </div>
+          {/* Solutions & modules links (3 Columns) */}
+          <div className="md:col-span-3 space-y-2.5 uppercase font-bold text-[10px] tracking-wider text-slate-500">
+            <span className="text-slate-400 font-bold block pb-1 border-b border-slate-900">Solutions</span>
+            <button onClick={() => navigateTo('schools')} className="hover:text-white block text-left">For K-12 Schools</button>
+            <button onClick={() => navigateTo('coaching')} className="hover:text-white block text-left">For Coachings</button>
+            <button onClick={() => navigateTo('content-library')} className="hover:text-white block text-left">Content Library</button>
+            <button onClick={() => setIsDemoModalOpen(true)} className="hover:text-white block text-left">Custom Branded OS</button>
           </div>
 
-          {/* Quick contact / Support coords (4 columns) */}
-          <div className="md:col-span-4 space-y-3 font-mono text-[11px]">
-            <span className="text-slate-400 font-sans font-bold uppercase block pb-1 border-b border-slate-900 text-[10px]">
-              Direct Contact Support
-            </span>
-            <div className="space-y-1.5 text-slate-500 font-sans">
-             <p className="flex items-center gap-2">
-  <span>📞 Hotline:</span> 
-  <a 
-    href="tel:+919660034117" 
-    className="font-bold hover:underline"
-  >
-    +91 9660034117
-  </a>
-</p>
-           <p className="flex items-center gap-2 text-slate-500">
-  <span>📧 E-mail:</span> 
-  <a 
-    href="mailto:hoducationtechnologies@gmail.com?subject=Inquiry%20from%20Website&body=Hi%20Hoducation%20Technologies%20Team%2C%0A%0AI%20would%20like%20to%20know%20more%20about..." 
-    className="font-bold break-all hover:underline hover:text-slate-700"
-  >
-    hoducationtechnologies@gmail.com
-  </a>
-</p>
-              
+          {/* Platform Modules (3 columns) */}
+          <div className="md:col-span-3 space-y-2.5 uppercase font-bold text-[10px] tracking-wider text-slate-500">
+            <span className="text-slate-400 font-bold block pb-1 border-b border-slate-900">Platform Modules</span>
+            <button onClick={() => navigateTo('learners-hub')} className="hover:text-white block text-left">Learners Hub</button>
+            <button onClick={() => navigateTo('testmaker')} className="hover:text-white block text-left">TestMaker Engine</button>
+            <button onClick={() => navigateTo('practice-cbt')} className="hover:text-white block text-left">Mock CBT Simulator</button>
+            <button onClick={() => navigateTo('omr-evaluation')} className="hover:text-white block text-left">Smartphone OMR</button>
+            <button onClick={() => navigateTo('erp-crm')} className="hover:text-white block text-left">ERP + Lead CRM</button>
+          </div>
+
+          {/* Legal & Compliance coords (3 columns) */}
+          <div className="md:col-span-3 space-y-2.5 uppercase font-bold text-[10px] tracking-wider text-slate-500">
+            <span className="text-slate-400 font-bold block pb-1 border-b border-slate-900">Legal & Governance</span>
+            <button onClick={() => navigateTo('privacy')} className="hover:text-white block text-left text-emerald-400/90 font-bold">Privacy Policy (DPDP 2023)</button>
+            <button onClick={() => navigateTo('terms')} className="hover:text-white block text-left">Terms & DPA Agreement</button>
+            <a href="mailto:hoducationtechnologies@gmail.com?subject=DPDP%20Grievance%20Redressal%20Inquiry" className="hover:text-white block text-left normal-case font-mono text-[10px]">Grievance Officer: Jaipur Desk</a>
+            <div className="pt-2 text-slate-400 font-sans normal-case text-[11px] font-normal">
+              <p>Hotline: <a href="tel:+919660034117" className="text-white font-bold hover:underline">+91 96600 34117</a></p>
+              <p>Email: <a href="mailto:hoducationtechnologies@gmail.com" className="text-white hover:underline break-all">hoducationtechnologies@gmail.com</a></p>
             </div>
           </div>
 
@@ -1393,10 +1444,12 @@ export default function App() {
         {/* Legal copyrights strip */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-[10px] text-slate-600 font-sans uppercase tracking-widest font-bold">
           <span>© 2026 Hoducation Technologies Pvt Ltd. All Rights Reserved.</span>
-          <div className="flex gap-4">
-            <button onClick={() => navigateTo('omr-evaluation')} className="hover:text-slate-400">OMR Scanning Demo</button>
+          <div className="flex items-center gap-4">
+            <button onClick={() => navigateTo('privacy')} className="hover:text-slate-400">Privacy Policy</button>
             <span>•</span>
-            <span className="normal-case font-medium">Developed by Hoducation Technologies</span>
+            <button onClick={() => navigateTo('terms')} className="hover:text-slate-400">Terms of Service & DPA</button>
+            <span>•</span>
+            <button onClick={() => navigateTo('contact')} className="hover:text-slate-400">Grievance Cell</button>
           </div>
         </div>
       </footer>

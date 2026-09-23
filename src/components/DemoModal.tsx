@@ -32,6 +32,7 @@ export default function DemoModal({ isOpen, onClose, onSuccess }: DemoModalProps
   const [studentsCount, setStudentsCount] = useState<string>('100-500');
   const [interestedModules, setInterestedModules] = useState<string[]>([]);
   const [preferredTime, setPreferredTime] = useState<string>('Morning (10:00 AM - 1:00 PM)');
+  const [dpdpConsent, setDpdpConsent] = useState<boolean>(false);
 
   const [formError, setFormError] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -63,6 +64,11 @@ export default function DemoModal({ isOpen, onClose, onSuccess }: DemoModalProps
     e.preventDefault();
     if (interestedModules.length === 0) {
       setFormError('Please select at least one module of interest.');
+      return;
+    }
+
+    if (!dpdpConsent) {
+      setFormError('Please accept the statutory data collection consent (DPDP Act 2023) to continue.');
       return;
     }
 
@@ -158,6 +164,7 @@ export default function DemoModal({ isOpen, onClose, onSuccess }: DemoModalProps
     setStudentsCount('100-500');
     setInterestedModules([]);
     setPreferredTime('Morning (10:00 AM - 1:00 PM)');
+    setDpdpConsent(false);
     setStep(1);
     setIsSubmitted(false);
     onClose();
@@ -418,6 +425,45 @@ export default function DemoModal({ isOpen, onClose, onSuccess }: DemoModalProps
                           })}
                         </div>
                       </div>
+
+                      {/* DPDP Act 2023 Statutory Consent Group */}
+                      <div className="pt-2">
+                        <label className="flex items-start gap-2.5 p-2.5 sm:p-3 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer select-none hover:bg-slate-100/80 transition-colors">
+                          <input
+                            type="checkbox"
+                            id="dpdpConsent"
+                            name="dpdpConsent"
+                            checked={dpdpConsent}
+                            onChange={(e) => setDpdpConsent(e.target.checked)}
+                            className="mt-0.5 h-4 w-4 rounded border-slate-300 text-maroon-700 focus:ring-maroon-600 shrink-0 cursor-pointer accent-maroon-700"
+                            required
+                          />
+                          <span className="text-[10px] sm:text-[11px] text-slate-600 leading-snug">
+                            I consent to AcadOS collecting my institutional contact details in accordance with India's{' '}
+                            <a 
+                              href="#/privacy" 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="text-maroon-800 font-bold underline hover:text-maroon-900"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              Privacy Policy
+                            </a>{' '}
+                            and{' '}
+                            <a 
+                              href="#/terms" 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="text-maroon-800 font-bold underline hover:text-maroon-900"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              Terms & DPA
+                            </a>{' '}
+                            (DPDP Act, 2023) to provide product walkthroughs, exam sandboxes, and service notifications.
+                          </span>
+                        </label>
+                      </div>
+
                     </div>
 
                     {/* Step Actions */}
