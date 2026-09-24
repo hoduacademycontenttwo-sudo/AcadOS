@@ -215,23 +215,23 @@ const FEATURES = [
 ];
 
 function CompareRow({ feature, alt, idx }: { feature:string; alt:boolean; idx:number }) {
-  const bg = alt ? "bg-white" : "bg-neutral-50/50";
-  const manual = idx === 9 ? "partial" : "no";
+  const bg = alt ? "bg-white" : "bg-neutral-50/60";
   const generic = [0,5,8].includes(idx) ? "yes" : (idx===4||idx===7) ? "partial" : "no";
   const CellIcon = ({ state }: { state:string }) => (
-    <div className={`${bg} border-t border-neutral-100 p-4 text-center`}>
-      {state==="yes" ? <Check className="mx-auto h-5 w-5 text-emerald-500" /> :
-       state==="partial" ? <span className="text-xs text-amber-600 font-medium">Partial</span> :
-       <X className="mx-auto h-5 w-5 text-rose-300" />}
+    <div className={`${bg} border-t border-neutral-100 p-2.5 sm:p-4 text-center flex items-center justify-center`}>
+      {state==="yes" ? <Check className="mx-auto h-4 w-4 sm:h-5 sm:w-5 text-emerald-500" /> :
+       state==="partial" ? <span className="text-[10px] sm:text-xs text-amber-600 font-semibold uppercase tracking-wider">Partial</span> :
+       <X className="mx-auto h-4 w-4 sm:h-5 sm:w-5 text-rose-400" />}
     </div>
   );
   return (
     <>
-      <div className={`${bg} border-t border-neutral-100 p-4 text-sm font-medium text-neutral-700`}>{feature}</div>
-      <CellIcon state={manual} />
+      <div className={`${bg} border-t border-neutral-100 p-2.5 sm:p-4 text-xs sm:text-sm font-semibold text-neutral-800 flex items-center leading-snug`}>
+        {feature}
+      </div>
       <CellIcon state={generic} />
-      <div className="border-t border-[#800000]/15 bg-[#800000]/[0.03] p-4 text-center">
-        <Check className="mx-auto h-5 w-5 text-emerald-500" strokeWidth={2.5} />
+      <div className="border-t border-[#800000]/15 bg-[#800000]/[0.03] p-2.5 sm:p-4 text-center flex items-center justify-center">
+        <Check className="mx-auto h-4 w-4 sm:h-5 sm:w-5 text-emerald-600" strokeWidth={2.8} />
       </div>
     </>
   );
@@ -241,26 +241,26 @@ function Comparison({ onBookDemo }: { onBookDemo:()=>void }) {
   return (
     <motion.section
       initial={{ opacity:0, y:24 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:0.6 }}
-      className="bg-white px-6 py-24"
+      className="bg-white px-3 sm:px-6 py-14 sm:py-24 overflow-hidden w-full"
     >
-      <div className="mx-auto max-w-5xl">
-        <div className="mx-auto max-w-3xl text-center mb-12">
-          <h2 className="text-4xl font-black tracking-tight text-neutral-900 sm:text-5xl" style={{ fontFamily:"'Playfair Display',serif" }}>
+      <div className="mx-auto max-w-5xl w-full">
+        <div className="mx-auto max-w-3xl text-center mb-8 sm:mb-12 px-2">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-neutral-900" style={{ fontFamily:"'Playfair Display',serif" }}>
             One platform. Everything that matters.
           </h2>
-          <p className="mt-4 text-neutral-500">Compare AcadOS to how most institutions operate today.</p>
+          <p className="mt-2 sm:mt-4 text-xs sm:text-base text-neutral-500">Compare AcadOS to how most institutions operate today.</p>
         </div>
-        <div className="overflow-x-auto rounded-3xl border border-black/5 bg-white shadow-[0_30px_80px_-30px_rgba(0,0,0,0.12)]">
-          <div className="grid min-w-[480px] grid-cols-[1.5fr_1fr_1fr_1fr] text-sm">
-            <div className="bg-neutral-50 p-4 text-[10px] font-bold uppercase tracking-wider text-neutral-400">Feature</div>
-            <div className="bg-neutral-50 p-4 text-center text-[10px] font-bold uppercase tracking-wider text-neutral-400">Manual</div>
-            <div className="bg-neutral-50 p-4 text-center text-[10px] font-bold uppercase tracking-wider text-neutral-400">Generic Software</div>
-            <div className="bg-gradient-to-b from-[#800000] to-[#5a0000] p-4 text-center text-[10px] font-bold uppercase tracking-wider text-white">AcadOS</div>
+        <div className="w-full rounded-2xl sm:rounded-3xl border border-black/5 bg-white shadow-[0_16px_50px_-20px_rgba(0,0,0,0.08)] overflow-hidden">
+          <div className="grid w-full grid-cols-[1.5fr_1fr_1.1fr] sm:grid-cols-[2fr_1.2fr_1.2fr] text-xs sm:text-sm">
+            <div className="bg-neutral-50 p-3 sm:p-4 text-[9px] sm:text-xs font-bold uppercase tracking-wider text-neutral-400 flex items-center">Feature</div>
+            <div className="bg-neutral-50 p-3 sm:p-4 text-center text-[9px] sm:text-xs font-bold uppercase tracking-wider text-neutral-400 flex items-center justify-center">Generic Software</div>
+            <div className="bg-gradient-to-b from-[#800000] to-[#5a0000] p-3 sm:p-4 text-center text-[9px] sm:text-xs font-bold uppercase tracking-wider text-white flex items-center justify-center">AcadOS</div>
             {FEATURES.map((f,i) => <CompareRow key={f} feature={f} alt={i%2===0} idx={i} />)}
-            <div className="p-4" /><div className="p-4" /><div className="p-4" />
-            <div className="bg-gradient-to-b from-[#5a0000] to-[#3d0000] p-5 text-center">
-              <button onClick={onBookDemo} className="wa-shimmer inline-flex items-center gap-2 rounded-full bg-[#d4a017] px-5 py-2.5 text-sm font-bold text-[#3d0000] shadow-lg transition-transform hover:scale-105">
-                Get AcadOS <ArrowRight className="h-4 w-4" />
+            <div className="p-3 sm:p-4 bg-white" />
+            <div className="p-3 sm:p-4 bg-white" />
+            <div className="bg-gradient-to-b from-[#5a0000] to-[#3d0000] p-3 sm:p-5 text-center flex items-center justify-center">
+              <button onClick={onBookDemo} className="wa-shimmer inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full bg-[#d4a017] px-3 sm:px-5 py-2 sm:py-2.5 text-[11px] sm:text-sm font-bold text-[#3d0000] shadow-md transition-transform hover:scale-105 whitespace-nowrap">
+                Get AcadOS <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               </button>
             </div>
           </div>

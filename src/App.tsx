@@ -199,7 +199,7 @@ export default function App() {
   if (loading) return <Loader />;
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans select-none antialiased">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-slate-50 flex flex-col font-sans select-none antialiased">
 
       {/* 1. STICKY BRAND HEADER */}
       <header 

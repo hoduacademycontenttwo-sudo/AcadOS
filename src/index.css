@@ -76,6 +76,12 @@
 }
 
 @layer base {
+  html, body, #root {
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+  }
+
   body {
     @apply font-sans bg-slate-50 text-slate-800 antialiased selection:bg-maroon-100 selection:text-maroon-800;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11", "kern" 1, "liga" 1, "calt" 1;
