@@ -16,6 +16,13 @@ interface ProblemItem {
 
 const PROBLEMS: ProblemItem[] = [
   {
+    id: 'library-problem',
+    title: 'Scattered Notes & WhatsApp PDF Chaos',
+    subtitle: 'Students drown in unorganized WhatsApp groups, pirated PDFs, and zero trackable study analytics.',
+    image: '/problems/unorganized-digital-notes.jpg',
+    imageAlt: 'Scattered study notes, PDF chaos, and unstructured learning'
+  },
+  {
     id: 'testmaker-problem',
     title: 'Manual Paper Setting & Formatting',
     subtitle: 'Hours wasted hunting questions and formatting complex LaTeX math equations in MS Word.',
@@ -31,10 +38,10 @@ const PROBLEMS: ProblemItem[] = [
   },
   {
     id: 'cbt-problem',
-    title: 'Generic Portals & Lost Brand Equity',
-    subtitle: 'Third-party mock test portals with external vendor logos, high fees, and server lag.',
+    title: 'Unstable CBT Mock Exams & Server Lag',
+    subtitle: 'Generic third-party CBT portals with external vendor logos, server timeouts, and high per-test fees.',
     image: '/problems/generic-portal-crashes.jpg',
-    imageAlt: 'Generic 3rd party mock test portal with error timeout and lost identity'
+    imageAlt: 'Generic 3rd party CBT mock test portal with error timeout and server lag'
   },
   {
     id: 'erp-problem',
@@ -178,7 +185,7 @@ export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
         </div>
 
         {/* Animated Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5">
           {PROBLEMS.map((problem, index) => (
             <motion.div
               key={problem.id}

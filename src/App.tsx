@@ -216,12 +216,9 @@ export default function App() {
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigateTo('home')}>
             <img src={acadosLogo} alt="AcadOS Logo" className="w-12 h-12 sm:w-14 sm:h-14 object-contain shrink-0" />
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center">
               <span className="text-xl sm:text-2xl font-black tracking-tight text-maroon-700 font-sans uppercase">
                 AcadOS
-              </span>
-              <span className="bg-gold-500/10 text-gold-600 font-bold font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded border border-gold-400/20">
-                v2.0
               </span>
             </div>
           </div>
