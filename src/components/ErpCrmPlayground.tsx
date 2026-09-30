@@ -1107,7 +1107,7 @@ export function ErpCrmPlayground() {
                         </div>
 
                         <div className="space-y-1.5 text-xs text-slate-600 font-mono">
-                          <p>📍 <strong>Address:</strong> C-28, Vaishali Estate, Arcadia Greens Road, Gandhi Path Rd, Jaipur, Rajasthan, 302041</p>
+                          <p>📍 <strong>Address:</strong> C-28, First Floor, Vaishali Estate, Arcadia Greens Road, Gandhi Path Rd, Jaipur, Rajasthan, 302041</p>
                           <p>📞 <strong>Phone Hotline:</strong> +91 9257879555</p>
                           <p>✉️ <strong>Official Email ID:</strong> contact@hoduacademy.com</p>
                         </div>

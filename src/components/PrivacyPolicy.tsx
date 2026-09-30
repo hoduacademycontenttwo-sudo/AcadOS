@@ -287,7 +287,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
               <div className="text-slate-300">Hoducation Technologies Pvt. Ltd.</div>
               <div className="flex items-center gap-2 text-slate-300 pt-1">
                 <MapPin className="w-4 h-4 text-gold-400 shrink-0" />
-                <span>C-28, Vaishali Estate, Gandhi Path (W), Jaipur, Rajasthan 302021, India</span>
+                <span>C-28, First Floor, Vaishali Estate, Gandhi Path (W), Jaipur, Rajasthan 302021, India</span>
               </div>
             </div>
 

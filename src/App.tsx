@@ -1246,7 +1246,7 @@ export default function App() {
                       <MapPin className="w-5 h-5 text-maroon-600 shrink-0 mt-0.5" />
                       <p>
                         <strong>Physical Campus Address:</strong><br />
-                        C-28, Vaishali Estate, Gandhi Path (W),<br />
+                        C-28, First Floor, Vaishali Estate, Gandhi Path (W),<br />
                         Jaipur, Rajasthan, Pin 302021
                       </p>
                     </div>
@@ -1404,7 +1404,7 @@ export default function App() {
             </p>
 
             <p className="font-mono text-[10px] text-white/70 font-semibold block">
-              Jaipur Campus: C-28, Vaishali Estate, Gandhi Path (W), Rajasthan 302021, India
+              Jaipur Campus: C-28, First Floor, Vaishali Estate, Gandhi Path (W), Rajasthan 302021, India
             </p>
           </div>
 
