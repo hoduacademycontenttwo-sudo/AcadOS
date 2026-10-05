@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ProblemIllustration } from './ProblemIllustration';
 
 export interface ProblemStatementProps {
   onScrollToModules?: () => void;
@@ -198,14 +199,9 @@ export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
               <div className="anim-container group">
                 <div className="anim-card">
                   
-                  {/* Problem Image Preview */}
-                  <div className="relative rounded-xl overflow-hidden aspect-[16/10] bg-stone-100 border border-stone-200/70 shadow-xs">
-                    <img 
-                      src={problem.image} 
-                      alt={problem.imageAlt}
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-all duration-500"
-                      loading="lazy"
-                    />
+                  {/* Symmetrical Vector Illustration Preview */}
+                  <div className="relative rounded-xl overflow-hidden aspect-[16/10] bg-slate-900 border border-slate-700/60 shadow-inner group-hover:border-teal-500/50 transition-colors duration-300">
+                    <ProblemIllustration id={problem.id} />
                   </div>
 
                   {/* Problem Heading */}
