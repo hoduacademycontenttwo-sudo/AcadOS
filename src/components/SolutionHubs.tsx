@@ -128,7 +128,7 @@ export function SchoolsSolutionHub() {
   };
 
   return (
-    <div className="space-y-8 select-none">
+    <div className="space-y-8">
       {/* Overview relief note banner */}
       <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 justify-between">
         <div className="space-y-2 max-w-3xl text-left">
@@ -527,7 +527,7 @@ export function CoachingSolutionHub() {
   };
 
   return (
-    <div className="space-y-8 select-none">
+    <div className="space-y-8">
       {/* Overview relief note banner */}
       <div className="bg-slate-900 text-slate-100 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 justify-between">
         <div className="space-y-2 max-w-3xl text-left">

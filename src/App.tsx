@@ -199,7 +199,7 @@ export default function App() {
   if (loading) return <Loader />;
 
   return (
-    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-slate-50 flex flex-col font-sans select-none antialiased">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-slate-50 flex flex-col font-sans antialiased">
 
       {/* 1. STICKY BRAND HEADER */}
       <header 
@@ -1185,7 +1185,7 @@ export default function App() {
                     desc: 'SaaS systems engineer (IIIT Hyderabad Alumni | Ex-Palantir, Qualcomm).'
                   }
                 ].map((item, idx) => (
-                  <div key={idx} className="bg-white rounded-2xl border border-slate-205 p-6 hover:border-maroon-200 transition-all space-y-3 shadow-sm select-none">
+                  <div key={idx} className="bg-white rounded-2xl border border-slate-205 p-6 hover:border-maroon-200 transition-all space-y-3 shadow-sm">
                     <span className="w-8 h-8 rounded-full bg-maroon-100 flex items-center justify-center text-maroon-850 font-bold font-sans text-xs">
                       {idx + 1}
                     </span>

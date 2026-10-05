@@ -145,7 +145,7 @@ export default function AcadOSModulesTimeline({ onExploreModule, onBookDemo }: A
   return (
     <section 
       ref={containerRef}
-      className="relative py-20 lg:py-28 bg-[#faf9f6] overflow-hidden select-none"
+      className="relative py-20 lg:py-28 bg-[#faf9f6] overflow-hidden"
       id="platform-ecosystem-timeline"
     >
       {/* Subtle architectural background pattern */}
