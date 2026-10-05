@@ -48,7 +48,7 @@ const PROBLEMS: ProblemItem[] = [
     id: 'erp-problem',
     title: 'Scattered Registers & Lost Admissions',
     subtitle: 'Student leads lost in paper registers and manual offline fee collection leakages.',
-    image: '/problems/scattered-paper-registers.jpg',
+    image: '/problems/scattered-paper-registers.png',
     imageAlt: 'Cluttered paper registers, lost student admission logs, and manual fee slips'
   }
 ];
@@ -199,9 +199,14 @@ export const ProblemStatement: React.FC<ProblemStatementProps> = () => {
               <div className="anim-container group">
                 <div className="anim-card">
                   
-                  {/* Symmetrical Vector Illustration Preview */}
-                  <div className="relative rounded-xl overflow-hidden aspect-[16/10] bg-slate-900 border border-slate-700/60 shadow-inner group-hover:border-teal-500/50 transition-colors duration-300">
-                    <ProblemIllustration id={problem.id} />
+                  {/* Warm Editorial Vector Illustration Preview */}
+                  <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-amber-50/50 border border-stone-200/80 shadow-xs">
+                    <img 
+                      src={problem.image} 
+                      alt={problem.imageAlt}
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500"
+                      loading="lazy"
+                    />
                   </div>
 
                   {/* Problem Heading */}
